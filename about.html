@@ -1,25 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>關於｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<header class="header">
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
+      <nav class="menu">
+        <a href="index.html">首頁</a>
+        <a class="active" href="about.html">關於</a>
+        <a href="artists.html">藝術家</a>
+        <a href="works.html">作品</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-<nav class="navbar">
-  <a href="index.html" class="logo">Student Art Collective</a>
-  <ul>
-    <li><a href="about.html">關於</a></li>
-    <li><a href="artists.html">藝術家</a></li>
-    <li><a href="works.html">作品</a></li>
-  </ul>
-</nav>
+<main class="container">
+  <section class="hero">
+    <div class="kicker">About / Statement</div>
+    <h1 class="h1">關於我們</h1>
+    <p class="lead">把這頁當成「策展文字」：清楚、短段落、保留呼吸感。</p>
+  </section>
 
-<main>
-  <h1>關於我們</h1>
-  <p>我們是一群來自藝術相關科系的學生，透過創作探討個人與世界之間的關係。</p>
+  <section class="section">
+    <div class="grid">
+      <div class="card cols-8">
+        <div class="cardPad prose">
+          <span class="badge">策展概念</span>
+          <p><strong>主題一句話：</strong>（例）在日常與記憶之間，我們練習辨識那些正在消失的東西。</p>
+          <p>
+            這裡放第一段：談共同命題與創作動機（建議 80–120 字）。
+          </p>
+          <p>
+            這裡放第二段：談媒材方法與觀看方式（建議 80–120 字）。
+          </p>
+        </div>
+      </div>
+
+      <div class="card cols-4">
+        <div class="cardPad prose">
+          <span class="badge">資訊</span>
+          <p>
+            團體／班級：XXXX<br>
+            指導老師：XXXX<br>
+            年度：2025<br>
+            聯絡：your@email.com
+          </p>
+          <p>
+            （可選）IG／作品集連結：<a class="smallLink" href="#" target="_blank" rel="noreferrer">Link</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2025 Student Art Collective. All artworks are the property of their respective artists.
+  </footer>
 </main>
-
 </body>
 </html>
