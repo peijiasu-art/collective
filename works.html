@@ -1,30 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>作品｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<nav class="navbar">
-  <a href="index.html" class="logo">Student Art Collective</a>
-  <ul>
-    <li><a href="about.html">關於</a></li>
-    <li><a href="artists.html">藝術家</a></li>
-    <li><a href="works.html">作品</a></li>
-  </ul>
-</nav>
-
-<main>
-  <h1>作品</h1>
-
-  <div class="work">
-    <h2>作品名稱</h2>
-    <p>年份｜媒材｜尺寸</p>
+<header class="header">
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
+      <nav class="menu">
+        <a href="index.html">首頁</a>
+        <a href="about.html">關於</a>
+        <a href="artists.html">藝術家</a>
+        <a class="active" href="works.html">作品</a>
+      </nav>
+    </div>
   </div>
+</header>
 
+<main class="container">
+  <section class="hero">
+    <div class="kicker">Works</div>
+    <h1 class="h1">作品</h1>
+    <p class="lead">每件作品建議格式：作品名／作者／年份／媒材／尺寸＋一句短敘事。</p>
+  </section>
+
+  <section class="section">
+    <div class="sectionTitle">
+      <h2>全作品</h2>
+      <p>先放圖＋資訊就很像展覽牆</p>
+    </div>
+
+    <div class="grid">
+      <article class="card cols-4">
+        <img class="thumb" src="images/works/sample-1.jpg" alt="work 1">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">作品名稱 A</h3>
+            <span class="badge">姓名 A</span>
+          </div>
+          <p class="workSub">2025｜媒材｜尺寸<br>一句短敘事：這件作品在談……</p>
+        </div>
+      </article>
+
+      <article class="card cols-4">
+        <img class="thumb" src="images/works/sample-2.jpg" alt="work 2">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">作品名稱 B</h3>
+            <span class="badge">姓名 B</span>
+          </div>
+          <p class="workSub">2025｜媒材｜尺寸<br>一句短敘事：這件作品在談……</p>
+        </div>
+      </article>
+
+      <article class="card cols-4">
+        <img class="thumb" src="images/works/sample-3.jpg" alt="work 3">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">作品名稱 C</h3>
+            <span class="badge">姓名 C</span>
+          </div>
+          <p class="workSub">2025｜媒材｜尺寸<br>一句短敘事：這件作品在談……</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2025 Student Art Collective. All artworks are the property of their respective artists.
+  </footer>
 </main>
-
 </body>
 </html>
