@@ -6,19 +6,34 @@
   <title>藝術家｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 <header class="header">
-  <div class="container">
-    <div class="nav">
-      <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
-      <nav class="menu">
-        <a href="index.html">首頁</a>
-        <a href="about.html">關於</a>
-        <a class="active" href="artists.html">藝術家</a>
-        <a href="works.html">作品</a>
-      </nav>
-    </div>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <span class="dot"></span>
+      <span>Student Art Collective</span>
+    </a>
+
+    <!-- 桌機版選單 -->
+    <nav class="menu">
+      <a href="index.html">首頁</a>
+      <a href="about.html">關於</a>
+      <a class="active" href="artists.html">藝術家</a>
+      <a href="works.html">作品</a>
+    </nav>
+
+    <!-- 手機版：漢堡按鈕 -->
+    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
   </div>
+
+  <!-- 手機版收合選單 -->
+  <nav class="mobile-menu" aria-label="Mobile Menu">
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於</a>
+    <a class="active" href="artists.html">藝術家</a>
+    <a href="works.html">作品</a>
+  </nav>
 </header>
 
 <main class="container">
@@ -74,5 +89,7 @@
     © 2025 Student Art Collective. All artworks are the property of their respective artists.
   </footer>
 </main>
+
+<script src="js/menu.js"></script>
 </body>
 </html>
