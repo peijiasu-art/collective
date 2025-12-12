@@ -2,18 +2,15 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header class="header">
-  <div class="container nav">
-    <a href="index.html" class="brand">
-      <span class="dot"></span>
-      Student Art Collective
-    </a>
+  <div class="container navbar">
+    <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
 
     <nav class="menu">
       <a class="active" href="index.html">首頁</a>
@@ -22,11 +19,11 @@
       <a href="works.html">作品</a>
     </nav>
 
-    <button class="menu-toggle">☰</button>
+    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
   </div>
 
-  <nav class="mobile-menu">
-    <a href="index.html">首頁</a>
+  <nav class="mobile-menu" aria-label="Mobile Menu">
+    <a class="active" href="index.html">首頁</a>
     <a href="about.html">關於</a>
     <a href="artists.html">藝術家</a>
     <a href="works.html">作品</a>
@@ -35,21 +32,65 @@
 
 <main class="container">
   <section class="hero">
-    <div class="kicker">Group Portfolio · 2025</div>
-    <h1 class="h1">把作品當成展覽，讓觀看成為經驗</h1>
+    <div class="kicker">Group Portfolio / 2025</div>
+    <h1 class="h1">把作品當成展覽，讓每一次觀看都像走進展場。</h1>
     <p class="lead">
-      我們是一群藝術系學生，透過各自的媒材與觀點，構成一個共同的展覽敘事。
+      我們是一個由藝術系學生組成的團體作品集。收錄影像、平面、裝置與實驗創作，呈現各自的主題與共同的策展方向。
     </p>
+    <div class="heroActions">
+      <a class="btn primary" href="works.html">進入作品</a>
+      <a class="btn" href="artists.html">認識藝術家</a>
+      <a class="btn" href="about.html">展覽敘事</a>
+    </div>
   </section>
-</main>
 
-<footer class="footer">
-  <div class="container">
-    © 2025 Student Art Collective
-  </div>
-</footer>
+  <section class="section">
+    <div class="sectionTitle">
+      <h2>精選作品</h2>
+      <p>把 sample 圖換成你們的作品圖</p>
+    </div>
+
+    <div class="grid">
+      <a class="card cols-4" href="works.html">
+        <img class="thumb" src="images/works/sample-1.jpg" alt="work 1">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">作品名稱 A</h3>
+            <span class="badge">2025</span>
+          </div>
+          <p class="workSub">媒材｜尺寸｜作者</p>
+        </div>
+      </a>
+
+      <a class="card cols-4" href="works.html">
+        <img class="thumb" src="images/works/sample-2.jpg" alt="work 2">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">作品名稱 B</h3>
+            <span class="badge">2025</span>
+          </div>
+          <p class="workSub">媒材｜尺寸｜作者</p>
+        </div>
+      </a>
+
+      <a class="card cols-4" href="works.html">
+        <img class="thumb" src="images/works/sample-3.jpg" alt="work 3">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">作品名稱 C</h3>
+            <span class="badge">2025</span>
+          </div>
+          <p class="workSub">媒材｜尺寸｜作者</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2025 Student Art Collective. All artworks are the property of their respective artists.
+  </footer>
+</main>
 
 <script src="js/menu.js"></script>
 </body>
 </html>
-
