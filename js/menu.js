@@ -2,19 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.querySelector(".menu-toggle");
   const mobileMenu = document.querySelector(".mobile-menu");
 
-  // 如果頁面沒有手機選單，就直接不執行（避免炸掉）
+  // 防呆：任何頁面缺元件都不要炸
   if (!toggle || !mobileMenu) return;
 
+  const setExpanded = (open) => toggle.setAttribute("aria-expanded", String(open));
+
   toggle.addEventListener("click", () => {
-    const isOpen = mobileMenu.classList.toggle("show");
-    toggle.setAttribute("aria-expanded", String(isOpen));
+    const open = mobileMenu.classList.toggle("show");
+    setExpanded(open);
   });
 
-  // 點擊選單項目後自動收合（畢展等級體驗）
-  mobileMenu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
+  // 點連結後收合（更像正式網站）
+  mobileMenu.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
       mobileMenu.classList.remove("show");
-      toggle.setAttribute("aria-expanded", "false");
+      setExpanded(false);
     });
   });
 });
