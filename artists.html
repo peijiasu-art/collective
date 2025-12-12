@@ -1,30 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>藝術家｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<header class="header">
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
+      <nav class="menu">
+        <a href="index.html">首頁</a>
+        <a href="about.html">關於</a>
+        <a class="active" href="artists.html">藝術家</a>
+        <a href="works.html">作品</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-<nav class="navbar">
-  <a href="index.html" class="logo">Student Art Collective</a>
-  <ul>
-    <li><a href="about.html">關於</a></li>
-    <li><a href="artists.html">藝術家</a></li>
-    <li><a href="works.html">作品</a></li>
-  </ul>
-</nav>
-
-<main>
-  <h1>藝術家</h1>
-
-  <section class="artist">
-    <h2>藝術家姓名</h2>
-    <p>創作媒材、風格簡介</p>
+<main class="container">
+  <section class="hero">
+    <div class="kicker">Artists</div>
+    <h1 class="h1">藝術家</h1>
+    <p class="lead">建議：每位成員 1 句關鍵字 + 80–120 字簡介 + 代表圖。</p>
   </section>
 
-</main>
+  <section class="section">
+    <div class="sectionTitle">
+      <h2>成員</h2>
+      <p>把 sample 換成你們的頭像或代表作</p>
+    </div>
 
+    <div class="grid">
+      <div class="card cols-4">
+        <img class="thumb" src="images/artists/artist-1.jpg" alt="artist 1">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">姓名 A</h3>
+            <span class="badge">影像／裝置</span>
+          </div>
+          <p class="workSub">關鍵字：記憶、身體、低語<br>（80–120 字）以……為核心，透過……的方式探索……</p>
+        </div>
+      </div>
+
+      <div class="card cols-4">
+        <img class="thumb" src="images/artists/artist-2.jpg" alt="artist 2">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">姓名 B</h3>
+            <span class="badge">平面／插畫</span>
+          </div>
+          <p class="workSub">關鍵字：城市縫隙、日常物件<br>（80–120 字）關注……並嘗試……</p>
+        </div>
+      </div>
+
+      <div class="card cols-4">
+        <img class="thumb" src="images/artists/artist-3.jpg" alt="artist 3">
+        <div class="cardPad">
+          <div class="workMeta">
+            <h3 class="workTitle">姓名 C</h3>
+            <span class="badge">新媒體</span>
+          </div>
+          <p class="workSub">關鍵字：互動、聲音、凝視<br>（80–120 字）以……建立觀看者的參與，探討……</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2025 Student Art Collective. All artworks are the property of their respective artists.
+  </footer>
+</main>
 </body>
 </html>
