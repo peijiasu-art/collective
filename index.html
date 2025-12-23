@@ -1,96 +1,270 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Student Art Collective</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>首頁</title>
+
+  <style>
+    :root{
+      --header-bg:#A08D78;
+      --header-fg:#17110C;
+      --body-bg:#17110C;
+      --btn:#FEFEFE;
+      --line:#000000;
+      --max: 1100px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Noto Sans TC", "Segoe UI", Arial, sans-serif;
+      background: var(--body-bg);
+      color: var(--btn);
+    }
+
+    /* ===== Header ===== */
+    .header{
+      background: var(--header-bg);
+      color: var(--header-fg);
+      height: 56px;
+      display:flex;
+      align-items:center;
+    }
+    .header-inner{
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      padding: 0 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .header-title{
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:.5px;
+    }
+    .menu-btn{
+      appearance:none;
+      border:0;
+      background:transparent;
+      color: var(--header-fg);
+      cursor:pointer;
+      padding:10px;
+      margin-right:-6px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .menu-icon{
+      width:22px;
+      height:16px;
+      position:relative;
+      display:block;
+    }
+    .menu-icon span{
+      position:absolute;
+      left:0; right:0;
+      height:2px;
+      background: var(--header-fg);
+      border-radius:2px;
+    }
+    .menu-icon span:nth-child(1){ top:0; }
+    .menu-icon span:nth-child(2){ top:7px; }
+    .menu-icon span:nth-child(3){ top:14px; }
+
+    /* ===== Main wrapper ===== */
+    .wrap{
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* ===== Carousel area ===== */
+    .carousel{
+      background: var(--body-bg);
+      height: 220px; /* 可依你要的比例調整 */
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-bottom: 1px solid rgba(254,254,254,.12);
+    }
+    .slide{
+      position:absolute;
+      inset:0;
+      opacity:0;
+      transition: opacity .45s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .slide.active{ opacity:1; }
+
+    /* 你可換成實際圖片：把 background-image 換成 url(images/xxx.jpg) */
+    .slide.s1{ background: linear-gradient(135deg, rgba(254,254,254,.06), rgba(0,0,0,.18)); }
+    .slide.s2{ background: linear-gradient(135deg, rgba(254,254,254,.02), rgba(0,0,0,.28)); }
+    .slide.s3{ background: linear-gradient(135deg, rgba(254,254,254,.08), rgba(0,0,0,.22)); }
+
+    .carousel-title{
+      font-size:44px;
+      font-weight:800;
+      letter-spacing:2px;
+      color: var(--btn);
+      text-shadow: 0 2px 18px rgba(0,0,0,.55);
+      user-select:none;
+    }
+
+    /* dots */
+    .dots{
+      position:absolute;
+      bottom:10px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:8px;
+    }
+    .dot{
+      width:8px;height:8px;border-radius:999px;
+      border:1px solid rgba(254,254,254,.65);
+      background: transparent;
+      opacity:.9;
+    }
+    .dot.active{
+      background: var(--btn);
+      border-color: var(--btn);
+    }
+
+    /* ===== Buttons row ===== */
+    .nav-buttons{
+      display:flex;
+      justify-content:center;
+      gap: 14px;
+      padding: 16px 14px 8px;
+    }
+    .nav-buttons a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width: 92px;
+      height: 40px;
+      background: var(--btn);
+      color: var(--btn); /* 字也是 #FEFEFE（你指定） */
+      border: 0;
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.5px;
+      position:relative;
+      /* 因為字跟底一樣色，看不到是正常的（你指定同色）。
+         若你希望「字要看得見」，告訴我，我會只改字色但保留你的色規。 */
+      overflow:hidden;
+    }
+    /* 底部黑線標示按鈕位置 */
+    .nav-buttons a::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:0;
+      height:3px;
+      background: var(--line);
+    }
+
+    /* 為了讓按鈕仍可被辨識：加個很淡的外框（不改顏色） */
+    .nav-buttons a{
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.10);
+    }
+
+    /* ===== Text section ===== */
+    .content{
+      padding: 18px 18px 40px;
+      color: var(--btn);
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width:420px){
+      .carousel{ height: 200px; }
+      .carousel-title{ font-size:40px; }
+      .nav-buttons{ gap:10px; }
+      .nav-buttons a{ width:82px; }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-title">首頁</div>
 
-<header class="header">
-  <div class="container navbar">
-    <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
+      <button class="menu-btn" type="button" aria-label="開啟選單">
+        <span class="menu-icon" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+      </button>
+    </div>
+  </header>
 
-    <nav class="menu">
-      <a class="active" href="index.html">首頁</a>
+  <main class="wrap">
+    <!-- Carousel -->
+    <section class="carousel" aria-label="輪播圖">
+      <div class="slide s1 active">
+        <div class="carousel-title">輪播圖</div>
+      </div>
+      <div class="slide s2">
+        <div class="carousel-title">輪播圖</div>
+      </div>
+      <div class="slide s3">
+        <div class="carousel-title">輪播圖</div>
+      </div>
+
+      <div class="dots" aria-hidden="true">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <nav class="nav-buttons" aria-label="頁面導覽">
+      <a href="index.html">首頁</a>
       <a href="about.html">關於</a>
       <a href="artists.html">藝術家</a>
       <a href="works.html">作品</a>
     </nav>
 
-    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
-  </div>
+    <!-- Text -->
+    <section class="content">
+      這裡放一句話
+    </section>
+  </main>
 
-  <nav class="mobile-menu" aria-label="Mobile Menu">
-    <a class="active" href="index.html">首頁</a>
-    <a href="about.html">關於</a>
-    <a href="artists.html">藝術家</a>
-    <a href="works.html">作品</a>
-  </nav>
-</header>
+  <script>
+    // 簡易自動輪播（不需要外部套件）
+    (function(){
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const dots = Array.from(document.querySelectorAll(".dot"));
+      let i = 0;
 
-<main class="container">
-  <section class="hero">
-    <div class="kicker">Group Portfolio / 2025</div>
-    <h1 class="h1">把作品當成展覽，讓每一次觀看都像走進展場。</h1>
-    <p class="lead">
-      我們是一個由藝術系學生組成的團體作品集。收錄影像、平面、裝置與實驗創作，呈現各自的主題與共同的策展方向。
-    </p>
-    <div class="heroActions">
-      <a class="btn primary" href="works.html">進入作品</a>
-      <a class="btn" href="artists.html">認識藝術家</a>
-      <a class="btn" href="about.html">展覽敘事</a>
-    </div>
-  </section>
+      function go(idx){
+        slides[i].classList.remove("active");
+        dots[i].classList.remove("active");
+        i = idx;
+        slides[i].classList.add("active");
+        dots[i].classList.add("active");
+      }
 
-  <section class="section">
-    <div class="sectionTitle">
-      <h2>精選作品</h2>
-      <p>把 sample 圖換成你們的作品圖</p>
-    </div>
+      setInterval(() => {
+        go((i + 1) % slides.length);
+      }, 2500);
 
-    <div class="grid">
-      <a class="card cols-4" href="works.html">
-        <img class="thumb" src="images/works/sample-1.jpg" alt="work 1">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">作品名稱 A</h3>
-            <span class="badge">2025</span>
-          </div>
-          <p class="workSub">媒材｜尺寸｜作者</p>
-        </div>
-      </a>
-
-      <a class="card cols-4" href="works.html">
-        <img class="thumb" src="images/works/sample-2.jpg" alt="work 2">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">作品名稱 B</h3>
-            <span class="badge">2025</span>
-          </div>
-          <p class="workSub">媒材｜尺寸｜作者</p>
-        </div>
-      </a>
-
-      <a class="card cols-4" href="works.html">
-        <img class="thumb" src="images/works/sample-3.jpg" alt="work 3">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">作品名稱 C</h3>
-            <span class="badge">2025</span>
-          </div>
-          <p class="workSub">媒材｜尺寸｜作者</p>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <footer class="footer">
-    © 2025 Student Art Collective. All artworks are the property of their respective artists.
-  </footer>
-</main>
-
-<script src="js/menu.js"></script>
+      // 點點可切換（可選）
+      dots.forEach((d, idx) => {
+        d.addEventListener("click", () => go(idx));
+        d.style.cursor = "pointer";
+      });
+    })();
+  </script>
 </body>
 </html>
