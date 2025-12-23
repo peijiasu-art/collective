@@ -359,24 +359,31 @@ body.home{
 
 /* 四個按鈕列（白底、黑字，底部黑線標示位置） */
 .homeButtons{
+  width: 80%;                 /* ✅ 整排寬度 80% */
+  max-width: 1000px;          /* 避免在超大螢幕太誇張 */
+  margin: 0 auto;             /* 置中整排 */
   display:flex;
-  justify-content:center;
-  gap: 14px;
-  padding: 14px 22px 8px;
+  gap: 12px;
+  padding: 16px 0 10px;       /* 上下留白 */
 }
+
 .homeBtn{
-  width: 92px;
-  height: 40px;
+  flex: 1;                    /* ✅ 四顆平均撐滿整排 */
+  height: 44px;               /* 稍微高一點，更穩 */
   display:inline-flex;
   align-items:center;
   justify-content:center;
+
   background: var(--home-white);
-  color: var(--home-ink); /* ✅ 按鈕文字改成 #17110C */
+  color: var(--home-ink);
   font-weight: 800;
-  letter-spacing: .6px;
+  font-size: 15px;
+  letter-spacing: .8px;
+
   position: relative;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
 }
+
 .homeBtn::after{
   content:"";
   position:absolute;
@@ -384,6 +391,7 @@ body.home{
   height: 3px;
   background: var(--home-black);
 }
+
 .homeBtn.is-current{
   box-shadow: inset 0 0 0 2px rgba(0,0,0,.18);
 }
@@ -403,3 +411,14 @@ body.home{
   .homeButtons{ gap: 10px; }
   .homeBtn{ width: 82px; }
 }
+@media (max-width: 520px){
+  .homeButtons{
+    width: 92%;      /* 手機版再吃寬一點 */
+    gap: 8px;
+  }
+  .homeBtn{
+    font-size: 14px;
+    height: 42px;
+  }
+}
+
