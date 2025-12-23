@@ -3,32 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>首頁｜作品介紹報告</title>
+  <title>首頁｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="home">
+
+<!-- ===== Header ===== -->
 <header class="header header--home">
-  <div class="container navbar navbar--home">
-    <a class="brand brand--home" href="index.html">
-      <span class="brandText">首頁</span>
-    </a>
+  <div class="container">
+    <div class="navbar navbar--home">
+      <div class="brand brand--home">
+        <span class="brandText">首頁</span>
+      </div>
 
-    <!-- 桌機版可先不顯示（你設計圖是按鈕列在輪播下方） -->
-    <nav class="menu menu--home" aria-label="Desktop Menu">
-      <a class="active" href="index.html">首頁</a>
-      <a href="about.html">關於</a>
-      <a href="artists.html">藝術家</a>
-      <a href="works.html">作品</a>
-    </nav>
-
-    <button class="menu-toggle menu-toggle--home" type="button" aria-label="開啟選單" aria-expanded="false">
-      <span class="hamburger" aria-hidden="true"></span>
-    </button>
+      <button class="menu-toggle menu-toggle--home" aria-expanded="false">
+        <span class="hamburger"></span>
+      </button>
+    </div>
   </div>
 
-  <!-- 手機收合選單（右上角 ☰） -->
-  <nav class="mobile-menu mobile-menu--home" aria-label="Mobile Menu">
+  <!-- mobile menu -->
+  <nav class="mobile-menu mobile-menu--home">
     <a class="active" href="index.html">首頁</a>
     <a href="about.html">關於</a>
     <a href="artists.html">藝術家</a>
@@ -36,46 +32,28 @@
   </nav>
 </header>
 
+<!-- ===== Main ===== -->
 <main class="homeMain">
-  <!-- 輪播區 -->
-  <section class="homeHero" aria-label="輪播圖">
-    <div class="homeCarousel" id="carousel">
-      <div class="homeSlide is-active">
-        <div class="homeSlideInner">
-        </div>
-      </div>
-      <div class="homeSlide">
-        <div class="homeSlideInner">
-        </div>
-      </div>
-      <div class="homeSlide">
-        <div class="homeSlideInner">
-        </div>
-      </div>
 
-      <div class="homeDots" aria-label="輪播指示點">
-        <button class="homeDot is-active" type="button" aria-label="第 1 張"></button>
-        <button class="homeDot" type="button" aria-label="第 2 張"></button>
-        <button class="homeDot" type="button" aria-label="第 3 張"></button>
-      </div>
-    </div>
-  </section>
+  <!-- ⭐ 首頁主視覺：單張圖片（非輪播） -->
+  <section class="homeHeroImage"></section>
 
-  <!-- 四個按鈕列（依你設計圖：白底白字 + 底部黑線） -->
-  <nav class="homeButtons" aria-label="頁面導覽按鈕">
+  <!-- 四個按鈕 -->
+  <section class="homeButtons">
     <a class="homeBtn is-current" href="index.html">首頁</a>
     <a class="homeBtn" href="about.html">關於</a>
     <a class="homeBtn" href="artists.html">藝術家</a>
     <a class="homeBtn" href="works.html">作品</a>
-  </nav>
+  </section>
 
-  <!-- 文字區 -->
+  <!-- 文字 -->
   <section class="homeText">
     這裡放一句話
   </section>
+
 </main>
 
 <script src="js/menu.js"></script>
-<script src="js/home.js"></script>
 </body>
 </html>
+
