@@ -295,8 +295,33 @@ body.home{
   display:flex;
   align-items:center;
   justify-content:center;
-  background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.25));
+
+  /* ✅ 輪播圖：圖片＋暗色遮罩（讓字更清楚） */
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
+    var(--home-body);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+/* ✅ 每張 slide 對應不同圖片（路徑從 css/style.css 往上回到根目錄） */
+.homeSlide:nth-child(1){
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
+    url("../images/index/ran1.jpg");
+}
+.homeSlide:nth-child(2){
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
+    url("../images/index/ran2.jpg");
+}
+.homeSlide:nth-child(3){
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
+    url("../images/index/ran3.jpg");
+}
+
 .homeSlide.is-active{ opacity:1; }
 .homeSlideInner{ padding: 18px; }
 
