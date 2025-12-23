@@ -7,6 +7,13 @@
   --shadow: 0 16px 40px rgba(0,0,0,.55);
   --r:18px;
   --max:1120px;
+
+  /* ===== Home palette (依你設計圖) ===== */
+  --home-header:#A08D78;     /* 最上方 header 背景 */
+  --home-ink:#17110C;        /* header 文字/圖示 */
+  --home-body:#17110C;       /* 輪播區背景 */
+  --home-white:#FEFEFE;      /* 按鈕底與字（你指定同色） */
+  --home-black:#000000;      /* 按鈕底部黑線 */
 }
 
 *{box-sizing:border-box}
@@ -203,4 +210,187 @@ img{max-width:100%;display:block}
 @media (max-width: 640px){
   .hero{padding:58px 0 20px}
   .cols-4,.cols-6,.cols-8{grid-column: span 12}
+}
+
+/* =========================================================
+   HOME (依你提供的設計圖)
+   ========================================================= */
+body.home{
+  background: var(--home-body);
+  color: var(--home-white);
+}
+
+/* Header 顏色改成你指定 */
+.header--home{
+  backdrop-filter:none;
+  background: var(--home-header);
+  border-bottom: 0;
+}
+.navbar--home{
+  padding: 14px 0;
+}
+.brand--home .brandText{
+  color: var(--home-ink);
+  font-weight: 800;
+  letter-spacing:.6px;
+}
+
+/* 隱藏桌機 menu（你的設計圖不是放在 header） */
+.menu--home{ display:none; }
+
+/* 右上角漢堡（用 CSS 畫，顏色 #17110C） */
+.menu-toggle--home{
+  display:inline-flex;
+  background: transparent;
+  border: 0;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--home-ink);
+}
+.menu-toggle--home:hover{ background: rgba(23,17,12,.08); }
+.menu-toggle--home .hamburger{
+  width: 22px;
+  height: 16px;
+  position: relative;
+  display:block;
+}
+.menu-toggle--home .hamburger::before,
+.menu-toggle--home .hamburger::after,
+.menu-toggle--home .hamburger{
+  background: transparent;
+}
+.menu-toggle--home .hamburger::before,
+.menu-toggle--home .hamburger::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  height:2px;
+  background: var(--home-ink);
+  border-radius:2px;
+}
+.menu-toggle--home .hamburger::before{ top:0; }
+.menu-toggle--home .hamburger::after{ bottom:0; }
+.menu-toggle--home .hamburger{
+  box-shadow: 0 7px 0 0 var(--home-ink);
+}
+
+/* 手機收合選單（展開時白底黑字比較清楚） */
+.mobile-menu--home{
+  background: #ffffff;
+  padding: 8px 22px 12px;
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+.mobile-menu--home a{
+  color: #17110C;
+  border-bottom: 1px solid rgba(0,0,0,.10);
+}
+.mobile-menu--home a.active{
+  color: #17110C;
+  font-weight: 800;
+}
+
+/* 首頁主體 */
+.homeMain{ max-width: var(--max); margin: 0 auto; }
+.homeHero{ background: var(--home-body); }
+
+/* 輪播區 */
+.homeCarousel{
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-bottom: 1px solid rgba(254,254,254,.14);
+}
+.homeSlide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  transition: opacity .45s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.25));
+}
+.homeSlide.is-active{ opacity:1; }
+.homeSlideInner{ padding: 18px; }
+
+.homeCarouselTitle{
+  margin:0;
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--home-white);
+  text-shadow: 0 10px 28px rgba(0,0,0,.55);
+}
+
+/* dots */
+.homeDots{
+  position:absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display:flex;
+  gap: 8px;
+}
+.homeDot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(254,254,254,.7);
+  background: transparent;
+  opacity: .95;
+  cursor:pointer;
+}
+.homeDot.is-active{
+  background: var(--home-white);
+  border-color: var(--home-white);
+}
+
+/* 四個按鈕列（白底白字，底部黑線標示位置） */
+.homeButtons{
+  display:flex;
+  justify-content:center;
+  gap: 14px;
+  padding: 14px 22px 8px;
+}
+.homeBtn{
+  width: 92px;
+  height: 40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background: var(--home-white);
+  color: var(--home-white); /* 依你指定：字也是 #FEFEFE → 會看不見是正常的 */
+  font-weight: 800;
+  letter-spacing: .6px;
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+}
+.homeBtn::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height: 3px;
+  background: var(--home-black);
+}
+.homeBtn.is-current{
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.18);
+}
+
+/* 文字區 */
+.homeText{
+  padding: 18px 22px 48px;
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--home-white);
+}
+
+/* Responsive */
+@media (max-width: 420px){
+  .homeCarousel{ height: 220px; }
+  .homeCarouselTitle{ font-size: 40px; }
+  .homeButtons{ gap: 10px; }
+  .homeBtn{ width: 82px; }
 }
