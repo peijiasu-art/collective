@@ -10,9 +10,9 @@
 
   /* ===== Home palette (依你設計圖) ===== */
   --home-header:#A08D78;     /* 最上方 header 背景 */
-  --home-ink:#17110C;        /* header 文字/圖示 */
+  --home-ink:#17110C;        /* header 文字/圖示、按鈕文字 */
   --home-body:#17110C;       /* 輪播區背景 */
-  --home-white:#FEFEFE;      /* 按鈕底與字（你指定同色） */
+  --home-white:#FEFEFE;      /* 按鈕底色 */
   --home-black:#000000;      /* 按鈕底部黑線 */
 }
 
@@ -238,7 +238,7 @@ body.home{
 /* 隱藏桌機 menu（你的設計圖不是放在 header） */
 .menu--home{ display:none; }
 
-/* 右上角漢堡（用 CSS 畫，顏色 #17110C） */
+/* 右上角漢堡（三條線穩定畫法，顏色 #17110C） */
 .menu-toggle--home{
   display:inline-flex;
   background: transparent;
@@ -251,27 +251,11 @@ body.home{
 .menu-toggle--home .hamburger{
   width: 22px;
   height: 16px;
-  position: relative;
   display:block;
-}
-.menu-toggle--home .hamburger::before,
-.menu-toggle--home .hamburger::after,
-.menu-toggle--home .hamburger{
-  background: transparent;
-}
-.menu-toggle--home .hamburger::before,
-.menu-toggle--home .hamburger::after{
-  content:"";
-  position:absolute;
-  left:0; right:0;
-  height:2px;
-  background: var(--home-ink);
-  border-radius:2px;
-}
-.menu-toggle--home .hamburger::before{ top:0; }
-.menu-toggle--home .hamburger::after{ bottom:0; }
-.menu-toggle--home .hamburger{
-  box-shadow: 0 7px 0 0 var(--home-ink);
+  background:
+    linear-gradient(var(--home-ink), var(--home-ink)) 0 0/100% 2px no-repeat,
+    linear-gradient(var(--home-ink), var(--home-ink)) 0 7px/100% 2px no-repeat,
+    linear-gradient(var(--home-ink), var(--home-ink)) 0 14px/100% 2px no-repeat;
 }
 
 /* 手機收合選單（展開時白底黑字比較清楚） */
@@ -348,7 +332,7 @@ body.home{
   border-color: var(--home-white);
 }
 
-/* 四個按鈕列（白底白字，底部黑線標示位置） */
+/* 四個按鈕列（白底、黑字，底部黑線標示位置） */
 .homeButtons{
   display:flex;
   justify-content:center;
@@ -362,7 +346,7 @@ body.home{
   align-items:center;
   justify-content:center;
   background: var(--home-white);
-  color: var(--home-white); /* 依你指定：字也是 #FEFEFE → 會看不見是正常的 */
+  color: var(--home-ink); /* ✅ 按鈕文字改成 #17110C */
   font-weight: 800;
   letter-spacing: .6px;
   position: relative;
