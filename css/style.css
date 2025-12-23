@@ -115,21 +115,22 @@ body.home{
 
 /* ===== 首頁主視覺：單張滿版圖 ===== */
 .homeHeroImage{
-  height:300px;
+  min-height: 100vh;          /* ⭐ 吃滿整個裝置高度 */
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
     url("../images/index/ran1.jpg");
 
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  width:100vw;
-  margin-left:calc(50% - 50vw);
-  margin-right:calc(50% - 50vw);
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 
-  border-bottom:1px solid rgba(254,254,254,.14);
+  border-bottom: 1px solid rgba(254,254,254,.14);
 }
+
 
 /* ===== 四個按鈕 ===== */
 .homeButtons{
