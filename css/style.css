@@ -277,7 +277,7 @@ body.home{
 .homeMain{ max-width: var(--max); margin: 0 auto; }
 .homeHero{ background: var(--home-body); }
 
-/* 輪播區 */
+/* 輪播區（滿版 100% 視窗寬度） */
 .homeCarousel{
   height: 240px;
   position: relative;
@@ -286,7 +286,13 @@ body.home{
   align-items:center;
   justify-content:center;
   border-bottom: 1px solid rgba(254,254,254,.14);
+
+  /* ⭐ 關鍵在這裡 */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
+
 .homeSlide{
   position:absolute;
   inset:0;
@@ -295,7 +301,9 @@ body.home{
   display:flex;
   align-items:center;
   justify-content:center;
-
+  background-size: cover;
+  background-position: center;
+}
   /* ✅ 輪播圖：圖片＋暗色遮罩（讓字更清楚） */
   background:
     linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
