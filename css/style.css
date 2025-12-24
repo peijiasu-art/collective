@@ -188,3 +188,165 @@ body.home{
     height:42px;
   }
 }
+
+/* =========================================================
+   PAGES (通用)
+   ========================================================= */
+body.page{
+  background: #42372d;
+  color: #fefefe;
+}
+
+/* ✅ 防止你截圖裡那種長字串把版面擠爆 */
+.page p, .page li, .page a, .page b, .page span{
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+.aboutMain{
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.aboutHero{
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  /* 你可以換圖：images/about/hero.jpg 之類 */
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55)),
+    url("../images/index/ran1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  min-height: 38vh;
+  display: flex;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(254,254,254,.14);
+}
+
+.aboutHeroInner{
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 22px 22px 26px;
+}
+
+.aboutTitle{
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3.4vw, 44px);
+  letter-spacing: .6px;
+  font-weight: 900;
+}
+
+.aboutLead{
+  margin: 0;
+  max-width: 62ch;
+  line-height: 1.85;
+  color: rgba(254,254,254,.88);
+  font-size: 15px;
+}
+
+/* 內容卡：畢展感的白底資訊區 */
+.aboutCard{
+  width: 92%;
+  max-width: 1000px;
+  margin: 18px auto 0;
+  background: rgba(254,254,254,.96);
+  color: #17110c;
+  border-radius: 18px;
+  box-shadow: 0 18px 46px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+
+.aboutGrid{
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 0;
+}
+
+.aboutBlock{
+  padding: 20px 22px;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+.aboutBlock h2{
+  margin: 0 0 10px;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: .4px;
+}
+
+.aboutBlock p{
+  margin: 0 0 10px;
+  line-height: 1.9;
+  font-size: 14px;
+  color: rgba(23,17,12,.86);
+}
+
+.aboutBlock .note{
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  background: rgba(23,17,12,.06);
+  border-left: 4px solid rgba(23,17,12,.35);
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+/* 右側資訊列表 */
+.aboutList{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.aboutList li{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 12px;
+  background: rgba(255,255,255,.75);
+}
+
+.aboutList span{
+  color: rgba(23,17,12,.70);
+  font-size: 13px;
+}
+
+.aboutList b{
+  font-weight: 900;
+  color: #17110c;
+}
+
+/* 全寬區塊 */
+.aboutBlock--full{
+  grid-column: 1 / -1;
+  border-bottom: 0;
+}
+
+/* Footer（沿用你的「一句話」視覺，但更穩） */
+.homeFooter{
+  width: 100%;
+  margin-top: 22px;
+  padding: 22px 22px 40px;
+  background: rgba(23,17,12,.55);
+  color: #fefefe;
+}
+
+/* RWD */
+@media (max-width: 820px){
+  .aboutGrid{ grid-template-columns: 1fr; }
+  .aboutCard{ width: 92%; }
+  .aboutHero{ min-height: 34vh; }
+}
+
