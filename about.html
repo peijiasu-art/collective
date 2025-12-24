@@ -4,25 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>關於｜Student Art Collective</title>
+
+  <!-- 字體（如果你 index 已經加了，about 也要有） -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
-<header class="header">
-  <div class="container navbar">
-    <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
+<body class="page page-about">
 
-    <nav class="menu">
-      <a href="index.html">首頁</a>
-      <a class="active" href="about.html">關於</a>
-      <a href="artists.html">藝術家</a>
-      <a href="works.html">作品</a>
-    </nav>
+<!-- ===== Header ===== -->
+<header class="header header--home">
+  <div class="container">
+    <div class="navbar navbar--home">
+      <div class="brand brand--home">
+        <span class="brandText">關於</span>
+      </div>
 
-    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
+      <button class="menu-toggle menu-toggle--home" aria-expanded="false" aria-label="開啟選單">
+        <span class="hamburger"></span>
+      </button>
+    </div>
   </div>
 
-  <nav class="mobile-menu" aria-label="Mobile Menu">
+  <!-- mobile menu -->
+  <nav class="mobile-menu mobile-menu--home" aria-label="行動版選單">
     <a href="index.html">首頁</a>
     <a class="active" href="about.html">關於</a>
     <a href="artists.html">藝術家</a>
@@ -30,40 +36,62 @@
   </nav>
 </header>
 
-<main class="container">
-  <section class="hero">
-    <div class="kicker">About / Statement</div>
-    <h1 class="h1">關於我們</h1>
-    <p class="lead">把這頁當成策展文字：短段落、留白、但資訊清楚。</p>
-  </section>
+<main class="aboutMain">
 
-  <section class="section">
-    <div class="grid">
-      <div class="cols-8">
-        <div class="prose">
-          <p><strong>主題一句話：</strong>（例）在日常與記憶之間，我們練習辨識那些正在消失的東西。</p>
-          <p>第一段（80–120 字）：談共同命題與創作動機。</p>
-          <p>第二段（80–120 字）：談媒材方法與觀看方式。</p>
-        </div>
-      </div>
-
-      <div class="cols-4">
-        <div class="prose">
-          <p><strong>資訊</strong></p>
-          <p>
-            團體／班級：XXXX<br>
-            指導老師：XXXX<br>
-            年度：2025<br>
-            聯絡：your@email.com
-          </p>
-        </div>
-      </div>
+  <!-- Hero 圖（你可以換成自己的圖） -->
+  <section class="aboutHero" aria-label="關於主視覺">
+    <div class="aboutHeroInner">
+      <h1 class="aboutTitle">主題名稱</h1>
+      <p class="aboutLead">
+        這裡放一句話（20–40 字）：用一句簡短句子說明這次報告/展覽想傳達的核心。
+      </p>
     </div>
   </section>
 
-  <footer class="footer">
-    © 2025 Student Art Collective. All artworks are the property of their respective artists.
+  <!-- 內容卡（畢展感：留白、段落、欄位） -->
+  <section class="aboutCard">
+    <div class="aboutGrid">
+
+      <!-- 左欄：概念 -->
+      <article class="aboutBlock">
+        <h2>概念摘要</h2>
+        <p>
+          這個網站用來介紹藝術家們的作品，聚焦在「作品脈絡、媒材、觀看方式」與「觀眾如何進入作品」。
+          建議每段 2–4 行，讀起來像展覽手冊。
+        </p>
+        <p class="note">
+          小提醒：段落文字如果很長，請不要用連續英文或沒有空白的字串，否則手機會擠爆。
+          我已經幫你在 CSS 加了自動斷行（見下方）。
+        </p>
+      </article>
+
+      <!-- 右欄：資訊 -->
+      <aside class="aboutBlock">
+        <h2>資訊</h2>
+        <ul class="aboutList">
+          <li><span>課程 / 報告</span><b>（填入）</b></li>
+          <li><span>班級</span><b>（填入）</b></li>
+          <li><span>組別</span><b>（填入）</b></li>
+          <li><span>日期</span><b>2025</b></li>
+        </ul>
+      </aside>
+
+      <!-- 全寬：策展文字 -->
+      <article class="aboutBlock aboutBlock--full">
+        <h2>作品觀看指引</h2>
+        <p>
+          你可以在「作品」頁用方格瀏覽，點進每件作品可看到：作品名稱、作者、年份、媒材、尺寸與一段短敘事。
+          （之後你要做每件作品的「文章頁」，我也能幫你設計成一致的展覽風格。）
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <footer class="homeFooter">
+    這裡放一句話
   </footer>
+
 </main>
 
 <script src="js/menu.js"></script>
