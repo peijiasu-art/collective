@@ -219,7 +219,7 @@ body.page{
   /* 你可以換圖：images/about/hero.jpg 之類 */
   background:
     linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.55)),
-    url("../images/index/ran1.jpg");
+    url("../images/about/ran1.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
