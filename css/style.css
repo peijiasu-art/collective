@@ -150,21 +150,90 @@ body.home{
   align-items:center;
   justify-content:center;
 
-  background:#17110c;     /* ✅ 按鈕背景 */
-  color:#fefefe;          /* ✅ 按鈕文字 */
+  background:#17110c;
+  color:#fefefe;
 
   font-weight:800;
   letter-spacing:.8px;
   position:relative;
+  overflow:hidden;              /* ✅ 讓動畫線條不超出按鈕 */
+  border-radius: 12px;          /* ✅ 更像畢展按鈕 */
+  transform: translateY(0);     /* ✅ 動畫穩定 */
+  box-shadow:
+    inset 0 0 0 1px rgba(254,254,254,.18),
+    0 10px 22px rgba(0,0,0,.18);
 
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25);
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    filter .18s ease;
 }
+/* ✅ 底部掃過的亮線（符合你配色：白字、深底） */
+.homeBtn::after{
+  content:"";
+  position:absolute;
+  left:-40%;
+  bottom:0;
+  width:40%;
+  height:3px;
+  background: #fefefe;
+  opacity: .0;
+  transform: skewX(-18deg);
+  transition:
+    left .35s ease,
+    opacity .2s ease;
+}
+
+/* ✅ 內部微光（很像展覽網站的質感） */
+.homeBtn::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:
+    radial-gradient(600px 90px at 20% 0%, rgba(254,254,254,.10), transparent 60%),
+    radial-gradient(600px 90px at 80% 100%, rgba(254,254,254,.08), transparent 60%);
+  opacity: .0;
+  transition: opacity .25s ease;
+  pointer-events:none;
+}
+
+/* Hover：上浮 + 陰影加深 + 微亮 + 底線掃過 */
+.homeBtn:hover{
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 0 0 1px rgba(254,254,254,.28),
+    0 14px 28px rgba(0,0,0,.28);
+  filter: brightness(1.06);
+}
+.homeBtn:hover::before{
+  opacity: 1;
+}
+.homeBtn:hover::after{
+  opacity: 1;
+  left: 110%;
+}
+
+/* Active：按下去回彈（點擊感） */
+.homeBtn:active{
+  transform: translateY(0px) scale(.99);
+  filter: brightness(0.98);
+}
+
+/* Focus：鍵盤 Tab 也清楚（加分） */
+.homeBtn:focus-visible{
+  outline: 3px solid rgba(254,254,254,.55);
+  outline-offset: 3px;
+}
+
 
 
 
 .homeBtn.is-current{
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,.18);
+  box-shadow:
+    inset 0 0 0 2px rgba(254,254,254,.22),
+    0 10px 22px rgba(0,0,0,.18);
 }
+
 
 /* ===== 文字區 ===== */
 .homeText{
@@ -178,7 +247,7 @@ body.home{
    ========================================================= */
 @media (max-width:768px){
   .homeHeroImage{
-    height:220px;
+    min-height: 260px; /* 你想更窄就 220px */
   }
   .homeButtons{
     width:92%;
@@ -189,6 +258,15 @@ body.home{
     height:42px;
   }
 }
+
+@media (prefers-reduced-motion: reduce){
+  .homeBtn,
+  .homeBtn::before,
+  .homeBtn::after{
+    transition:none !important;
+  }
+}
+
 
 /* =========================================================
    PAGES (通用)
