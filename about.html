@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>關於｜Student Art Collective</title>
 
-  <!-- 字體（如果你 index 已經加了，about 也要有） -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -38,56 +36,50 @@
 
 <main class="aboutMain">
 
-  <!-- Hero 圖（你可以換成自己的圖） -->
-  <section class="aboutHero" aria-label="關於主視覺">
-    <div class="aboutHeroInner">
-      <h1 class="aboutTitle">主題名稱</h1>
-      <p class="aboutLead">
-        這裡放一句話（20–40 字）：用一句簡短句子說明這次報告/展覽想傳達的核心。
+  <!-- ① 第一章：背景圖片（高度跟首頁一樣） -->
+  <section class="aboutHeroImage" aria-label="關於主視覺"></section>
+
+  <!-- ② 第二頁：主題名稱 + 策展論述 -->
+  <section class="aboutEssay">
+    <h1 class="aboutH1">主題名稱（填入）</h1>
+
+    <div class="aboutProse">
+      <p>
+        這裡放策展論述（第一段）。建議 3–6 行，先講核心命題：你們關注什麼？用什麼方式呈現？
+        這個網站的目的，是帶觀眾以「作品」為入口，而不是以個人介紹為主。
+      </p>
+
+      <p>
+        這裡放策展論述（第二段）。可加入：媒材線索、觀看動線、作品之間的關係、你們希望觀眾帶走的感受。
+        文字長一點沒關係，我已經幫你做排版與自動斷行，不會爆版。
+      </p>
+
+      <p>
+        這裡放策展論述（第三段，可選）。例如：作品分類方式、展覽的敘事順序、你們如何選擇圖像與資訊呈現。
       </p>
     </div>
   </section>
 
-  <!-- 內容卡（畢展感：留白、段落、欄位） -->
-  <section class="aboutCard">
-    <div class="aboutGrid">
+  <!-- ③ 最下面：策展人 + 資料來源 -->
+  <section class="aboutMeta">
+    <div class="aboutMetaCard">
+      <div class="aboutMetaRow">
+        <span class="aboutMetaLabel">策展人</span>
+        <b class="aboutMetaValue">（填入姓名／小組）</b>
+      </div>
 
-      <!-- 左欄：概念 -->
-      <article class="aboutBlock">
-        <h2>概念摘要</h2>
-        <p>
-          這個網站用來介紹藝術家們的作品，聚焦在「作品脈絡、媒材、觀看方式」與「觀眾如何進入作品」。
-          建議每段 2–4 行，讀起來像展覽手冊。
-        </p>
-        <p class="note">
-          小提醒：段落文字如果很長，請不要用連續英文或沒有空白的字串，否則手機會擠爆。
-          我已經幫你在 CSS 加了自動斷行（見下方）。
-        </p>
-      </article>
-
-      <!-- 右欄：資訊 -->
-      <aside class="aboutBlock">
-        <h2>資訊</h2>
-        <ul class="aboutList">
-          <li><span>課程 / 報告</span><b>（填入）</b></li>
-          <li><span>班級</span><b>（填入）</b></li>
-          <li><span>組別</span><b>（填入）</b></li>
-          <li><span>日期</span><b>2025</b></li>
-        </ul>
-      </aside>
-
-      <!-- 全寬：策展文字 -->
-      <article class="aboutBlock aboutBlock--full">
-        <h2>作品觀看指引</h2>
-        <p>
-          你可以在「作品」頁用方格瀏覽，點進每件作品可看到：作品名稱、作者、年份、媒材、尺寸與一段短敘事。
-          （之後你要做每件作品的「文章頁」，我也能幫你設計成一致的展覽風格。）
-        </p>
-      </article>
-
+      <div class="aboutMetaRow">
+        <span class="aboutMetaLabel">資料來源</span>
+        <div class="aboutSources">
+          <a href="#" target="_blank" rel="noopener">來源連結 1（可貼網址）</a>
+          <a href="#" target="_blank" rel="noopener">來源連結 2</a>
+          <a href="#" target="_blank" rel="noopener">來源連結 3</a>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- ④ 網站最下面一句話 -->
   <footer class="homeFooter">
     這裡放一句話
   </footer>
