@@ -440,7 +440,7 @@ body.page{
   min-height: calc(100vh - 72px);
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)),
-    url("../images/artists/hero.jpg");
+    url("../images/artists/hero.png");
 
   background-size: cover;
   background-position: center;
