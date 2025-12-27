@@ -589,15 +589,24 @@ body.page{
 }
 
 /* 藝術家文章頁 */
+/* ✅ 藝術家詳細文章頁：頂部主視覺改 16:9，不貼邊 */
 .artistHero{
-  min-height: calc(60vh - 72px);
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 92%;
+  max-width: 1100px;
+  margin: 18px auto 0;              /* 置中 + 上方留空 */
+
+  aspect-ratio: 16 / 9;             /* ⭐ 16:9 核心 */
+  height: auto;                      /* 讓比例控制高度 */
+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-bottom: 1px solid rgba(254,254,254,.14);
+
+  border-radius: 18px;               /* 畢展感 */
+  overflow: hidden;
+
+  border: 1px solid rgba(254,254,254,.14);
+  box-shadow: 0 18px 46px rgba(0,0,0,.30);
 }
 
 .artistBody{
@@ -679,4 +688,11 @@ body.page{
   .artistCard{ grid-column: span 12; }
   .artistThumb{ height: 200px; }
   .artistsHeroImage{ min-height: 260px; }
+}
+@media (max-width: 768px){
+  .artistHero{
+    width: 92%;
+    aspect-ratio: 4 / 3;   /* 手機更好看 */
+    margin-top: 14px;
+  }
 }
