@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>藝術家｜Student Art Collective</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page page-artist">
+
+<header class="header header--home">
+  <div class="container">
+    <div class="navbar navbar--home">
+      <div class="brand brand--home">
+        <span class="brandText">藝術家</span>
+      </div>
+
+      <button class="menu-toggle menu-toggle--home" aria-expanded="false" aria-label="開啟選單">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu mobile-menu--home" aria-label="行動版選單">
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於</a>
+    <a class="active" href="artists.html">藝術家</a>
+    <a href="works.html">作品</a>
+  </nav>
+</header>
+
+<main class="artistMain">
+  <section id="artistHero" class="artistHero" aria-label="藝術家主視覺"></section>
+
+  <section class="artistBody">
+    <a class="artistBack" href="artists.html">← 回到藝術家清單</a>
+
+    <h1 id="artistName" class="artistH1">—</h1>
+    <div id="artistRole" class="artistRoleBig">—</div>
+
+    <p id="artistBio" class="artistBioFull"></p>
+
+    <div class="artistDivider"></div>
+
+    <h2 class="artistH2">關鍵字</h2>
+    <div id="artistKeywords" class="artistKeywords"></div>
+
+    <h2 class="artistH2">策展式簡介（可自行補充）</h2>
+    <div class="artistProse">
+      <p>這裡放更長的介紹內容。你可以把創作動機、媒材、關注議題、觀者關係寫成 2–4 段，版面會自動排得像文章。</p>
+      <p>如果你們每位藝術家都要不同內容，也可以之後在 artists-data.js 裡加一個 longText 欄位，我可以再幫你接上。</p>
+    </div>
+  </section>
+
+  <footer class="homeFooter">
+    這裡放一句話
+  </footer>
+</main>
+
+<script src="js/menu.js"></script>
+<script src="js/artists-data.js"></script>
+<script src="js/artist.js"></script>
+</body>
+</html>
