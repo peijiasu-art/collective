@@ -19,12 +19,17 @@
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0;
-  background: var(--bg);
-  color:var(--fg);
-  font-family: "Noto Sans TC", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-  letter-spacing:.2px;
+  font-family: "Noto Serif TC", serif;
 }
+
+h1, h2, h3, .brandText {
+  font-weight: 700;
+}
+
+p, .artistBio, .homeText {
+  font-weight: 400;
+}
+
 
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
