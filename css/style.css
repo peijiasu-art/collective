@@ -696,3 +696,7 @@ body.page{
     margin-top: 14px;
   }
 }
+/* 藝術家詳細頁：隱藏關鍵字區塊 */
+.page-artist .artistKeywords {
+  display: none;
+}
