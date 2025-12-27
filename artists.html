@@ -6,23 +6,25 @@
   <title>藝術家｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
-<header class="header">
-  <div class="container navbar">
-    <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
+<body class="page page-artists">
 
-    <nav class="menu">
-      <a href="index.html">首頁</a>
-      <a href="about.html">關於</a>
-      <a class="active" href="artists.html">藝術家</a>
-      <a href="works.html">作品</a>
-    </nav>
+<!-- ===== Header ===== -->
+<header class="header header--home">
+  <div class="container">
+    <div class="navbar navbar--home">
+      <div class="brand brand--home">
+        <span class="brandText">藝術家</span>
+      </div>
 
-    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
+      <button class="menu-toggle menu-toggle--home" aria-expanded="false" aria-label="開啟選單">
+        <span class="hamburger"></span>
+      </button>
+    </div>
   </div>
 
-  <nav class="mobile-menu" aria-label="Mobile Menu">
+  <!-- mobile menu -->
+  <nav class="mobile-menu mobile-menu--home" aria-label="行動版選單">
     <a href="index.html">首頁</a>
     <a href="about.html">關於</a>
     <a class="active" href="artists.html">藝術家</a>
@@ -30,60 +32,39 @@
   </nav>
 </header>
 
-<main class="container">
-  <section class="hero">
-    <div class="kicker">Artists</div>
-    <h1 class="h1">藝術家</h1>
-    <p class="lead">每位成員：1 句關鍵字 + 80–120 字簡介 + 代表圖。</p>
+<main class="artistsMain">
+
+  <!-- ① 第一屏：滿版背景圖片（同首頁高度） -->
+  <section class="artistsHeroImage" aria-label="藝術家主視覺"></section>
+
+  <!-- ② 照片下方：簡單介紹 -->
+  <section class="artistsIntro">
+    <h1 class="artistsH1">藝術家</h1>
+    <p class="artistsLead">
+      我們以作品為入口，從媒材、敘事與觀看關係出發，呈現每位創作者的創作脈絡與提問方式。
+      點選你感興趣的藝術家卡片，進入更完整的內容頁面。
+    </p>
   </section>
 
-  <section class="section">
-    <div class="sectionTitle">
-      <h2>成員</h2>
-      <p>把 sample 換成你們的頭像或代表作</p>
+  <!-- ③ 最下方：藝術家清單（JS 生成） -->
+  <section class="artistsListWrap">
+    <div class="artistsListHeader">
+      <h2>藝術家清單</h2>
+      <p>點擊卡片進入詳頁（部落格/文章形式）</p>
     </div>
 
-    <div class="grid">
-      <div class="card cols-4">
-        <img class="thumb" src="images/artists/artist-1.jpg" alt="artist 1">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">姓名 A</h3>
-            <span class="badge">影像／裝置</span>
-          </div>
-          <p class="workSub">關鍵字：記憶、身體、低語<br>（80–120 字）以……為核心，透過……探索……</p>
-        </div>
-      </div>
-
-      <div class="card cols-4">
-        <img class="thumb" src="images/artists/artist-2.jpg" alt="artist 2">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">姓名 B</h3>
-            <span class="badge">平面／插畫</span>
-          </div>
-          <p class="workSub">關鍵字：城市縫隙、日常物件<br>（80–120 字）關注……並嘗試……</p>
-        </div>
-      </div>
-
-      <div class="card cols-4">
-        <img class="thumb" src="images/artists/artist-3.jpg" alt="artist 3">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">姓名 C</h3>
-            <span class="badge">新媒體</span>
-          </div>
-          <p class="workSub">關鍵字：互動、聲音、凝視<br>（80–120 字）以……建立參與，探討……</p>
-        </div>
-      </div>
-    </div>
+    <div id="artistsGrid" class="artistsGrid" aria-live="polite"></div>
   </section>
 
-  <footer class="footer">
-    © 2025 Student Art Collective. All artworks are the property of their respective artists.
+  <!-- Footer 一句話 -->
+  <footer class="homeFooter">
+    這裡放一句話
   </footer>
+
 </main>
 
 <script src="js/menu.js"></script>
+<script src="js/artists-data.js"></script>
+<script src="js/artists.js"></script>
 </body>
 </html>
