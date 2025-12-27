@@ -496,12 +496,10 @@ body.page{
   padding-bottom: 12px;
 }
 
-/* ⭐ 白底區塊：包住「Header + Grid」 */
 .artistsPanel{
-  background: #fefefe;                 /* ✅ 整塊白底 */
-  border-radius: 18px;
-  padding: 18px 18px 20px;             /* ✅ 內距，避免貼邊 */
-  box-shadow: 0 18px 46px rgba(0,0,0,.22);
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
 }
 
 /* Header 在白底上：改成深色系 */
