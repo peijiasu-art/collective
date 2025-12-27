@@ -241,6 +241,14 @@ body.home{
   font-size:16px;
   line-height:1.85;
 }
+.homeFooter{
+  background: #42372d;
+  color: #fefefe;
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
 
 /* =========================================================
    RESPONSIVE
@@ -480,13 +488,30 @@ body.page{
   margin: 18px auto 0;
   padding-bottom: 12px;
 }
+/* 清單外框（維持置中與留白） */
+.artistsListWrap{
+  width: 92%;
+  max-width: 1100px;
+  margin: 18px auto 0;
+  padding-bottom: 12px;
+}
 
+/* ⭐ 白底區塊：包住「Header + Grid」 */
+.artistsPanel{
+  background: #fefefe;                 /* ✅ 整塊白底 */
+  border-radius: 18px;
+  padding: 18px 18px 20px;             /* ✅ 內距，避免貼邊 */
+  box-shadow: 0 18px 46px rgba(0,0,0,.22);
+}
+
+/* Header 在白底上：改成深色系 */
 .artistsListHeader{
   display:flex;
   align-items:baseline;
   justify-content:space-between;
   gap: 16px;
-  border-bottom: 1px solid rgba(254,254,254,.14);
+
+  border-bottom: 1px solid rgba(0,0,0,.10);  /* ✅ 黑系底線 */
   padding: 10px 0 14px;
   margin-bottom: 14px;
 }
@@ -496,14 +521,17 @@ body.page{
   font-size: 16px;
   font-weight: 900;
   letter-spacing: .5px;
+  color: #17110c;                      /* ✅ 黑字 */
 }
 
 .artistsListHeader p{
   margin:0;
   font-size: 13px;
-  color: rgba(254,254,254,.70);
+  color: rgba(23,17,12,.65);           /* ✅ 深棕灰 */
 }
 
+
+/* Grid 卡片（像部落格） */
 /* Grid 卡片（像部落格） */
 .artistsGrid{
   display:grid;
@@ -515,21 +543,21 @@ body.page{
   grid-column: span 4;
   border-radius: 18px;
   overflow:hidden;
-  background: rgba(23,17,12,.22);
-  border: 1px solid rgba(254,254,254,.14);
-  box-shadow: 0 18px 44px rgba(0,0,0,.25);
+
+  background: #ffffff;                 /* ✅ 卡片白底 */
+  border: 1px solid rgba(0,0,0,.10);   /* ✅ 黑系邊框 */
+  box-shadow: 0 14px 28px rgba(0,0,0,.16);
+
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
 }
 
-.artistCardLink{
-  display:block;
-  height:100%;
-}
+.artistCardLink{ display:block; height:100%; }
 
 .artistThumb{
   height: 190px;
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid rgba(254,254,254,.14);
+  border-bottom: 1px solid rgba(0,0,0,.08);  /* ✅ 黑系分隔線 */
 }
 
 .artistPad{ padding: 14px 14px 12px; }
@@ -546,19 +574,21 @@ body.page{
   margin:0;
   font-size: 16px;
   font-weight: 900;
+  color: #000000;                      /* ✅ 黑字 */
 }
 
 .artistRole{
   font-size: 12px;
-  color: rgba(254,254,254,.75);
-  border: 1px solid rgba(254,254,254,.18);
+  color: rgba(0,0,0,.72);              /* ✅ 黑灰字 */
+  border: 1px solid rgba(0,0,0,.18);   /* ✅ 黑系框 */
   padding: 6px 10px;
   border-radius: 999px;
+  background: rgba(0,0,0,.03);
 }
 
 .artistBio{
   margin: 0;
-  color: rgba(254,254,254,.88);
+  color: rgba(0,0,0,.80);              /* ✅ 內文黑灰 */
   font-size: 13px;
   line-height: 1.75;
   min-height: 64px;
@@ -571,12 +601,19 @@ body.page{
   gap: 10px;
   margin-top: 12px;
   padding-top: 12px;
-  border-top: 1px solid rgba(254,254,254,.14);
-  color: rgba(254,254,254,.75);
+  border-top: 1px solid rgba(0,0,0,.10); /* ✅ 黑系分隔 */
+  color: rgba(0,0,0,.60);
   font-size: 12px;
 }
 
-.artistMore{ font-weight: 800; }
+.artistMore{ font-weight: 800; color:#000; }
+
+/* hover 動畫 */
+.artistCard:hover{
+  transform: translateY(-3px);
+  filter: brightness(1.02);
+  box-shadow: 0 22px 44px rgba(0,0,0,.22);
+}
 
 /* hover 動畫（跟你首頁按鈕風格一致） */
 .artistCard{
