@@ -301,7 +301,7 @@ body.page{
   min-height: calc(100vh - 72px); /* ✅ 跟首頁一致 */
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)),
-    url("../images/about/ran1.jpg");  /* ✅ 改成你的 about 圖 */
+    url("../images/about/ran1.png");  /* ✅ 改成你的 about 圖 */
 
   background-size: cover;
   background-position: center;
