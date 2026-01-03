@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>作品｜Student Art Collective</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page page-work">
+
+<header class="header header--home">
+  <div class="container">
+    <div class="navbar navbar--home">
+      <div class="brand brand--home">
+        <a class="brandBack" href="works.html" aria-label="回到作品列表">←</a>
+        <span class="brandText" id="workNavTitle">作品</span>
+      </div>
+
+      <button class="menu-toggle menu-toggle--home" aria-expanded="false" aria-label="開啟選單">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu mobile-menu--home" aria-label="行動版選單">
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於</a>
+    <a href="artists.html">藝術家</a>
+    <a class="active" href="works.html">作品</a>
+  </nav>
+</header>
+
+<main class="workMain">
+
+  <!-- 16:9 作品圖（不要全寬，兩側留白） -->
+  <section class="workHero">
+    <div class="workHeroMedia" id="workHeroMedia" aria-label="作品圖片"></div>
+  </section>
+
+  <!-- 詳細資訊卡 -->
+  <section class="workCard" aria-live="polite">
+    <h1 class="workTitle" id="workTitle">作品名稱</h1>
+
+    <div class="workFacts">
+      <div class="workFact"><span>作者</span><b id="workArtist">—</b></div>
+      <div class="workFact"><span>年份</span><b id="workYear">—</b></div>
+      <div class="workFact"><span>媒材</span><b id="workMedium">—</b></div>
+      <div class="workFact"><span>尺寸</span><b id="workSize">—</b></div>
+    </div>
+
+    <div class="workBody" id="workBody">
+      <p>（這裡放作品敘述）</p>
+    </div>
+
+    <div class="workActions">
+      <a class="workBtn" href="works.html">回作品列表</a>
+    </div>
+  </section>
+
+  <footer class="siteFooter">
+    這裡放一句話
+  </footer>
+
+</main>
+
+<script src="js/menu.js"></script>
+<script src="js/works-data.js"></script>
+<script src="js/work.js"></script>
+</body>
+</html>
