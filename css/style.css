@@ -18,6 +18,10 @@
 
 *{box-sizing:border-box}
 html,body{height:100%}
+html, body{
+  overflow-x: hidden;
+}
+
 body{
   font-family: "Noto Serif TC", serif;
 }
@@ -114,9 +118,10 @@ body.home{
 }
 
 .homeMain{
-  max-width:var(--max);
-  margin:0 auto;
+  max-width: none;
+  margin: 0;
 }
+
 
 /* ===== 首頁主視覺：單張滿版圖 ===== */
 .homeHeroImage{
@@ -129,9 +134,9 @@ body.home{
   background-position: center;
   background-repeat: no-repeat;
 
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin: 0;
+
 
   border-bottom: 1px solid rgba(254,254,254,.14);
 }
