@@ -3,26 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>異化/液化-何而為人？</title>
+  <title>作品｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 
-<header class="header">
-  <div class="container navbar">
-    <a class="brand" href="index.html"><span class="dot"></span><span>Student Art Collective</span></a>
+<body class="page page-works">
 
-    <nav class="menu">
-      <a href="index.html">首頁</a>
-      <a href="about.html">關於</a>
-      <a href="artists.html">藝術家</a>
-      <a class="active" href="works.html">作品</a>
-    </nav>
+<!-- ===== Header ===== -->
+<header class="header header--home">
+  <div class="container">
+    <div class="navbar navbar--home">
+      <div class="brand brand--home">
+        <span class="brandText">作品</span>
+      </div>
 
-    <button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
+      <button class="menu-toggle menu-toggle--home" aria-expanded="false" aria-label="開啟選單">
+        <span class="hamburger"></span>
+      </button>
+    </div>
   </div>
 
-  <nav class="mobile-menu" aria-label="Mobile Menu">
+  <!-- mobile menu -->
+  <nav class="mobile-menu mobile-menu--home" aria-label="行動版選單">
     <a href="index.html">首頁</a>
     <a href="about.html">關於</a>
     <a href="artists.html">藝術家</a>
@@ -30,60 +32,38 @@
   </nav>
 </header>
 
-<main class="container">
-  <section class="hero">
-    <div class="kicker">Works</div>
-    <h1 class="h1">作品</h1>
-    <p class="lead">作品資訊建議：作品名／作者／年份／媒材／尺寸＋一句短敘事。</p>
+<main class="worksMain">
+
+  <!-- ① 第一屏：滿版背景圖片（同首頁高度） -->
+  <section class="worksHeroImage" aria-label="作品主視覺"></section>
+
+  <!-- ② 圖片下方：簡單介紹 -->
+  <section class="worksIntro">
+    <h1 class="worksH1">作品</h1>
+    <p class="worksLead">
+      點選任一作品卡片進入詳細頁，查看作品圖片與完整資訊（名稱、媒材、尺寸、年份）。
+    </p>
   </section>
 
-  <section class="section">
-    <div class="sectionTitle">
+  <!-- ③ 作品清單（JS 生成） -->
+  <section class="worksListWrap">
+    <div class="worksListHeader">
       <h2>全作品</h2>
-      <p>圖像＋資訊即可呈現展覽牆效果</p>
+      <p>Works Index</p>
     </div>
 
-    <div class="grid">
-      <article class="card cols-4">
-        <img class="thumb" src="images/works/sample-1.jpg" alt="作品 A">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">作品名稱 A</h3>
-            <span class="badge">姓名 A</span>
-          </div>
-          <p class="workSub">2025｜媒材｜尺寸<br>一句短敘事：這件作品探討……</p>
-        </div>
-      </article>
-
-      <article class="card cols-4">
-        <img class="thumb" src="images/works/sample-2.jpg" alt="作品 B">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">作品名稱 B</h3>
-            <span class="badge">姓名 B</span>
-          </div>
-          <p class="workSub">2025｜媒材｜尺寸<br>一句短敘事：透過……回應……</p>
-        </div>
-      </article>
-
-      <article class="card cols-4">
-        <img class="thumb" src="images/works/sample-3.jpg" alt="作品 C">
-        <div class="cardPad">
-          <div class="workMeta">
-            <h3 class="workTitle">作品名稱 C</h3>
-            <span class="badge">姓名 C</span>
-          </div>
-          <p class="workSub">2025｜媒材｜尺寸<br>一句短敘事：觀眾將……</p>
-        </div>
-      </article>
-    </div>
+    <div id="worksGrid" class="worksGrid" aria-live="polite"></div>
   </section>
 
-  <footer class="footer">
-    © 2025 Student Art Collective. All artworks are the property of their respective artists.
+  <!-- Footer 一句話 -->
+  <footer class="siteFooter">
+    這裡放一句話
   </footer>
+
 </main>
 
 <script src="js/menu.js"></script>
+<script src="js/works-data.js"></script>
+<script src="js/works.js"></script>
 </body>
 </html>
