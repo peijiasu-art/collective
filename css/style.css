@@ -1031,3 +1031,16 @@ body.page{
   .workFacts{ grid-template-columns: 1fr; }
 }
 
+/* ===== Fix: 避免出現「內外兩條滾動條」 ===== */
+html, body{
+  height: auto;          /* 不要硬卡 100% */
+  overflow-y: auto;
+  overflow-x: hidden;    /* 防止橫向溢出造成怪滾動 */
+}
+
+/* 若有任何 main 容器被設 overflow，統一關掉 */
+.homeMain, .artistsMain, .worksMain, .aboutMain, .artistMain, .workMain{
+  overflow: visible;
+  height: auto;
+  min-height: auto;
+}
