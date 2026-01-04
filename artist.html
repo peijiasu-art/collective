@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>異化/液化-何而為人？</title>
+  <title>藝術家｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -13,6 +13,7 @@
   <div class="container">
     <div class="navbar navbar--home">
       <div class="brand brand--home">
+        <a class="brandBack" href="artists.html" aria-label="回藝術家清單">←</a>
         <span class="brandText">藝術家</span>
       </div>
 
@@ -31,31 +32,27 @@
 </header>
 
 <main class="artistMain">
-  <section id="artistHero" class="artistHero" aria-label="藝術家主視覺"></section>
+  <!-- ✅ 16:9 圖（你已經有 CSS .artistHero 的設定） -->
+  <section id="artistHero" class="artistHero" aria-label="藝術家主圖"></section>
 
   <section class="artistBody">
     <a class="artistBack" href="artists.html">← 回到藝術家清單</a>
 
-    <h1 id="artistName" class="artistH1">—</h1>
-    <div id="artistRole" class="artistRoleBig">—</div>
+    <h1 id="artistName" class="artistH1"></h1>
+    <div id="artistRole" class="artistRoleBig"></div>
 
+    <!-- ✅ 卡片的短介紹（可選） -->
     <p id="artistBio" class="artistBioFull"></p>
 
     <div class="artistDivider"></div>
 
-    <h2 class="artistH2"></h2>
-    <div id="artistKeywords" class="artistKeywords"></div>
+    <!-- ✅ 詳細介紹：每位藝術家都不同 -->
+    <div id="artistDetail" class="artistProse"></div>
 
-    <h2 class="artistH2">人物介紹</h2>
-    <div class="artistProse">
-      <p>這裡放更長的介紹內容。你可以把創作動機、媒材、關注議題、觀者關係寫成 2–4 段，版面會自動排得像文章。</p>
-      <p>如果你們每位藝術家都要不同內容，也可以之後在 artists-data.js 裡加一個 longText 欄位，我可以再幫你接上。</p>
-    </div>
+    <!-- 你之前說詳細頁不要顯示關鍵字，所以這裡不放 keywords 區塊 -->
   </section>
 
-  <footer class="homeFooter">
-    這裡放一句話
-  </footer>
+  <footer class="homeFooter">這裡放一句話</footer>
 </main>
 
 <script src="js/menu.js"></script>
@@ -63,3 +60,4 @@
 <script src="js/artist.js"></script>
 </body>
 </html>
+
