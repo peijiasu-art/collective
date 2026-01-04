@@ -18,7 +18,7 @@ window.ARTISTS = [
 
   {
     slug: "b",
-    name: "Anthony Gormley（安東尼・葛姆雷）",
+    name: "Anthony Gormley<br>（安東尼・葛姆雷）",
     role: "1950－",
     keywords: ["測量空間", "感知世界"],
     cardBio: "英國當代最具國際影響力的雕塑藝術家之一，其創作長期圍繞「身體、空間與存在」的關係展開。",
@@ -48,7 +48,7 @@ window.ARTISTS = [
 
   {
     slug: "e",
-    name: "Rona Pondick（羅娜・龐迪克）",
+    name: "Rona Pondick<br>（羅娜・龐迪克）",
     role: "1952－",
     keywords: ["後極簡主義", "身體政治"],
     cardBio: "美國重要的當代女性雕塑藝術家，以探討身體、心理狀態與存在焦慮聞名。",
@@ -58,7 +58,7 @@ window.ARTISTS = [
 
   {
     slug: "f",
-    name: "Louise Bourgeois（露易絲・布爾喬亞）",
+    name: "Louise Bourgeois<br>（露易絲・布爾喬亞）",
     role: "1911–2010",
     keywords: ["心理創傷"],
     cardBio: "其創作橫跨雕塑、裝置、繪畫與版畫，長期圍繞記憶、情感、性別、身體與心理創傷等主題。",
@@ -68,7 +68,7 @@ window.ARTISTS = [
 
   {
     slug: "g",
-    name: "Frederic Fontenoy（弗雷德里克・方特努瓦）",
+    name: "Frederic Fontenoy<br>（弗雷德里克・方特努瓦）",
     role: "1964－",
     keywords: ["記憶", "感知", "存在"],
     cardBio: "以描繪模糊、殘影般的人體形象聞名，關注記憶、感知與存在狀態之間的曖昧關係。",
@@ -78,7 +78,7 @@ window.ARTISTS = [
 
   {
     slug: "h",
-    name: "Henrietta Harris（亨麗埃塔·哈里斯）",
+    name: "Henrietta Harris<br>（亨麗埃塔·哈里斯）",
     role: "1984－",
     keywords: ["超現實", "解讀情感"],
     cardBio: "作品融合超現實、細膩技法與心理深度，形成極具辨識度的肖像語言。",
