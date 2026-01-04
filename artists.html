@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>異化/液化-何而為人？</title>
+  <title>藝術家｜Student Art Collective</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="page page-artists">
 
-<!-- ===== Header ===== -->
 <header class="header header--home">
   <div class="container">
     <div class="navbar navbar--home">
@@ -23,7 +22,6 @@
     </div>
   </div>
 
-  <!-- mobile menu -->
   <nav class="mobile-menu mobile-menu--home" aria-label="行動版選單">
     <a href="index.html">首頁</a>
     <a href="about.html">關於</a>
@@ -33,11 +31,8 @@
 </header>
 
 <main class="artistsMain">
+  <section class="artistsHeroImage" aria-label="藝術家主視覺"></section>
 
-  <!-- ① 第一屏：滿版背景圖片（同首頁高度） -->
-  <section class="artistsHeroImage"></section>
-
-  <!-- ② 照片下方：簡單介紹 -->
   <section class="artistsIntro">
     <h1 class="artistsH1">藝術家</h1>
     <p class="artistsLead">
@@ -46,27 +41,23 @@
     </p>
   </section>
 
-  <!-- ③ 最下方：藝術家清單（JS 生成） -->
   <section class="artistsListWrap">
-    <!-- ⭐ 白底區塊：包住「標題＋卡片清單」 -->
-    <div class="artistsPanel">
-      <div class="artistsListHeader">
-        <h2></h2>
-        <p></p>
-      </div>
-
-      <div id="artistsGrid" class="artistsGrid" aria-live="polite"></div>
+    <div class="artistsListHeader">
+      <h2>藝術家清單</h2>
+      <p>點卡片閱讀詳細內容</p>
     </div>
-  </section>
-  <!-- Footer 一句話 -->
-  <footer class="homeFooter">
-    這裡放一句話
-  </footer>
 
+    <div id="artistsGrid" class="artistsGrid" aria-live="polite"></div>
+  </section>
+
+  <footer class="homeFooter">這裡放一句話</footer>
 </main>
 
 <script src="js/menu.js"></script>
+
+<!-- ✅ 重要：資料一定要先載入，再載入產卡片的 js -->
 <script src="js/artists-data.js"></script>
 <script src="js/artists.js"></script>
 </body>
 </html>
+
