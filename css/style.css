@@ -16,30 +16,40 @@
   --home-black:#000000;
 }
 
+/* =========================================================
+   GLOBAL RESET + SCROLL FIX（解雙滾輪）
+   ========================================================= */
 *{box-sizing:border-box}
-html,body{height:100%}
+
 html, body{
-  overflow-x: hidden;
+  height: auto;              /* ✅ 不要卡 100%（容易造成內外滾輪） */
+  margin:0;
+  overflow-x:hidden;         /* ✅ 防止橫向溢出造成怪滾輪 */
+  overflow-y:auto;
 }
 
 body{
+  background: var(--bg);
+  color: var(--fg);
   font-family: "Noto Serif TC", serif;
+  letter-spacing:.2px;
 }
-
-h1, h2, h3, .brandText {
-  font-weight: 700;
-}
-
-p, .artistBio, .homeText {
-  font-weight: 400;
-}
-
 
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 
+h1, h2, h3, .brandText { font-weight: 700; }
+p, .artistBio, .homeText { font-weight: 400; }
+
 /* Layout */
 .container{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+/* ✅ 禁止主要容器自己滾動（避免兩條滾輪） */
+.homeMain, .artistsMain, .worksMain, .aboutMain, .artistMain, .workMain{
+  overflow: visible;
+  height: auto;
+  min-height: auto;
+}
 
 /* =========================================================
    HEADER / NAV
@@ -54,6 +64,8 @@ img{max-width:100%;display:block}
   background: var(--home-header);
 }
 
+/* ✅ 避免你截圖那種「棕色框變小、兩側黑邊」：
+   navbar 本身不要限制在 container 的 max-width 之外做怪 */
 .navbar{
   display:flex;
   align-items:center;
@@ -74,7 +86,6 @@ img{max-width:100%;display:block}
   padding:10px;
   cursor:pointer;
 }
-
 .menu-toggle .hamburger{
   width:22px;
   height:16px;
@@ -93,21 +104,14 @@ img{max-width:100%;display:block}
   padding:8px 22px 12px;
   border-top:1px solid rgba(0,0,0,.15);
 }
-
 .mobile-menu a{
   padding:14px 6px;
   border-bottom:1px solid rgba(0,0,0,.12);
   color:#17110C;
   font-weight:600;
 }
-
-.mobile-menu a.active{
-  font-weight:800;
-}
-
-.mobile-menu.show{
-  display:flex;
-}
+.mobile-menu a.active{ font-weight:800; }
+.mobile-menu.show{ display:flex; }
 
 /* =========================================================
    HOME
@@ -117,19 +121,18 @@ body.home{
   color: var(--home-white);
 }
 
+/* ✅ HOME 主容器不要限制寬度 */
 .homeMain{
-  max-width: none;
-  margin: 0;
+  max-width:none;
+  margin:0;
 }
 
-
-/* ===== 首頁主視覺：單張滿版圖 ===== */
+/* ✅ 首頁主視覺（全寬、不用 100vw+calc，避免溢出造成滾輪） */
 .homeHeroImage{
-  min-height: calc(100vh - 72px); /* 扣掉 header 高度 */
+  min-height: calc(100vh - 72px);
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
     url("../images/index/ran1.png");
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -137,11 +140,8 @@ body.home{
   width: 100%;
   margin: 0;
 
-
   border-bottom: 1px solid rgba(254,254,254,.14);
 }
-
-
 
 /* ===== 四個按鈕 ===== */
 .homeButtons{
@@ -165,10 +165,12 @@ body.home{
 
   font-weight:800;
   letter-spacing:.8px;
+
   position:relative;
-  overflow:hidden;              /* ✅ 讓動畫線條不超出按鈕 */
-  border-radius: 12px;          /* ✅ 更像畢展按鈕 */
-  transform: translateY(0);     /* ✅ 動畫穩定 */
+  overflow:hidden;
+  border-radius: 12px;
+  transform: translateY(0);
+
   box-shadow:
     inset 0 0 0 1px rgba(254,254,254,.18),
     0 10px 22px rgba(0,0,0,.18);
@@ -178,7 +180,8 @@ body.home{
     box-shadow .18s ease,
     filter .18s ease;
 }
-/* ✅ 底部掃過的亮線（符合你配色：白字、深底） */
+
+/* 底部掃過亮線 */
 .homeBtn::after{
   content:"";
   position:absolute;
@@ -187,14 +190,12 @@ body.home{
   width:40%;
   height:3px;
   background: #fefefe;
-  opacity: .0;
+  opacity: 0;
   transform: skewX(-18deg);
-  transition:
-    left .35s ease,
-    opacity .2s ease;
+  transition: left .35s ease, opacity .2s ease;
 }
 
-/* ✅ 內部微光（很像展覽網站的質感） */
+/* 內部微光 */
 .homeBtn::before{
   content:"";
   position:absolute;
@@ -202,12 +203,12 @@ body.home{
   background:
     radial-gradient(600px 90px at 20% 0%, rgba(254,254,254,.10), transparent 60%),
     radial-gradient(600px 90px at 80% 100%, rgba(254,254,254,.08), transparent 60%);
-  opacity: .0;
+  opacity: 0;
   transition: opacity .25s ease;
   pointer-events:none;
 }
 
-/* Hover：上浮 + 陰影加深 + 微亮 + 底線掃過 */
+/* Hover */
 .homeBtn:hover{
   transform: translateY(-2px);
   box-shadow:
@@ -215,28 +216,20 @@ body.home{
     0 14px 28px rgba(0,0,0,.28);
   filter: brightness(1.06);
 }
-.homeBtn:hover::before{
-  opacity: 1;
-}
-.homeBtn:hover::after{
-  opacity: 1;
-  left: 110%;
-}
+.homeBtn:hover::before{ opacity: 1; }
+.homeBtn:hover::after{ opacity: 1; left: 110%; }
 
-/* Active：按下去回彈（點擊感） */
+/* Active */
 .homeBtn:active{
   transform: translateY(0px) scale(.99);
   filter: brightness(0.98);
 }
 
-/* Focus：鍵盤 Tab 也清楚（加分） */
+/* Focus */
 .homeBtn:focus-visible{
   outline: 3px solid rgba(254,254,254,.55);
   outline-offset: 3px;
 }
-
-
-
 
 .homeBtn.is-current{
   box-shadow:
@@ -244,13 +237,14 @@ body.home{
     0 10px 22px rgba(0,0,0,.18);
 }
 
-
-/* ===== 文字區 ===== */
+/* 文字區 */
 .homeText{
   padding:18px 22px 48px;
   font-size:16px;
   line-height:1.85;
 }
+
+/* Footer（一句話） */
 .homeFooter{
   background: #42372d;
   color: #fefefe;
@@ -261,30 +255,19 @@ body.home{
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE (HOME)
    ========================================================= */
 @media (max-width:768px){
-  .homeHeroImage{
-    min-height: 260px; /* 你想更窄就 220px */
-  }
-  .homeButtons{
-    width:92%;
-    gap:8px;
-  }
-  .homeBtn{
-    font-size:14px;
-    height:42px;
-  }
+  .homeHeroImage{ min-height: 260px; }
+  .homeButtons{ width:92%; gap:8px; }
+  .homeBtn{ font-size:14px; height:42px; }
 }
 
 @media (prefers-reduced-motion: reduce){
-  .homeBtn,
-  .homeBtn::before,
-  .homeBtn::after{
+  .homeBtn, .homeBtn::before, .homeBtn::after{
     transition:none !important;
   }
 }
-
 
 /* =========================================================
    PAGES (通用)
@@ -294,16 +277,15 @@ body.page{
   color: #fefefe;
 }
 
-/* ✅ 防止你截圖裡那種長字串把版面擠爆 */
+/* 防長字串爆版 */
 .page p, .page li, .page a, .page b, .page span{
-  overflow-wrap: anywhere;
-  word-break: break-word;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 
 /* =========================================================
-   ABOUT (新版：第一章滿版圖 + 策展論述 + 策展人/來源)
+   ABOUT
    ========================================================= */
-
 .page-about{
   background: var(--bg);
   color: var(--home-white);
@@ -314,25 +296,23 @@ body.page{
   margin: 0 auto;
 }
 
-/* ① 第一章：背景圖片（跟首頁同高度、同滿版做法） */
+/* ✅ About Hero：同首頁做法（全寬但不使用 100vw calc） */
 .aboutHeroImage{
-  min-height: calc(100vh - 72px); /* ✅ 跟首頁一致 */
+  min-height: calc(100vh - 72px);
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)),
-    url("../images/about/ran1.png");  /* ✅ 改成你的 about 圖 */
+    url("../images/about/ran1.png");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin: 0;
 
   border-bottom: 1px solid rgba(254,254,254,.14);
 }
 
-/* ② 第二頁：主題名稱 + 策展論述（像展覽手冊） */
 .aboutEssay{
   width: 92%;
   max-width: 960px;
@@ -352,7 +332,7 @@ body.page{
   background: rgba(23,17,12,.22);
   border: 1px solid rgba(254,254,254,.14);
   border-radius: 18px;
-  padding: 18px 18px;
+  padding: 18px;
   box-shadow: 0 18px 44px rgba(0,0,0,.25);
 }
 
@@ -362,12 +342,8 @@ body.page{
   font-size: 15px;
   color: rgba(254,254,254,.90);
 }
+.aboutProse p:last-child{ margin-bottom: 0; }
 
-.aboutProse p:last-child{
-  margin-bottom: 0;
-}
-
-/* ③ 策展人 + 資料來源 */
 .aboutMeta{
   width: 92%;
   max-width: 960px;
@@ -390,59 +366,44 @@ body.page{
   padding: 10px 6px;
   border-bottom: 1px solid rgba(0,0,0,.08);
 }
-
-.aboutMetaRow:last-child{
-  border-bottom: 0;
-}
+.aboutMetaRow:last-child{ border-bottom: 0; }
 
 .aboutMetaLabel{
   font-size: 13px;
   color: rgba(23,17,12,.70);
   font-weight: 700;
 }
-
 .aboutMetaValue{
   font-weight: 900;
   letter-spacing: .3px;
 }
 
 .aboutSources{
-  display: grid;
-  gap: 8px;
+  display:grid;
+  gap:8px;
 }
-
 .aboutSources a{
-  color: #17110c;
-  text-decoration: none;
-  padding: 10px 12px;
-  border: 1px solid rgba(0,0,0,.10);
-  border-radius: 12px;
+  color:#17110c;
+  padding:10px 12px;
+  border:1px solid rgba(0,0,0,.10);
+  border-radius:12px;
   background: rgba(255,255,255,.75);
   transition: transform .15s ease, box-shadow .15s ease;
 }
-
 .aboutSources a:hover{
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(0,0,0,.12);
 }
 
-/* RWD：手機讓論述更好讀、圖片高度變窄 */
 @media (max-width:768px){
-  .aboutHeroImage{
-    min-height: 260px; /* ✅ 跟你首頁手機版邏輯一致 */
-  }
-  .aboutProse{
-    padding: 16px;
-  }
-  .aboutMetaRow{
-    grid-template-columns: 82px 1fr;
-  }
+  .aboutHeroImage{ min-height: 260px; }
+  .aboutProse{ padding:16px; }
+  .aboutMetaRow{ grid-template-columns: 82px 1fr; }
 }
 
 /* =========================================================
    ARTISTS
    ========================================================= */
-
 .page-artists, .page-artist{
   background: var(--bg);
   color: var(--home-white);
@@ -453,37 +414,33 @@ body.page{
   margin: 0 auto;
 }
 
-/* 第一屏滿版圖：跟首頁一致 */
+/* ✅ Artists Hero：同首頁做法（不要 100vw calc） */
 .artistsHeroImage{
   min-height: calc(100vh - 72px);
   background-image:
     linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)),
     url("../images/artists/hero.png");
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin: 0;
 
   border-bottom: 1px solid rgba(254,254,254,.14);
 }
 
-/* 簡短介紹 */
+/* Intro */
 .artistsIntro{
   width: 92%;
   max-width: 960px;
   margin: 22px auto 0;
 }
-
 .artistsH1{
   margin: 0 0 12px;
   font-size: clamp(26px, 3vw, 44px);
   font-weight: 900;
 }
-
 .artistsLead{
   margin: 0;
   line-height: 1.95;
@@ -491,14 +448,7 @@ body.page{
   font-size: 15px;
 }
 
-/* 清單 Header */
-.artistsListWrap{
-  width: 92%;
-  max-width: 1100px;
-  margin: 18px auto 0;
-  padding-bottom: 12px;
-}
-/* 清單外框（維持置中與留白） */
+/* List Wrap */
 .artistsListWrap{
   width: 92%;
   max-width: 1100px;
@@ -506,57 +456,52 @@ body.page{
   padding-bottom: 12px;
 }
 
-.artistsPanel{
-  background: transparent;
-  padding: 0;
-  box-shadow: none;
-}
-
-/* Header 在白底上：改成深色系 */
 .artistsListHeader{
   display:flex;
   align-items:baseline;
   justify-content:space-between;
-  gap: 16px;
+  gap:16px;
 
-  border-bottom: 1px solid rgba(0,0,0,.10);  /* ✅ 黑系底線 */
+  border-bottom: 1px solid rgba(0,0,0,.10);
   padding: 10px 0 14px;
   margin-bottom: 14px;
 }
-
 .artistsListHeader h2{
   margin:0;
   font-size: 16px;
   font-weight: 900;
   letter-spacing: .5px;
-  color: #17110c;                      /* ✅ 黑字 */
+  color: #17110c;
 }
-
 .artistsListHeader p{
   margin:0;
   font-size: 13px;
-  color: rgba(23,17,12,.65);           /* ✅ 深棕灰 */
+  color: rgba(23,17,12,.65);
 }
 
-
-/* Grid 卡片（像部落格） */
-/* Grid 卡片（像部落格） */
+/* Grid */
 .artistsGrid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
 }
 
+/* Card */
 .artistCard{
   grid-column: span 4;
   border-radius: 18px;
   overflow:hidden;
 
-  background: #ffffff;                 /* ✅ 卡片白底 */
-  border: 1px solid rgba(0,0,0,.10);   /* ✅ 黑系邊框 */
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,.10);
   box-shadow: 0 14px 28px rgba(0,0,0,.16);
 
   transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.artistCard:hover{
+  transform: translateY(-3px);
+  filter: brightness(1.02);
+  box-shadow: 0 22px 44px rgba(0,0,0,.22);
 }
 
 .artistCardLink{ display:block; height:100%; }
@@ -565,7 +510,7 @@ body.page{
   height: 190px;
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid rgba(0,0,0,.08);  /* ✅ 黑系分隔線 */
+  border-bottom: 1px solid rgba(0,0,0,.08);
 }
 
 .artistPad{ padding: 14px 14px 12px; }
@@ -574,82 +519,58 @@ body.page{
   display:flex;
   align-items:baseline;
   justify-content:space-between;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap:10px;
+  margin-bottom:8px;
 }
 
 .artistName{
   margin:0;
-  font-size: 16px;
-  font-weight: 900;
-  color: #000000;                      /* ✅ 黑字 */
+  font-size:16px;
+  font-weight:900;
+  color:#000;
 }
 
 .artistRole{
-  font-size: 12px;
-  color: rgba(0,0,0,.72);              /* ✅ 黑灰字 */
-  border: 1px solid rgba(0,0,0,.18);   /* ✅ 黑系框 */
+  font-size:12px;
+  color: rgba(0,0,0,.72);
+  border: 1px solid rgba(0,0,0,.18);
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(0,0,0,.03);
 }
 
 .artistBio{
-  margin: 0;
-  color: rgba(0,0,0,.80);              /* ✅ 內文黑灰 */
-  font-size: 13px;
-  line-height: 1.75;
-  min-height: 64px;
+  margin:0;
+  color: rgba(0,0,0,.80);
+  font-size:13px;
+  line-height:1.75;
+  min-height:64px;
 }
 
 .artistMeta{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap: 10px;
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(0,0,0,.10); /* ✅ 黑系分隔 */
+  gap:10px;
+  margin-top:12px;
+  padding-top:12px;
+  border-top: 1px solid rgba(0,0,0,.10);
   color: rgba(0,0,0,.60);
-  font-size: 12px;
+  font-size:12px;
 }
+.artistMore{ font-weight:800; color:#000; }
 
-.artistMore{ font-weight: 800; color:#000; }
-
-/* hover 動畫 */
-.artistCard:hover{
-  transform: translateY(-3px);
-  filter: brightness(1.02);
-  box-shadow: 0 22px 44px rgba(0,0,0,.22);
-}
-
-/* hover 動畫（跟你首頁按鈕風格一致） */
-.artistCard{
-  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-}
-.artistCard:hover{
-  transform: translateY(-2px);
-  filter: brightness(1.05);
-  box-shadow: 0 24px 60px rgba(0,0,0,.35);
-}
-
-/* 藝術家文章頁 */
-/* ✅ 藝術家詳細文章頁：頂部主視覺改 16:9，不貼邊 */
+/* ✅ 藝術家詳細文章頁：16:9 圖，置中留邊 */
 .artistHero{
   width: 92%;
   max-width: 1100px;
-  margin: 18px auto 0;              /* 置中 + 上方留空 */
-
-  aspect-ratio: 16 / 9;             /* ⭐ 16:9 核心 */
-  height: auto;                      /* 讓比例控制高度 */
-
+  margin: 18px auto 0;
+  aspect-ratio: 16 / 9;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  border-radius: 18px;               /* 畢展感 */
-  overflow: hidden;
-
+  border-radius: 18px;
+  overflow:hidden;
   border: 1px solid rgba(254,254,254,.14);
   box-shadow: 0 18px 46px rgba(0,0,0,.30);
 }
@@ -664,7 +585,6 @@ body.page{
 .artistBack{
   display:inline-block;
   color: rgba(254,254,254,.85);
-  text-decoration:none;
   margin-bottom: 10px;
 }
 
@@ -701,16 +621,6 @@ body.page{
   font-weight: 900;
 }
 
-.artistKeywords{ display:flex; flex-wrap:wrap; gap:8px; }
-
-.kwPill{
-  padding: 8px 12px;
-  border-radius: 999px;
-  background: rgba(254,254,254,.10);
-  border: 1px solid rgba(254,254,254,.16);
-  font-size: 13px;
-}
-
 .artistProse{
   background: rgba(23,17,12,.22);
   border: 1px solid rgba(254,254,254,.14);
@@ -725,6 +635,9 @@ body.page{
 }
 .artistProse p:last-child{ margin-bottom: 0; }
 
+/* ✅ 藝術家詳細頁：隱藏關鍵字區塊 */
+.page-artist .artistKeywords{ display:none; }
+
 /* RWD */
 @media (max-width:980px){
   .artistCard{ grid-column: span 6; }
@@ -734,22 +647,17 @@ body.page{
   .artistThumb{ height: 200px; }
   .artistsHeroImage{ min-height: 260px; }
 }
-@media (max-width: 768px){
+@media (max-width:768px){
   .artistHero{
     width: 92%;
-    aspect-ratio: 4 / 3;   /* 手機更好看 */
+    aspect-ratio: 4 / 3;
     margin-top: 14px;
   }
-}
-/* 藝術家詳細頁：隱藏關鍵字區塊 */
-.page-artist .artistKeywords {
-  display: none;
 }
 
 /* =========================================================
    WORKS (清單頁) + WORK (詳細頁)
    ========================================================= */
-
 .page-works, .page-work{
   background: var(--bg);
   color: var(--fg);
@@ -760,7 +668,7 @@ body.page{
   margin: 0 auto;
 }
 
-/* 第一屏滿版圖（同首頁高度） */
+/* ✅ Works Hero：同首頁做法 */
 .worksHeroImage{
   min-height: calc(100vh - 72px);
   background:
@@ -776,7 +684,7 @@ body.page{
   border-bottom: 1px solid rgba(254,254,254,.14);
 }
 
-/* 介紹 */
+/* Intro */
 .worksIntro{
   width: 92%;
   max-width: 960px;
@@ -786,7 +694,7 @@ body.page{
   margin: 0 0 12px;
   font-size: clamp(26px, 3vw, 44px);
   font-weight: 900;
-  color: #fefefe;
+  color:#fefefe;
 }
 .worksLead{
   margin: 0;
@@ -795,7 +703,7 @@ body.page{
   font-size: 15px;
 }
 
-/* 列表區 */
+/* List */
 .worksListWrap{
   width: 92%;
   max-width: 1100px;
@@ -806,7 +714,7 @@ body.page{
   display:flex;
   align-items:baseline;
   justify-content:space-between;
-  gap: 16px;
+  gap:16px;
   border-bottom: 1px solid rgba(254,254,254,.14);
   padding: 10px 0 14px;
   margin-bottom: 14px;
@@ -816,7 +724,7 @@ body.page{
   font-size: 16px;
   font-weight: 900;
   letter-spacing: .5px;
-  color: #fefefe;
+  color:#fefefe;
 }
 .worksListHeader p{
   margin:0;
@@ -831,7 +739,7 @@ body.page{
   gap: 14px;
 }
 
-/* 卡片：白底 + 黑字（你要的） */
+/* Card */
 .workCardItem{
   grid-column: span 4;
   border-radius: 18px;
@@ -853,7 +761,6 @@ body.page{
   color: #17110c;
 }
 
-/* 卡片圖 */
 .workThumb{
   height: 190px;
   background-size: cover;
@@ -867,8 +774,8 @@ body.page{
   display:flex;
   align-items:baseline;
   justify-content:space-between;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap:10px;
+  margin-bottom:8px;
 }
 .workName{
   margin:0;
@@ -896,20 +803,16 @@ body.page{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap: 10px;
-  margin-top: 12px;
-  padding-top: 12px;
+  gap:10px;
+  margin-top:12px;
+  padding-top:12px;
   border-top: 1px solid rgba(0,0,0,.08);
   color: rgba(23,17,12,.65);
   font-size: 12px;
 }
 .workMore{ font-weight: 900; }
 
-/* =========================================================
-   WORK DETAIL（詳細頁）
-   ========================================================= */
-
-/* 左側回上一頁箭頭 */
+/* WORK DETAIL */
 .brandBack{
   display:inline-flex;
   align-items:center;
@@ -922,7 +825,6 @@ body.page{
   background: rgba(255,255,255,.18);
 }
 
-/* 16:9 圖：不要全寬，留邊距 */
 .workHero{
   width: 92%;
   max-width: 1100px;
@@ -939,7 +841,6 @@ body.page{
   border: 1px solid rgba(254,254,254,.12);
 }
 
-/* 詳細資訊卡：白底黑字 */
 .workCard{
   width: 92%;
   max-width: 1100px;
@@ -987,7 +888,6 @@ body.page{
   font-size: 14px;
 }
 
-/* 按鈕（沿用你首頁按鈕風格但配合白底） */
 .workActions{
   margin-top: 14px;
   display:flex;
@@ -1009,9 +909,7 @@ body.page{
 .workBtn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
 .workBtn:active{ transform: translateY(0px) scale(.99); }
 
-/* =========================================================
-   FOOTER（你要：#42372D 背景、#fefefe 字、大一點、置中、左右留空）
-   ========================================================= */
+/* Footer（通用） */
 .siteFooter{
   background: #42372d;
   color: #fefefe;
@@ -1021,26 +919,11 @@ body.page{
   margin-top: 22px;
 }
 
-/* RWD */
-@media (max-width: 980px){
+@media (max-width:980px){
   .workCardItem{ grid-column: span 6; }
   .workFacts{ grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 640px){
+@media (max-width:640px){
   .workCardItem{ grid-column: span 12; }
   .workFacts{ grid-template-columns: 1fr; }
-}
-
-/* ===== Fix: 避免出現「內外兩條滾動條」 ===== */
-html, body{
-  height: auto;          /* 不要硬卡 100% */
-  overflow-y: auto;
-  overflow-x: hidden;    /* 防止橫向溢出造成怪滾動 */
-}
-
-/* 若有任何 main 容器被設 overflow，統一關掉 */
-.homeMain, .artistsMain, .worksMain, .aboutMain, .artistMain, .workMain{
-  overflow: visible;
-  height: auto;
-  min-height: auto;
 }
