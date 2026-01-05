@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>異化／液化－何而為人？</title>
+  <title>作品｜異化/液化-何而為人？</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="page page-works">
 
-<!-- ===== Header ===== -->
 <header class="header header--home">
   <div class="container">
     <div class="navbar navbar--home">
@@ -23,7 +22,6 @@
     </div>
   </div>
 
-  <!-- mobile menu -->
   <nav class="mobile-menu mobile-menu--home" aria-label="行動版選單">
     <a href="index.html">首頁</a>
     <a href="about.html">關於</a>
@@ -34,32 +32,28 @@
 
 <main class="worksMain">
 
-  <!-- ① 第一屏：滿版背景圖片（同首頁高度） -->
   <section class="worksHeroImage"></section>
 
-  <!-- ② 圖片下方：簡單介紹 -->
   <section class="worksIntro">
     <h1 class="worksH1">作品</h1>
     <p class="worksLead">
-      點選任一作品卡片進入詳細頁，查看作品圖片與完整資訊（名稱、媒材、尺寸、年份）。
+      以作品為觀看入口，從媒材、尺度與敘事線索出發，理解作品如何在空間中建立感知與提問。
+      點選作品卡片，進入完整作品頁面。
     </p>
   </section>
 
-  <!-- ③ 作品清單（JS 生成） -->
   <section class="worksListWrap">
-    <div class="worksListHeader">
-      <h2></h2>
-      <p></p>
-    </div>
+    <div class="worksPanel">
+      <div class="worksListHeader">
+        <h2></h2>
+        <p></p>
+      </div>
 
-    <div id="worksGrid" class="worksGrid" aria-live="polite"></div>
+      <div id="worksGrid" class="worksGrid" aria-live="polite"></div>
+    </div>
   </section>
 
-  <!-- Footer 一句話 -->
-  <footer class="siteFooter">
-    這裡放一句話
-  </footer>
-
+  <footer class="homeFooter">這裡放一句話</footer>
 </main>
 
 <script src="js/menu.js"></script>
