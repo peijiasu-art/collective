@@ -1,1033 +1,1165 @@
-:root{
-  --bg:#42372d;
-  --fg:#f3f3f3;
-  --muted:rgba(243,243,243,.72);
-  --line:rgba(243,243,243,.14);
-  --card:rgba(255,255,255,.04);
-  --shadow: 0 16px 40px rgba(0,0,0,.55);
-  --r:18px;
-  --max:1120px;
+/* =========================================================
+   專案名稱：藝術作品展示網站
+   最後更新：2025
+   ========================================================= */
 
-  /* ===== Home palette ===== */
-  --home-header:#A08D78;
-  --home-ink:#17110C;
-  --home-body:#42372d;
-  --home-white:#FEFEFE;
-  --home-black:#000000;
+/* =========================================================
+   1. CSS 變數定義 (Design Tokens)
+   ========================================================= */
+:root {
+  /* === 基礎色彩系統 === */
+  --color-bg-primary: #42372d;
+  --color-text-primary: #f3f3f3;
+  --color-text-muted: rgba(243, 243, 243, 0.72);
+  --color-border-light: rgba(243, 243, 243, 0.14);
+  --color-card-bg: rgba(255, 255, 255, 0.04);
+  
+  /* === Home 頁面專用色彩 === */
+  --home-header: #A08D78;
+  --home-ink: #17110C;
+  --home-body: #42372d;
+  --home-white: #FEFEFE;
+  --home-black: #000000;
+  
+  /* === 陰影系統 === */
+  --shadow-base: 0 16px 40px rgba(0, 0, 0, 0.55);
+  --shadow-sm: 0 10px 22px rgba(0, 0, 0, 0.18);
+  --shadow-md: 0 14px 28px rgba(0, 0, 0, 0.22);
+  --shadow-lg: 0 18px 44px rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 18px 46px rgba(0, 0, 0, 0.30);
+  --shadow-2xl: 0 24px 60px rgba(0, 0, 0, 0.30);
+  
+  /* === 間距系統 === */
+  --radius-base: 18px;
+  --radius-sm: 12px;
+  --radius-xs: 10px;
+  --radius-full: 999px;
+  
+  /* === 版面寬度 === */
+  --max-width: 1120px;
+  --max-width-content: 960px;
+  --max-width-wide: 1100px;
+  
+  /* === 字體設定 === */
+  --font-family: "Noto Serif TC", serif;
+  --letter-spacing: 0.2px;
 }
 
 /* =========================================================
-   GLOBAL RESET + SCROLL FIX（解雙滾輪 + 解左右露底色）
+   2. 全域重設 (Reset & Base Styles)
    ========================================================= */
-*{ box-sizing:border-box; }
-
-html, body{
-  margin:0;
-  padding:0;
-  width:100%;
-  height:auto;            /* 不要卡死 100% */
-  overflow-x:hidden;      /* 關掉水平溢出（最常見造成怪滾輪） */
-  overflow-y:auto;
+* {
+  box-sizing: border-box;
 }
 
-body{
-  background: var(--bg);
-  color: var(--fg);
-  font-family: "Noto Serif TC", serif;
-  letter-spacing:.2px;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-a{ color:inherit; text-decoration:none; }
-img{ max-width:100%; display:block; }
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  letter-spacing: var(--letter-spacing);
+}
 
-h1, h2, h3, .brandText { font-weight: 700; }
-p, .artistBio, .homeText { font-weight: 400; }
+/* === 基礎元素樣式 === */
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* Layout：內容置中用（導覽列/文字區維持置中） */
-.container{
-  max-width: var(--max);
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* === 字體權重統一管理 === */
+h1, h2, h3, .brandText {
+  font-weight: 700;
+}
+
+p, .artistBio, .homeText {
+  font-weight: 400;
+}
+
+/* === 防止長字串爆版（所有頁面通用） === */
+p, li, a, b, span {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* =========================================================
+   3. 版面佈局工具 (Layout Utilities)
+   ========================================================= */
+.container {
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 22px;
 }
 
-/* ✅ 禁止主要容器自己滾動（避免兩條滾輪） */
-.homeMain, .artistsMain, .worksMain, .aboutMain, .artistMain, .workMain{
+/* === 滿版元素（Full Bleed） === */
+.fullbleed {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* === 主要內容容器（防止雙滾動條） === */
+.homeMain,
+.artistsMain,
+.worksMain,
+.aboutMain,
+.artistMain,
+.workMain {
   overflow: visible;
   height: auto;
   min-height: auto;
 }
 
 /* =========================================================
-   ✅ FULL-BLEED（關鍵：真正滿版，不露兩側底色）
-   - 用 100vw + translate 方式，不會被 max-width 影響
-   - 同時避免 calc(50%-50vw) 在某些情況造成溢出
+   4. 頁首導航系統 (Header & Navigation)
    ========================================================= */
-.fullbleed{
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-
-/* =========================================================
-   HEADER / NAV（滿版填滿）
-   ========================================================= */
-.header{
+.header {
   position: sticky;
   top: 0;
   z-index: 100;
-}
-
-/* ✅ 導覽列背景滿版 */
-.header--home{
-  background: var(--home-header);
   width: 100%;
 }
 
-/* navbar 內容置中，但背景由 header 撐滿 */
-.navbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.header--home {
+  background: var(--home-header);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 14px 0;
 }
 
-.brandText{
+.brandText {
   color: var(--home-ink);
   font-weight: 800;
   font-size: 20px;
 }
 
-/* Hamburger */
-.menu-toggle{
-  border:0;
-  background:transparent;
-  padding:10px;
-  cursor:pointer;
+/* === 漢堡選單按鈕 === */
+.menu-toggle {
+  border: 0;
+  background: transparent;
+  padding: 10px;
+  cursor: pointer;
 }
-.menu-toggle .hamburger{
-  width:22px;
-  height:16px;
-  display:block;
+
+.menu-toggle .hamburger {
+  width: 22px;
+  height: 16px;
+  display: block;
   background:
     linear-gradient(var(--home-ink), var(--home-ink)) 0 0/100% 2px no-repeat,
     linear-gradient(var(--home-ink), var(--home-ink)) 0 7px/100% 2px no-repeat,
     linear-gradient(var(--home-ink), var(--home-ink)) 0 14px/100% 2px no-repeat;
 }
 
-/* Mobile menu（背景也滿版） */
-.mobile-menu{
-  display:none;
-  flex-direction:column;
-  background:#fff;
-  padding:8px 22px 12px;
-  border-top:1px solid rgba(0,0,0,.15);
-
+/* === 手機版選單 === */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  padding: 8px 22px 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
 }
-.mobile-menu a{
-  padding:14px 6px;
-  border-bottom:1px solid rgba(0,0,0,.12);
-  color:#17110C;
-  font-weight:600;
+
+.mobile-menu.show {
+  display: flex;
 }
-.mobile-menu a.active{ font-weight:800; }
-.mobile-menu.show{ display:flex; }
+
+.mobile-menu a {
+  padding: 14px 6px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  color: var(--home-ink);
+  font-weight: 600;
+}
+
+.mobile-menu a.active {
+  font-weight: 800;
+}
 
 /* =========================================================
-   HOME
+   5. 首頁專用樣式 (Homepage)
    ========================================================= */
-body.home{
+body.home {
   background: var(--home-body);
   color: var(--home-white);
 }
 
-/* HOME 主容器不限制寬度 */
-.homeMain{
-  max-width:none;
-  margin:0;
+.homeMain {
+  max-width: none;
+  margin: 0;
 }
 
-/* ✅ 首頁主視覺：真正滿版（套 fullbleed） */
-.homeHeroImage{
+/* === 首頁主視覺 === */
+.homeHeroImage {
   min-height: calc(100vh - 72px);
   background-image:
-    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.38)),
     url("../images/index/ran1.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  border-bottom: 1px solid rgba(254,254,254,.14);
-
+  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
 }
 
-/* 四個按鈕 */
-.homeButtons{
-  width:100%;
-  max-width:1000px;
-  margin:0 auto;
-  display:flex;
-  gap:12px;
-  padding:16px 0 10px;
+/* === 首頁按鈕組 === */
+.homeButtons {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  padding: 16px 0 10px;
 }
 
-.homeBtn{
-  flex:1;
-  height:44px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  background:#17110c;
-  color:#fefefe;
-
-  font-weight:800;
-  letter-spacing:.8px;
-
-  position:relative;
-  overflow:hidden;
-  border-radius: 12px;
+.homeBtn {
+  flex: 1;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--home-ink);
+  color: var(--home-white);
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
   transform: translateY(0);
-
   box-shadow:
-    inset 0 0 0 1px rgba(254,254,254,.18),
-    0 10px 22px rgba(0,0,0,.18);
-
+    inset 0 0 0 1px rgba(254, 254, 254, 0.18),
+    var(--shadow-sm);
   transition:
-    transform .18s ease,
-    box-shadow .18s ease,
-    filter .18s ease;
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
 }
 
-/* 底部掃過亮線 */
-.homeBtn::after{
-  content:"";
-  position:absolute;
-  left:-40%;
-  bottom:0;
-  width:40%;
-  height:3px;
-  background: #fefefe;
+/* === 按鈕動畫效果 === */
+.homeBtn::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background:
+    radial-gradient(600px 90px at 20% 0%, rgba(254, 254, 254, 0.10), transparent 60%),
+    radial-gradient(600px 90px at 80% 100%, rgba(254, 254, 254, 0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.homeBtn::after {
+  content: "";
+  position: absolute;
+  left: -40%;
+  bottom: 0;
+  width: 40%;
+  height: 3px;
+  background: var(--home-white);
   opacity: 0;
   transform: skewX(-18deg);
-  transition: left .35s ease, opacity .2s ease;
+  transition: left 0.35s ease, opacity 0.2s ease;
 }
 
-/* 內部微光 */
-.homeBtn::before{
-  content:"";
-  position:absolute;
-  inset:-1px;
-  background:
-    radial-gradient(600px 90px at 20% 0%, rgba(254,254,254,.10), transparent 60%),
-    radial-gradient(600px 90px at 80% 100%, rgba(254,254,254,.08), transparent 60%);
-  opacity: 0;
-  transition: opacity .25s ease;
-  pointer-events:none;
-}
-
-/* Hover */
-.homeBtn:hover{
+/* === 按鈕互動狀態 === */
+.homeBtn:hover {
   transform: translateY(-2px);
   box-shadow:
-    inset 0 0 0 1px rgba(254,254,254,.28),
-    0 14px 28px rgba(0,0,0,.28);
+    inset 0 0 0 1px rgba(254, 254, 254, 0.28),
+    var(--shadow-md);
   filter: brightness(1.06);
 }
-.homeBtn:hover::before{ opacity: 1; }
-.homeBtn:hover::after{ opacity: 1; left: 110%; }
 
-/* Active */
-.homeBtn:active{
-  transform: translateY(0px) scale(.99);
+.homeBtn:hover::before {
+  opacity: 1;
+}
+
+.homeBtn:hover::after {
+  opacity: 1;
+  left: 110%;
+}
+
+.homeBtn:active {
+  transform: translateY(0px) scale(0.99);
   filter: brightness(0.98);
 }
 
-/* Focus */
-.homeBtn:focus-visible{
-  outline: 3px solid rgba(254,254,254,.55);
+.homeBtn:focus-visible {
+  outline: 3px solid rgba(254, 254, 254, 0.55);
   outline-offset: 3px;
 }
 
-.homeBtn.is-current{
+.homeBtn.is-current {
   box-shadow:
-    inset 0 0 0 2px rgba(254,254,254,.22),
-    0 10px 22px rgba(0,0,0,.18);
+    inset 0 0 0 2px rgba(254, 254, 254, 0.22),
+    var(--shadow-sm);
 }
 
-/* 文字區 */
-.homeText{
-  padding:18px 22px 48px;
-  font-size:16px;
-  line-height:1.85;
+/* === 首頁內容區 === */
+.homeText {
+  padding: 18px 22px 48px;
+  font-size: 16px;
+  line-height: 1.85;
 }
 
-/* Footer（一句話） */
-.homeFooter{
-  background: #42372d;
-  color: #fefefe;
+.homeFooter {
+  background: var(--home-body);
+  color: var(--home-white);
   padding: 32px 24px;
   text-align: center;
-  font-size: 18px;      /* ✅ 字大一點 */
+  font-size: 18px;
   letter-spacing: 0.05em;
 }
 
 /* =========================================================
-   RESPONSIVE (HOME)
+   6. 關於頁面 (About Page)
    ========================================================= */
-@media (max-width:768px){
-  .homeHeroImage{ min-height: 260px; }
-  .homeButtons{ width:92%; gap:8px; }
-  .homeBtn{ font-size:14px; height:42px; }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .homeBtn, .homeBtn::before, .homeBtn::after{
-    transition:none !important;
-  }
-}
-
-/* =========================================================
-   PAGES (通用)
-   ========================================================= */
-body.page{
-  background: #42372d;
-  color: #fefefe;
-}
-
-/* 防長字串爆版 */
-.page p, .page li, .page a, .page b, .page span{
-  overflow-wrap:anywhere;
-  word-break:break-word;
-}
-
-/* =========================================================
-   ABOUT
-   ========================================================= */
-.page-about{
-  background: var(--bg);
+.page-about {
+  background: var(--color-bg-primary);
   color: var(--home-white);
 }
 
-.aboutMain{
-  max-width: var(--max);
+.aboutMain {
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
-/* ✅ About Hero：真正滿版 */
-.aboutHeroImage{
+.aboutHeroImage {
   min-height: calc(100vh - 72px);
   background-image:
-    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.38)),
     url("../images/about/ran1.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  border-bottom: 1px solid rgba(254,254,254,.14);
-
+  border-bottom: 1px solid var(--color-border-light);
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
 }
 
-.aboutEssay{
+/* === 關於頁內容區 === */
+.aboutEssay {
   width: 92%;
-  max-width: 960px;
+  max-width: var(--max-width-content);
   margin: 22px auto 0;
   padding: 22px 0 8px;
 }
 
-.aboutH1{
+.aboutH1 {
   margin: 0 0 14px;
   font-size: clamp(26px, 3.0vw, 44px);
   font-weight: 900;
-  letter-spacing: .6px;
-  color: #fefefe;
+  letter-spacing: 0.6px;
+  color: var(--home-white);
 }
 
-.aboutProse{
-  background: rgba(23,17,12,.22);
-  border: 1px solid rgba(254,254,254,.14);
-  border-radius: 18px;
+.aboutProse {
+  background: rgba(23, 17, 12, 0.22);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-base);
   padding: 18px;
-  box-shadow: 0 18px 44px rgba(0,0,0,.25);
+  box-shadow: var(--shadow-lg);
 }
 
-.aboutProse p{
+.aboutProse p {
   margin: 0 0 12px;
   line-height: 1.95;
   font-size: 15px;
-  color: rgba(254,254,254,.90);
+  color: rgba(254, 254, 254, 0.90);
 }
-.aboutProse p:last-child{ margin-bottom: 0; }
 
-.aboutMeta{
+.aboutProse p:last-child {
+  margin-bottom: 0;
+}
+
+/* === 關於頁資訊卡片 === */
+.aboutMeta {
   width: 92%;
-  max-width: 960px;
+  max-width: var(--max-width-content);
   margin: 14px auto 0;
   padding-bottom: 10px;
 }
 
-.aboutMetaCard{
-  background: rgba(254,254,254,.94);
-  color: #17110c;
-  border-radius: 18px;
+.aboutMetaCard {
+  background: rgba(254, 254, 254, 0.94);
+  color: var(--home-ink);
+  border-radius: var(--radius-base);
   padding: 14px 16px;
-  box-shadow: 0 18px 46px rgba(0,0,0,.30);
+  box-shadow: var(--shadow-xl);
 }
 
-.aboutMetaRow{
+.aboutMetaRow {
   display: grid;
   grid-template-columns: 96px 1fr;
   gap: 10px;
   padding: 10px 6px;
-  border-bottom: 1px solid rgba(0,0,0,.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
-.aboutMetaRow:last-child{ border-bottom: 0; }
 
-.aboutMetaLabel{
+.aboutMetaRow:last-child {
+  border-bottom: 0;
+}
+
+.aboutMetaLabel {
   font-size: 13px;
-  color: rgba(23,17,12,.70);
+  color: rgba(23, 17, 12, 0.70);
   font-weight: 700;
 }
-.aboutMetaValue{
+
+.aboutMetaValue {
   font-weight: 900;
-  letter-spacing: .3px;
+  letter-spacing: 0.3px;
 }
 
-.aboutSources{
-  display:grid;
-  gap:8px;
+/* === 關於頁來源連結 === */
+.aboutSources {
+  display: grid;
+  gap: 8px;
 }
-.aboutSources a{
-  color:#17110c;
-  padding:10px 12px;
-  border:1px solid rgba(0,0,0,.10);
-  border-radius:12px;
-  background: rgba(255,255,255,.75);
-  transition: transform .15s ease, box-shadow .15s ease;
+
+.aboutSources a {
+  color: var(--home-ink);
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.75);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
-.aboutSources a:hover{
+
+.aboutSources a:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(0,0,0,.12);
-}
-
-@media (max-width:768px){
-  .aboutHeroImage{ min-height: 260px; }
-  .aboutProse{ padding:16px; }
-  .aboutMetaRow{ grid-template-columns: 82px 1fr; }
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
 }
 
 /* =========================================================
-   ARTISTS
+   7. 藝術家頁面 (Artists Pages)
    ========================================================= */
-.page-artists, .page-artist{
-  background: var(--bg);
+.page-artists,
+.page-artist {
+  background: var(--color-bg-primary);
   color: var(--home-white);
 }
 
-.artistsMain, .artistMain{
-  max-width: var(--max);
+.artistsMain,
+.artistMain {
+  max-width: var(--max-width);
   margin: 0 auto;
 }
 
-/* ✅ Artists Hero：真正滿版 */
-.artistsHeroImage{
+.artistsHeroImage {
   min-height: calc(100vh - 72px);
   background-image:
-    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.38)),
     url("../images/artists/hero.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
-  border-bottom: 1px solid rgba(254,254,254,.14);
-
+  border-bottom: 1px solid var(--color-border-light);
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
 }
 
-/* Intro */
-.artistsIntro{
+/* === 藝術家列表介紹區 === */
+.artistsIntro {
   width: 92%;
-  max-width: 960px;
+  max-width: var(--max-width-content);
   margin: 22px auto 0;
 }
-.artistsH1{
+
+.artistsH1 {
   margin: 0 0 12px;
   font-size: clamp(26px, 3vw, 44px);
   font-weight: 900;
 }
-.artistsLead{
+
+.artistsLead {
   margin: 0;
   line-height: 1.95;
-  color: rgba(254,254,254,.90);
+  color: rgba(254, 254, 254, 0.90);
   font-size: 15px;
 }
 
-/* List Wrap */
-.artistsListWrap{
+/* === 藝術家列表容器 === */
+.artistsListWrap {
   width: 92%;
-  max-width: 1100px;
+  max-width: var(--max-width-wide);
   margin: 18px auto 0;
   padding-bottom: 12px;
 }
 
-.artistsListHeader{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:16px;
-
-  border-bottom: 1px solid rgba(0,0,0,.10);
+.artistsListHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
   padding: 10px 0 14px;
   margin-bottom: 14px;
 }
-.artistsListHeader h2{
-  margin:0;
+
+.artistsListHeader h2 {
+  margin: 0;
   font-size: 16px;
   font-weight: 900;
-  letter-spacing: .5px;
-  color: #17110c;
-}
-.artistsListHeader p{
-  margin:0;
-  font-size: 13px;
-  color: rgba(23,17,12,.65);
+  letter-spacing: 0.5px;
+  color: var(--home-ink);
 }
 
-/* Grid */
-.artistsGrid{
-  display:grid;
+.artistsListHeader p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(23, 17, 12, 0.65);
+}
+
+/* === 藝術家網格佈局 === */
+.artistsGrid {
+  display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 14px;
 }
 
-/* Card */
-.artistCard{
+/* === 藝術家卡片 === */
+.artistCard {
   grid-column: span 4;
-  border-radius: 18px;
-  overflow:hidden;
-
+  border-radius: var(--radius-base);
+  overflow: hidden;
   background: #ffffff;
-  border: 1px solid rgba(0,0,0,.10);
-  box-shadow: 0 14px 28px rgba(0,0,0,.16);
-
-  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.16);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
-.artistCard:hover{
+
+.artistCard:hover {
   transform: translateY(-3px);
   filter: brightness(1.02);
-  box-shadow: 0 22px 44px rgba(0,0,0,.22);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.22);
 }
 
-.artistCardLink{ display:block; height:100%; }
+.artistCardLink {
+  display: block;
+  height: 100%;
+}
 
-.artistThumb{
+.artistThumb {
   height: 190px;
   background-size: cover;
   background-position: center;
-  border-bottom: 1px solid rgba(0,0,0,.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.artistPad{ padding: 14px 14px 12px; }
-
-.artistTop{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:8px;
+.artistPad {
+  padding: 14px 14px 12px;
 }
 
-.artistName{
-  margin:0;
-  font-size:16px;
-  font-weight:900;
-  color:#000;
+.artistTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
 }
 
-.artistRole{
-  font-size:12px;
-  color: rgba(0,0,0,.72);
-  border: 1px solid rgba(0,0,0,.18);
+.artistName {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+  color: #000;
+}
+
+.artistRole {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.18);
   padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(0,0,0,.03);
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.03);
 }
 
-.artistBio{
-  margin:0;
-  color: rgba(0,0,0,.80);
-  font-size:13px;
-  line-height:1.75;
-  min-height:64px;
+.artistBio {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.80);
+  font-size: 13px;
+  line-height: 1.75;
+  min-height: 64px;
 }
 
-.artistMeta{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-top:12px;
-  padding-top:12px;
-  border-top: 1px solid rgba(0,0,0,.10);
-  color: rgba(0,0,0,.60);
-  font-size:12px;
+.artistMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.10);
+  color: rgba(0, 0, 0, 0.60);
+  font-size: 12px;
 }
-.artistMore{ font-weight:800; color:#000; }
 
-/* Artist detail hero 16:9 */
-.artistHero{
+.artistMore {
+  font-weight: 800;
+  color: #000;
+}
+
+/* === 藝術家詳細頁 === */
+.artistHero {
   width: 92%;
-  max-width: 1100px;
+  max-width: var(--max-width-wide);
   margin: 18px auto 0;
   aspect-ratio: 16 / 9;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 18px;
-  overflow:hidden;
-  border: 1px solid rgba(254,254,254,.14);
-  box-shadow: 0 18px 46px rgba(0,0,0,.30);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-xl);
 }
 
-.artistBody{
+.artistBody {
   width: 92%;
-  max-width: 960px;
+  max-width: var(--max-width-content);
   margin: 18px auto 0;
   padding-bottom: 14px;
 }
 
-.artistBack{
-  display:inline-block;
-  color: rgba(254,254,254,.85);
+.artistBack {
+  display: inline-block;
+  color: rgba(254, 254, 254, 0.85);
   margin-bottom: 10px;
 }
 
-.artistH1{
+.artistH1 {
   margin: 0 0 6px;
   font-size: clamp(26px, 3vw, 44px);
   font-weight: 900;
 }
 
-.artistRoleBig{
-  display:inline-block;
+.artistRoleBig {
+  display: inline-block;
   padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(254,254,254,.18);
-  color: rgba(254,254,254,.85);
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(254, 254, 254, 0.18);
+  color: rgba(254, 254, 254, 0.85);
   font-size: 13px;
 }
 
-.artistBioFull{
+.artistBioFull {
   margin: 14px 0 0;
   line-height: 1.95;
-  color: rgba(254,254,254,.92);
+  color: rgba(254, 254, 254, 0.92);
 }
 
-.artistDivider{
-  height: 1px;
-  background: rgba(254,254,254,.14);
-  margin: 18px 0;
-}
-
-.artistH2{
+.artistH2 {
   margin: 0 0 10px;
   font-size: 15px;
   font-weight: 900;
 }
 
-.artistProse{
-  background: rgba(23,17,12,.22);
-  border: 1px solid rgba(254,254,254,.14);
-  border-radius: 18px;
+.artistProse {
+  background: rgba(23, 17, 12, 0.22);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-base);
   padding: 16px;
-  box-shadow: 0 18px 44px rgba(0,0,0,.25);
+  box-shadow: var(--shadow-lg);
 }
-.artistProse p{
+
+.artistProse p {
   margin: 0 0 12px;
   line-height: 1.95;
-  color: rgba(254,254,254,.90);
+  color: rgba(254, 254, 254, 0.90);
 }
-.artistProse p:last-child{ margin-bottom: 0; }
 
-.page-artist .artistKeywords{ display:none; }
+.artistProse p:last-child {
+  margin-bottom: 0;
+}
 
-/* RWD */
-@media (max-width:980px){
-  .artistCard{ grid-column: span 6; }
+/* === 移除不需要的元素 === */
+.artistDivider,
+.artistKeywords,
+#artistKeywords {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
 }
-@media (max-width:640px){
-  .artistCard{ grid-column: span 12; }
-  .artistThumb{ height: 200px; }
-  .artistsHeroImage{ min-height: 260px; }
+
+/* =========================================================
+   8. 作品頁面 (Works Pages)
+   ========================================================= */
+.page-works,
+.page-work {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
-@media (max-width:768px){
-  .artistHero{
+
+.worksMain,
+.workMain {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.worksHeroImage {
+  min-height: calc(100vh - 72px);
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.38)),
+    url("../images/index/ran1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid var(--color-border-light);
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* === 作品列表介紹區 === */
+.worksIntro {
+  width: 92%;
+  max-width: var(--max-width-content);
+  margin: 22px auto 0;
+}
+
+.worksH1 {
+  margin: 0 0 12px;
+  font-size: clamp(26px, 3vw, 44px);
+  font-weight: 900;
+  color: var(--home-white);
+}
+
+.worksLead {
+  margin: 0;
+  line-height: 1.95;
+  color: rgba(254, 254, 254, 0.90);
+  font-size: 15px;
+}
+
+/* === 作品列表容器 === */
+.worksListWrap {
+  width: 92%;
+  max-width: var(--max-width-wide);
+  margin: 18px auto 0;
+  padding-bottom: 12px;
+}
+
+.worksListHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--color-border-light);
+  padding: 10px 0 14px;
+  margin-bottom: 14px;
+}
+
+.worksListHeader h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  color: var(--home-white);
+}
+
+.worksListHeader p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(254, 254, 254, 0.70);
+}
+
+/* === 作品網格佈局 === */
+.worksGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+/* === 作品卡片 === */
+.workCardItem {
+  grid-column: span 4;
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  background: var(--home-white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.workCardItem:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+  box-shadow: var(--shadow-2xl);
+}
+
+.workCardLink {
+  display: block;
+  height: 100%;
+  color: var(--home-ink);
+}
+
+.workThumb {
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.workPad {
+  padding: 14px 14px 12px;
+}
+
+.workTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.workName {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.workBadge {
+  font-size: 12px;
+  color: rgba(23, 17, 12, 0.85);
+  border: 1px solid rgba(23, 17, 12, 0.18);
+  padding: 6px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(23, 17, 12, 0.04);
+}
+
+/* === 作品卡片資訊 === */
+.workArtist {
+  margin: 8px 0 10px;
+  font-weight: 900;
+  color: rgba(23, 17, 12, 0.88);
+  line-height: 1.25;
+}
+
+.workLine {
+  margin: 8px 0 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(23, 17, 12, 0.72);
+  letter-spacing: 0.2px;
+}
+
+.workSub {
+  margin: 0;
+  color: rgba(23, 17, 12, 0.78);
+  font-size: 13px;
+  line-height: 1.75;
+  min-height: 44px;
+}
+
+.workSpecs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.specPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(23, 17, 12, 0.82);
+  border: 1px solid rgba(23, 17, 12, 0.14);
+  background: rgba(23, 17, 12, 0.04);
+}
+
+.workMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  color: rgba(23, 17, 12, 0.65);
+  font-size: 12px;
+}
+
+.workMore {
+  font-weight: 900;
+}
+
+/* === 作品詳細頁 === */
+.brandBack {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-right: 10px;
+  border-radius: var(--radius-xs);
+  color: var(--home-ink);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.workHero {
+  width: 92%;
+  max-width: var(--max-width-wide);
+  margin: 22px auto 0;
+}
+
+.workHeroMedia {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-base);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(254, 254, 254, 0.12);
+}
+
+.workCard {
+  width: 92%;
+  max-width: var(--max-width-wide);
+  margin: 16px auto 0;
+  background: var(--home-white);
+  color: var(--home-ink);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-xl);
+  padding: 18px 18px 16px;
+}
+
+.workTitle {
+  margin: 0 0 14px;
+  font-size: clamp(22px, 2.6vw, 36px);
+  font-weight: 900;
+}
+
+.workByline {
+  margin: 6px 0 14px;
+}
+
+.workBy {
+  font-weight: 900;
+  color: rgba(23, 17, 12, 0.82);
+  line-height: 1.25;
+}
+
+/* === 作品詳細資訊網格 === */
+.workFacts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.workFact {
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: rgba(23, 17, 12, 0.04);
+}
+
+.workFact span {
+  display: block;
+  font-size: 12px;
+  color: rgba(23, 17, 12, 0.65);
+  margin-bottom: 6px;
+}
+
+.workFact b {
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* === 作品內容描述 === */
+.workBody p {
+  margin: 0 0 14px;
+  line-height: 2.0;
+  font-size: 15px;
+  color: rgba(23, 17, 12, 0.84);
+}
+
+.workBody p:last-child {
+  margin-bottom: 0;
+}
+
+/* === 作品頁按鈕 === */
+.workActions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.workBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--home-ink);
+  color: var(--home-white);
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.workBtn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+.workBtn:active {
+  transform: translateY(0px) scale(0.99);
+}
+
+/* =========================================================
+   9. 頁尾 (Footer)
+   ========================================================= */
+.siteFooter {
+  background: var(--home-body);
+  color: var(--home-white);
+  font-size: 18px;
+  text-align: center;
+  padding: 32px 24px;
+  margin-top: 22px;
+}
+
+/* =========================================================
+   10. 響應式設計 (Responsive Design)
+   ========================================================= */
+@media (max-width: 980px) {
+  /* === 藝術家卡片：平板兩欄 === */
+  .artistCard {
+    grid-column: span 6;
+  }
+  
+  /* === 作品卡片：平板兩欄 === */
+  .workCardItem {
+    grid-column: span 6;
+  }
+  
+  /* === 作品詳細資訊：兩欄 === */
+  .workFacts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* === 縮小主視覺高度 === */
+  .homeHeroImage,
+  .aboutHeroImage,
+  .artistsHeroImage,
+  .worksHeroImage {
+    min-height: 260px;
+  }
+  
+  /* === 首頁按鈕調整 === */
+  .homeButtons {
+    width: 92%;
+    gap: 8px;
+  }
+  
+  .homeBtn {
+    font-size: 14px;
+    height: 42px;
+  }
+  
+  /* === 關於頁調整 === */
+  .aboutProse {
+    padding: 16px;
+  }
+  
+  .aboutMetaRow {
+    grid-template-columns: 82px 1fr;
+  }
+  
+  /* === 藝術家詳細頁調整 === */
+  .artistHero {
     width: 92%;
     aspect-ratio: 4 / 3;
     margin-top: 14px;
   }
 }
 
+@media (max-width: 640px) {
+  /* === 卡片單欄顯示 === */
+  .artistCard,
+  .workCardItem {
+    grid-column: span 12;
+  }
+  
+  .artistThumb {
+    height: 200px;
+  }
+  
+  /* === 作品詳細資訊：單欄 === */
+  .workFacts {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* =========================================================
-   WORKS (清單頁) + WORK (詳細頁)
+   11. 無障礙與動畫控制 (Accessibility)
    ========================================================= */
-.page-works, .page-work{
-  background: var(--bg);
-  color: var(--fg);
+@media (prefers-reduced-motion: reduce) {
+  .homeBtn,
+  .homeBtn::before,
+  .homeBtn::after,
+  .artistCard,
+  .workCardItem,
+  .aboutSources a,
+  .workBtn {
+    transition: none !important;
+  }
 }
 
-.worksMain, .workMain{
-  max-width: var(--max);
-  margin: 0 auto;
-}
-
-/* ✅ Works Hero：真正滿版 */
-.worksHeroImage{
-  min-height: calc(100vh - 72px);
-  background-image:
-    linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.38)),
-    url("../images/index/ran1.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  border-bottom: 1px solid rgba(254,254,254,.14);
-
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-
-/* Intro */
-.worksIntro{
-  width: 92%;
-  max-width: 960px;
-  margin: 22px auto 0;
-}
-.worksH1{
-  margin: 0 0 12px;
-  font-size: clamp(26px, 3vw, 44px);
-  font-weight: 900;
-  color:#fefefe;
-}
-.worksLead{
-  margin: 0;
-  line-height: 1.95;
-  color: rgba(254,254,254,.90);
-  font-size: 15px;
-}
-
-/* List */
-.worksListWrap{
-  width: 92%;
-  max-width: 1100px;
-  margin: 18px auto 0;
-  padding-bottom: 12px;
-}
-.worksListHeader{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:16px;
-  border-bottom: 1px solid rgba(254,254,254,.14);
-  padding: 10px 0 14px;
-  margin-bottom: 14px;
-}
-.worksListHeader h2{
-  margin:0;
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: .5px;
-  color:#fefefe;
-}
-.worksListHeader p{
-  margin:0;
-  font-size: 13px;
-  color: rgba(254,254,254,.70);
-}
-
-/* Grid */
-.worksGrid{
-  display:grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 14px;
-}
-
-/* Card */
-.workCardItem{
-  grid-column: span 4;
-  border-radius: 18px;
-  overflow:hidden;
-  background: #fefefe;
-  border: 1px solid rgba(0,0,0,.08);
-  box-shadow: 0 18px 44px rgba(0,0,0,.25);
-  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
-}
-.workCardItem:hover{
-  transform: translateY(-2px);
-  filter: brightness(1.02);
-  box-shadow: 0 24px 60px rgba(0,0,0,.30);
-}
-
-.workCardLink{
-  display:block;
-  height:100%;
-  color: #17110c;
-}
-
-.workThumb{
-  height: 190px;
-  background-size: cover;
-  background-position: center;
-  border-bottom: 1px solid rgba(0,0,0,.08);
-}
-
-.workPad{ padding: 14px 14px 12px; }
-
-.workTop{
-  display:flex;
-  align-items:baseline;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:8px;
-}
-.workName{
-  margin:0;
-  font-size: 16px;
-  font-weight: 900;
-}
-.workBadge{
-  font-size: 12px;
-  color: rgba(23,17,12,.85);
-  border: 1px solid rgba(23,17,12,.18);
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(23,17,12,.04);
-}
-
-.workSub{
-  margin: 0;
-  color: rgba(23,17,12,.78);
-  font-size: 13px;
-  line-height: 1.75;
-  min-height: 44px;
-}
-
-.workMeta{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-top:12px;
-  padding-top:12px;
-  border-top: 1px solid rgba(0,0,0,.08);
-  color: rgba(23,17,12,.65);
-  font-size: 12px;
-}
-.workMore{ font-weight: 900; }
-
-/* WORK DETAIL */
-.brandBack{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width: 34px;
-  height: 34px;
-  margin-right: 10px;
-  border-radius: 10px;
-  color: var(--home-ink);
-  background: rgba(255,255,255,.18);
-}
-
-.workHero{
-  width: 92%;
-  max-width: 1100px;
-  margin: 22px auto 0;
-}
-.workHeroMedia{
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 18px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 0 18px 44px rgba(0,0,0,.35);
-  border: 1px solid rgba(254,254,254,.12);
-}
-
-.workCard{
-  width: 92%;
-  max-width: 1100px;
-  margin: 16px auto 0;
-  background: #fefefe;
-  color: #17110c;
-  border-radius: 18px;
-  box-shadow: 0 18px 46px rgba(0,0,0,.35);
-  padding: 18px 18px 16px;
-}
-
-.workTitle{
-  margin: 0 0 14px;
-  font-size: clamp(22px, 2.6vw, 36px);
-  font-weight: 900;
-}
-
-.workFacts{
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 14px;
-}
-.workFact{
-  border: 1px solid rgba(0,0,0,.10);
-  border-radius: 14px;
-  padding: 10px 12px;
-  background: rgba(23,17,12,.04);
-}
-.workFact span{
-  display:block;
-  font-size: 12px;
-  color: rgba(23,17,12,.65);
-  margin-bottom: 6px;
-}
-.workFact b{
-  font-weight: 900;
-  font-size: 14px;
-}
-
-.workBody p{
-  margin: 10px 0;
-  line-height: 1.95;
-  color: rgba(23,17,12,.84);
-  font-size: 14px;
-}
-
-.workActions{
-  margin-top: 14px;
-  display:flex;
-  justify-content:flex-end;
-}
-.workBtn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: #17110c;
-  color: #fefefe;
-  font-weight: 900;
-  letter-spacing: .6px;
-  box-shadow: 0 12px 24px rgba(0,0,0,.18);
-  transition: transform .18s ease, filter .18s ease;
-}
-.workBtn:hover{ transform: translateY(-1px); filter: brightness(1.06); }
-.workBtn:active{ transform: translateY(0px) scale(.99); }
-
-/* Footer（通用） */
-.siteFooter{
-  background: #42372d;
-  color: #fefefe;
-  font-size: 18px;       /* ✅ 字大一點 */
-  text-align: center;
-  padding: 32px 24px;    /* ✅ 左右留空隙 */
-  margin-top: 22px;
-}
-
-/* RWD */
-@media (max-width:980px){
-  .workCardItem{ grid-column: span 6; }
-  .workFacts{ grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width:640px){
-  .workCardItem{ grid-column: span 12; }
-  .workFacts{ grid-template-columns: 1fr; }
-}
-
-  .workFacts{ grid-template-columns: 1fr; }
-}
-/* =========================
-   WORKS - polish (補強)
-   ========================= */
-
-/* 作品卡片：作者（可以兩行） */
-.workArtist{
-  margin: 8px 0 10px;
-  font-weight: 900;
-  color: rgba(23,17,12,.88);
-  line-height: 1.25;
-}
-
-/* 媒材/尺寸 pill */
-.workSpecs{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-bottom: 10px;
-}
-.specPill{
-  display:inline-flex;
-  align-items:center;
-  padding: 7px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-  color: rgba(23,17,12,.82);
-  border: 1px solid rgba(23,17,12,.14);
-  background: rgba(23,17,12,.04);
-}
-
-/* 詳細頁：作者列 */
-.workByline{
-  margin: 6px 0 14px;
-}
-.workBy{
-  font-weight: 900;
-  color: rgba(23,17,12,.82);
-  line-height: 1.25;
-}
-
-/* 詳細頁：段落更好讀 */
-.workBody p{
-  margin: 0 0 14px;
-  line-height: 2.0;
-  font-size: 15px;
-  color: rgba(23,17,12,.84);
-}
-.workBody p:last-child{ margin-bottom: 0; }
-/* works card: 一行資訊（媒材｜大小｜年份） */
-.workLine{
-  margin: 8px 0 10px;
-  font-size: 13px;
-  line-height: 1.6;
-  color: rgba(23,17,12,.72);
-  letter-spacing: .2px;
-}
-
-/* 了解更多 */
-.workMore{
-  font-weight: 900;
-}
-/* ===== 移除藝術家詳細頁底部的橢圓空框 ===== */
-.page-artist .artistDivider,
-.page-artist .artistKeywords{
-  display: none !important;
-}
-/* ✅ 強制移除藝術家詳細頁下方那個橢圓框（關鍵字容器） */
-#artistKeywords,
-.artistKeywords{
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
+/* =========================================================
+   12. 列印樣式 (Print Styles)
+   ========================================================= */
+@media print {
+  /* 隱藏導航和互動元素 */
+  .header,
+  .mobile-menu,
+  .homeButtons,
+  .workActions,
+  .siteFooter {
+    display: none !important;
+  }
+  
+  /* 調整背景色以節省墨水 */
+  body {
+    background: white;
+    color: black;
+  }
+  
+  /* 移除陰影效果 */
+  * {
+    box-shadow: none !important;
+  }
 }
