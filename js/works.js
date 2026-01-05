@@ -12,25 +12,23 @@ document.addEventListener("DOMContentLoaded", () => {
       "'": "&#39;"
     }[c]));
 
-  // 卡片允許 artist/title 內有 <br>，所以我們做一個「安全的 br 允許版」
+  // 允許 <br>（但這裡 title 通常不需要）
   const safeWithBR = (s = "") => {
     const str = String(s);
-    // 先暫時保留 <br>
     const keepBR = str.replace(/<br\s*\/?>/gi, "___BR___");
-    // 其他都 escape
     const escaped = escapeHTML(keepBR);
-    // 再還原 <br>
     return escaped.replace(/___BR___/g, "<br>");
   };
 
   grid.innerHTML = window.WORKS.map((w) => {
     const title = safeWithBR(w.title || "");
-    const artist = safeWithBR(w.artist || "");
-    const year = escapeHTML(w.year || "");
-    const medium = escapeHTML(w.medium || "");
+    const medium = escapeHTML(w.medium || "—");
     const size = escapeHTML(w.size || "—");
+    const year = escapeHTML(w.year || "—");
     const img = escapeHTML(w.image || "");
-    const cardBio = escapeHTML(w.cardBio || "");
+
+    // 顯示：名稱｜媒材｜大小｜年份
+    const metaLine = `${medium}｜${size}｜${year}`;
 
     return `
       <article class="workCardItem" role="article">
@@ -38,22 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="workThumb" style="background-image:url('${img}')"></div>
 
           <div class="workPad">
-            <div class="workTop">
-              <h3 class="workName">${title}</h3>
-              <span class="workBadge">${year}</span>
-            </div>
-
-            <p class="workArtist">${artist}</p>
-
-            <div class="workSpecs">
-              <span class="specPill">${medium}</span>
-              <span class="specPill">${size}</span>
-            </div>
-
-            <p class="workSub">${cardBio}</p>
-
+            <h3 class="workName">${title}</h3>
+            <p class="workLine">${escapeHTML(metaLine)}</p>
             <div class="workMeta">
-              <span class="workMore">閱讀更多 →</span>
+              <span class="workMore">點擊了解更多 →</span>
             </div>
           </div>
         </a>
@@ -61,3 +47,4 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }).join("");
 });
+
