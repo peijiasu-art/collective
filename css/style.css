@@ -955,3 +955,52 @@ body.page{
 
   .workFacts{ grid-template-columns: 1fr; }
 }
+/* =========================
+   WORKS - polish (補強)
+   ========================= */
+
+/* 作品卡片：作者（可以兩行） */
+.workArtist{
+  margin: 8px 0 10px;
+  font-weight: 900;
+  color: rgba(23,17,12,.88);
+  line-height: 1.25;
+}
+
+/* 媒材/尺寸 pill */
+.workSpecs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom: 10px;
+}
+.specPill{
+  display:inline-flex;
+  align-items:center;
+  padding: 7px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(23,17,12,.82);
+  border: 1px solid rgba(23,17,12,.14);
+  background: rgba(23,17,12,.04);
+}
+
+/* 詳細頁：作者列 */
+.workByline{
+  margin: 6px 0 14px;
+}
+.workBy{
+  font-weight: 900;
+  color: rgba(23,17,12,.82);
+  line-height: 1.25;
+}
+
+/* 詳細頁：段落更好讀 */
+.workBody p{
+  margin: 0 0 14px;
+  line-height: 2.0;
+  font-size: 15px;
+  color: rgba(23,17,12,.84);
+}
+.workBody p:last-child{ margin-bottom: 0; }
