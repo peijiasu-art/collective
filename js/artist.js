@@ -51,11 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   }
 
-  // 關鍵字
+  // ✅ 關鍵字：如果沒有關鍵字，就把整個框隱藏（解決空橢圓框）
   if (kwEl) {
-    kwEl.innerHTML = (artist.keywords || [])
-      .map(k => `<span class="kwPill">${escapeHTML(String(k))}</span>`)
-      .join("");
+    const kws = (artist.keywords || []).filter(Boolean);
+
+    if (kws.length === 0) {
+      kwEl.style.display = "none";
+    } else {
+      kwEl.innerHTML = kws
+        .map(k => `<span class="kwPill">${escapeHTML(String(k))}</span>`)
+        .join("");
+    }
   }
 
   // ========= helpers =========
