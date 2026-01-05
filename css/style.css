@@ -1017,3 +1017,8 @@ body.page{
 .workMore{
   font-weight: 900;
 }
+/* ===== 移除藝術家詳細頁底部的橢圓空框 ===== */
+.page-artist .artistDivider,
+.page-artist .artistKeywords{
+  display: none !important;
+}
