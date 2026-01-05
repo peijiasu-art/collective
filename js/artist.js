@@ -2,50 +2,38 @@
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(location.search);
   const slug = params.get("slug");
-  if (!slug || !window.ARTISTS) return;
+  if (!slug || !Array.isArray(window.ARTISTS)) return;
 
-  const artist = window.ARTISTS.find(a => a.slug === slug);
+  const artist = window.ARTISTS.find(a => a && a.slug === slug);
   if (!artist) return;
 
   const hero = document.querySelector("#artistHero");
   const nameEl = document.querySelector("#artistName");
   const roleEl = document.querySelector("#artistRole");
   const bioEl  = document.querySelector("#artistBio");
-  const detailEl = document.querySelector("#artistDetail");
+  const kwEl   = document.querySelector("#artistKeywords");
 
-  // ✅ title 不要帶 <br>，所以把 <br> 去掉
-  const plainName = String(artist.name || "").replace(/<br\s*\/?>/gi, " ");
+  // 把 <br> 去掉做 title
+  const plainName = String(artist.name || "").replace(/<br\s*\/?>/gi, " ").replace(/<[^>]*>/g, "").trim();
   document.title = `${plainName}｜藝術家｜Student Art Collective`;
 
   if (hero) {
     hero.style.backgroundImage =
-      `linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)), url('${artist.image}')`;
+      `linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)), url('${artist.image || ""}')`;
   }
 
-  if (nameEl) nameEl.textContent = plainName;
+  // ✅ 讓名字可以換行（支援 <br>）
+  if (nameEl) nameEl.innerHTML = artist.name || "";
+
   if (roleEl) roleEl.textContent = artist.role || "";
-  if (bioEl)  bioEl.textContent  = artist.cardBio || "";
 
-  // ✅ 把 detail.intro 的換行切成段落
-  if (detailEl) {
-    const raw = (artist.detail && artist.detail.intro) ? String(artist.detail.intro) : "";
-    const paragraphs = raw
-      .split(/\n{2,}/)                 // 兩個以上換行 => 新段落
-      .map(s => s.trim())
-      .filter(Boolean)
-      .map(p => `<p>${escapeHTML(p).replace(/\n/g, "<br>")}</p>`)
+  // ✅ 詳細內容：優先用 detail.intro
+  const detailIntro = artist.detail && artist.detail.intro ? artist.detail.intro : "";
+  if (bioEl) bioEl.textContent = detailIntro || artist.cardBio || "";
+
+  if (kwEl) {
+    kwEl.innerHTML = (artist.keywords || [])
+      .map(k => `<span class="kwPill">${String(k)}</span>`)
       .join("");
-
-    detailEl.innerHTML = paragraphs || `<p>（尚未提供詳細內容）</p>`;
-  }
-
-  function escapeHTML(s = "") {
-    return String(s).replace(/[&<>"']/g, (c) => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#39;"
-    }[c]));
   }
 });
