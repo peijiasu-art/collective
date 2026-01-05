@@ -1022,3 +1022,12 @@ body.page{
 .page-artist .artistKeywords{
   display: none !important;
 }
+/* ✅ 強制移除藝術家詳細頁下方那個橢圓框（關鍵字容器） */
+#artistKeywords,
+.artistKeywords{
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
