@@ -678,13 +678,7 @@ body.home {
   font-weight: 900;
 }
 
-.artistProse {
-  background: rgba(23, 17, 12, 0.22);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-base);
-  padding: 16px;
-  box-shadow: var(--shadow-lg);
-}
+
 
 .artistProse p {
   margin: 0 0 12px;
