@@ -1004,3 +1004,16 @@ body.page{
   color: rgba(23,17,12,.84);
 }
 .workBody p:last-child{ margin-bottom: 0; }
+/* works card: 一行資訊（媒材｜大小｜年份） */
+.workLine{
+  margin: 8px 0 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(23,17,12,.72);
+  letter-spacing: .2px;
+}
+
+/* 了解更多 */
+.workMore{
+  font-weight: 900;
+}
