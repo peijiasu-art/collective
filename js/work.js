@@ -1,44 +1,63 @@
 // js/work.js
 document.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(location.search);
-  const id = params.get("id");
+  const slug = params.get("slug");
+  if (!slug || !Array.isArray(window.WORKS)) return;
 
-  const w = (window.WORKS || []).find(x => x.id === id);
+  const work = window.WORKS.find(w => w && w.slug === slug);
+  if (!work) return;
 
-  // DOM
-  const navTitle = document.getElementById("workNavTitle");
-  const hero = document.getElementById("workHeroMedia");
-  const title = document.getElementById("workTitle");
-  const artist = document.getElementById("workArtist");
-  const year = document.getElementById("workYear");
-  const medium = document.getElementById("workMedium");
-  const size = document.getElementById("workSize");
-  const body = document.getElementById("workBody");
+  const hero = document.querySelector("#workHeroMedia");
+  const titleEl = document.querySelector("#workTitle");
+  const artistEl = document.querySelector("#workArtist");
+  const yearEl = document.querySelector("#workYear");
+  const mediumEl = document.querySelector("#workMedium");
+  const sizeEl = document.querySelector("#workSize");
+  const bodyEl = document.querySelector("#workBody");
 
-  const setText = (el, val) => { if (el) el.textContent = val ?? ""; };
+  const escapeHTML = (s = "") =>
+    String(s).replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    }[c]));
 
-  if (!w) {
-    setText(navTitle, "找不到作品");
-    setText(title, "找不到作品");
-    if (body) body.innerHTML = `<p>作品不存在或連結錯誤。請回到作品列表重新選擇。</p>`;
-    return;
-  }
+  const safeWithBR = (s = "") => {
+    const str = String(s);
+    const keepBR = str.replace(/<br\s*\/?>/gi, "___BR___");
+    const escaped = escapeHTML(keepBR);
+    return escaped.replace(/___BR___/g, "<br>");
+  };
 
-  document.title = `${w.title}｜Student Art Collective`;
+  // 做法A：把純文字的換行分段 -> <p>
+  const textToParagraphs = (text = "") => {
+    const raw = String(text).trim();
+    if (!raw) return "";
 
-  setText(navTitle, w.title);
-  setText(title, w.title);
-  setText(artist, w.artist);
-  setText(year, w.year);
-  setText(medium, w.medium);
-  setText(size, w.size);
+    // 以「空行」切段：兩個以上換行視為新段落
+    const paras = raw.split(/\n\s*\n+/g).map(p => p.trim()).filter(Boolean);
+
+    return paras.map(p => `<p>${escapeHTML(p)}</p>`).join("");
+  };
+
+  // title for document (去掉 br / html)
+  const plainTitle = String(work.title || "").replace(/<br\s*\/?>/gi, " ").replace(/<[^>]*>/g, "").trim();
+  document.title = `${plainTitle}｜作品｜Student Art Collective`;
 
   if (hero) {
-    hero.style.backgroundImage = `url('${w.hero || w.cover}')`;
+    const img = work.image || "";
+    hero.style.backgroundImage =
+      `linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.38)), url('${img}')`;
   }
 
-  if (body) {
-    const paras = (w.desc || []).map(t => `<p>${t}</p>`).join("");
-    body.innerHTML = paras || "<p>（尚未提供作品敘述）</p>";
-  }
+  if (titleEl) titleEl.innerHTML = safeWithBR(work.title || "");
+  if (artistEl) artistEl.innerHTML = safeWithBR(work.artist || "");
+  if (yearEl) yearEl.textContent = work.year || "—";
+  if (mediumEl) mediumEl.textContent = work.medium || "—";
+  if (sizeEl) sizeEl.textContent = work.size || "—";
+
+  const intro = work.detail && work.detail.intro ? work.detail.intro : (work.cardBio || "");
+  if (bodyEl) bodyEl.innerHTML = textToParagraphs(intro);
 });
