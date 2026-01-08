@@ -1157,3 +1157,23 @@ body.home {
     box-shadow: none !important;
   }
 }
+/* ===== About：策展人 Chips ===== */
+.aboutChips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.aboutChips .chip{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.12);
+  background: rgba(255,255,255,.92);
+  color:#17110c;
+  font-weight:900;
+  letter-spacing:.2px;
+  line-height:1;
+  box-shadow: 0 10px 20px rgba(0,0,0,.08);
+}
