@@ -43,6 +43,7 @@
   <section class="aboutEssay">
     <h1 class="aboutH1">主題名稱（填入）</h1>
 
+    <!-- ✅ 不想要框：若你已經刪掉 aboutProse 的框樣式，這裡就會是純文字排版 -->
     <div class="aboutProse">
       <p>
         這裡放策展論述（第一段）。建議 3–6 行，先講核心命題：你們關注什麼？用什麼方式呈現？
@@ -63,9 +64,16 @@
   <!-- ③ 最下面：策展人 + 資料來源 -->
   <section class="aboutMeta">
     <div class="aboutMetaCard">
+
+      <!-- ✅ 改這裡：策展人改成兩個姓名（可加到更多） -->
       <div class="aboutMetaRow">
         <span class="aboutMetaLabel">策展人</span>
-        <b class="aboutMetaValue">（填入姓名／小組）</b>
+        <div class="aboutMetaValue">
+          <div class="aboutChips">
+            <span class="chip">策展人姓名 A</span>
+            <span class="chip">策展人姓名 B</span>
+          </div>
+        </div>
       </div>
 
       <div class="aboutMetaRow">
