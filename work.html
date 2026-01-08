@@ -33,14 +33,28 @@
 <main class="workMain">
 
   <section class="workHero">
-    <div id="workHeroMedia" class="workHeroMedia"></div>
+    <!-- ✅ 改成輪播（carousel） -->
+    <div id="workCarousel" class="workHeroMedia workCarousel" aria-label="作品圖片輪播">
+      <button class="workCarouselBtn workCarouselPrev" type="button" aria-label="上一張">‹</button>
+
+      <div class="workCarouselViewport">
+        <div id="workCarouselTrack" class="workCarouselTrack">
+          <!-- JS 會把每張圖塞進來：.workCarouselSlide -->
+        </div>
+      </div>
+
+      <button class="workCarouselBtn workCarouselNext" type="button" aria-label="下一張">›</button>
+
+      <div id="workCarouselDots" class="workCarouselDots" aria-label="輪播頁碼">
+        <!-- JS 會塞 dots -->
+      </div>
+    </div>
   </section>
 
   <section class="workCard">
     <a class="artistBack" href="works.html">← 回到作品清單</a>
 
     <h1 id="workTitle" class="workTitle"></h1>
-
 
     <div class="workFacts">
       <div class="workFact">
