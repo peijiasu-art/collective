@@ -12,33 +12,33 @@ document.addEventListener("DOMContentLoaded", () => {
       "'": "&#39;"
     }[c]));
 
-  // 允許 <br>（但這裡 title 通常不需要）
-  const safeWithBR = (s = "") => {
-    const str = String(s);
-    const keepBR = str.replace(/<br\s*\/?>/gi, "___BR___");
-    const escaped = escapeHTML(keepBR);
-    return escaped.replace(/___BR___/g, "<br>");
-  };
-
   grid.innerHTML = window.WORKS.map((w) => {
-    const title = safeWithBR(w.title || "");
-    const medium = escapeHTML(w.medium || "—");
-    const size = escapeHTML(w.size || "—");
-    const year = escapeHTML(w.year || "—");
-    const img = escapeHTML(w.image || "");
-
-    // 顯示：名稱｜媒材｜大小｜年份
-    const metaLine = `${medium}｜${size}｜${year}`;
+    const title = escapeHTML(w.title || "");
+    const artist = escapeHTML(w.artist || "");
+    const year = escapeHTML(w.year || "");
+    const medium = escapeHTML(w.medium || "");
+    const size = escapeHTML(w.size || "");
+    const thumb = escapeHTML(w.thumb || (w.images && w.images[0]) || "");
 
     return `
       <article class="workCardItem" role="article">
-        <a class="workCardLink" href="work.html?slug=${encodeURIComponent(w.slug)}" aria-label="前往 ${escapeHTML(w.title || "")} 的作品頁">
-          <div class="workThumb" style="background-image:url('${img}')"></div>
+        <a class="workCardLink" href="work.html?slug=${encodeURIComponent(w.slug)}" aria-label="前往 ${title} 作品介紹頁">
+          <div class="workThumb" style="background-image:url('${thumb}')"></div>
 
           <div class="workPad">
-            <h3 class="workName">${title}</h3>
-            <p class="workLine">${escapeHTML(metaLine)}</p>
+            <div class="workTop">
+              <h3 class="workName">${title}</h3>
+              <span class="workBadge">${year}</span>
+            </div>
+
+            <p class="workSub">
+              ${artist}<br>
+              ${medium}<br>
+              ${size}
+            </p>
+
             <div class="workMeta">
+              <span></span>
               <span class="workMore">點擊了解更多 →</span>
             </div>
           </div>
@@ -47,4 +47,5 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }).join("");
 });
+
 
