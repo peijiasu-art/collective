@@ -33,21 +33,17 @@
 <main class="workMain">
 
   <section class="workHero">
-    <!-- ✅ 改成輪播（carousel） -->
+    <!-- ✅ 輪播容器（JS 塞圖片進 #workCarouselTrack） -->
     <div id="workCarousel" class="workHeroMedia workCarousel" aria-label="作品圖片輪播">
       <button class="workCarouselBtn workCarouselPrev" type="button" aria-label="上一張">‹</button>
 
       <div class="workCarouselViewport">
-        <div id="workCarouselTrack" class="workCarouselTrack">
-          <!-- JS 會把每張圖塞進來：.workCarouselSlide -->
-        </div>
+        <div id="workCarouselTrack" class="workCarouselTrack"></div>
       </div>
 
       <button class="workCarouselBtn workCarouselNext" type="button" aria-label="下一張">›</button>
 
-      <div id="workCarouselDots" class="workCarouselDots" aria-label="輪播頁碼">
-        <!-- JS 會塞 dots -->
-      </div>
+      <div id="workCarouselDots" class="workCarouselDots" aria-label="輪播頁碼"></div>
     </div>
   </section>
 
@@ -56,26 +52,27 @@
 
     <h1 id="workTitle" class="workTitle"></h1>
 
-    <div class="workFacts">
-      <div class="workFact">
+    <div class="workFacts workFactsCompact">
+      <div class="workFactMini">
         <span>作者</span>
         <b id="workArtist"></b>
       </div>
-      <div class="workFact">
+      <div class="workFactMini">
         <span>年份</span>
         <b id="workYear"></b>
       </div>
-      <div class="workFact">
+      <div class="workFactMini">
         <span>媒材</span>
         <b id="workMedium"></b>
       </div>
-      <div class="workFact">
+      <div class="workFactMini">
         <span>尺寸</span>
         <b id="workSize"></b>
       </div>
     </div>
 
-    <div id="workBody" class="workBody"></div>
+    <!-- ✅ 內文：JS 會用 <p> 分段 -->
+    <div id="workBody" class="workBody workBodyNoBox"></div>
   </section>
 
   <footer class="homeFooter">這裡放一句話</footer>
