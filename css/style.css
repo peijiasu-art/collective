@@ -1824,3 +1824,39 @@ body.home {
 .heroCarouselImg{
   border-radius: 0 !important;
 }
+/* ===== 輪播：置中留白（B版）===== */
+.heroCarousel.heroCarousel--boxed{
+  width: min(980px, calc(100% - 48px)); /* 置中，左右留白 */
+  margin: 24px auto 0;
+  position: relative;
+
+  /* ⭐ 防止舊 hero CSS 影響 */
+  margin-left: auto;
+  transform: none;
+  left: auto;
+  right: auto;
+
+  border-radius: 0; /* 直角 */
+  overflow: hidden;
+}
+
+/* viewport 不固定高度，跟著圖片比例走 */
+.heroCarousel--boxed .heroCarouselViewport{
+  height: auto;
+  overflow: hidden;
+}
+
+/* 圖片：完整顯示（不裁切），高度跟著原圖 */
+.heroCarousel--boxed .heroCarouselImg{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 0; /* 直角 */
+}
+
+/* 如果你的 JS 用 slide div 包 img，也一起保險 */
+.heroCarousel--boxed .heroCarouselSlide,
+.heroCarousel--boxed .heroCarouselTrack{
+  border-radius: 0;
+}
