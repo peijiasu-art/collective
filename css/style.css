@@ -1445,9 +1445,10 @@ body.home {
 .aboutHero,
 .artistsHero,
 .worksHero {
-  aspect-ratio: 1724 / 950;
   width: 100%;
-  max-height: calc(100vh - 72px); /* 避免太高 */
+  min-height: calc(100vh - 72px);
+  overflow: hidden;
+  position: relative;
 }
 
 .heroCarousel {
