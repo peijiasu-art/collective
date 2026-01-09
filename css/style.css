@@ -209,10 +209,8 @@ body.home {
 }
 
 /* === 首頁主視覺（輪播版） === */
+/* 舊背景 hero，暫時停用高度控制 */
 .homeHeroImage {
-  height: 62vh;              /* ⭐ 重點在這 */
-  min-height: 420px;         /* 手機下限 */
-  max-height: 760px;         /* 大螢幕不爆 */
   width: 100%;
   overflow: hidden;
   border-bottom: 1px solid rgba(254,254,254,.14);
