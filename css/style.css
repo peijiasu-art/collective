@@ -1511,7 +1511,6 @@ body.home {
 /* 🅱 置中版本（左右留邊） */
 .heroCarousel--boxed {
   width: 100%;
-  max-width: 1200px;   /* 可自行調 */
   margin: 0 auto;
   border-radius: 2px;  /* 可選，看你要不要 */
 }
