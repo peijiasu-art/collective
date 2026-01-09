@@ -210,9 +210,12 @@ body.home {
 
 /* === 首頁主視覺（輪播版） === */
 .homeHeroImage {
+  height: 62vh;              /* ⭐ 重點在這 */
+  min-height: 420px;         /* 手機下限 */
+  max-height: 760px;         /* 大螢幕不爆 */
   width: 100%;
-  min-height: calc(100vh - 72px); /* 跟你之前一樣 */
   overflow: hidden;
+  border-bottom: 1px solid rgba(254,254,254,.14);
 }
 
 /* === 首頁按鈕組 === */
@@ -1438,3 +1441,22 @@ body.home {
   object-position: center;
 }
 
+.homeHero,
+.aboutHero,
+.artistsHero,
+.worksHero {
+  width: 100%;
+  min-height: calc(100vh - 72px); /* 跟你之前一樣 */
+  overflow: hidden;
+}
+.heroCarousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.heroCarouselImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
