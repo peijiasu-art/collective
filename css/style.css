@@ -786,7 +786,7 @@ body.home {
 /* === 作品卡片縮圖（不裁切版本） === */
 .workThumb {
   width: 100%;
-  aspect-ratio: 4 / 5;              /* 直式作品常見比例，可之後再調 */
+  aspect-ratio: 5 / 6;              /* 直式作品常見比例，可之後再調 */
   background-size: contain;         /* ✅ 關鍵：完整顯示作品 */
   background-position: center;
   background-repeat: no-repeat;
