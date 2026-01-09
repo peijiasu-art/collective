@@ -1491,3 +1491,35 @@ body.home {
   display: block;
   object-fit: cover;
 }
+/* =========================
+   Hero Carousel 兩種版本
+========================= */
+
+/* 共用 */
+.heroCarousel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 🅰 全寬版本 */
+.heroCarousel--full {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 🅱 置中版本（左右留邊） */
+.heroCarousel--boxed {
+  width: 100%;
+  max-width: 1200px;   /* 可自行調 */
+  margin: 0 auto;
+  border-radius: 2px;  /* 可選，看你要不要 */
+}
+
+/* 圖片比例自適應 */
+.heroCarouselImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
