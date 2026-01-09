@@ -1551,3 +1551,33 @@ body.home {
   margin-left: 0 !important;
   transform: none !important;
 }
+/* === 統一：所有頁的主視覺輪播都跟首頁一樣（滿版全寬）=== */
+.pageHero.heroCarousel {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
+}
+
+/* 高度跟你首頁一樣（不要寫死 px，跟螢幕走） */
+.pageHero.heroCarousel .heroCarouselViewport {
+  height: calc(100vh - 72px);
+}
+
+/* 讓圖片一定填滿、置中 */
+.pageHero.heroCarousel .heroCarouselImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* 舊 heroImage 不再使用：避免干擾輪播 */
+.aboutHeroImage,
+.artistsHeroImage,
+.worksHeroImage,
+.homeHeroImage {
+  background-image: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+}
