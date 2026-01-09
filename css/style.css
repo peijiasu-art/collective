@@ -1787,3 +1787,40 @@ body.home {
   left: 12px;
   bottom: 12px;
 }
+/* ===== 修正：避免舊的 100vw + translate 影響輪播定位 ===== */
+.heroCarousel{
+  display: block !important;
+  width: min(980px, calc(100% - 48px)) !important; /* 置中留白版 */
+  margin: 24px auto 0 !important;
+
+  /* ⭐ 清掉舊滿版偏移 */
+  margin-left: auto !important;
+  transform: none !important;
+  left: auto !important;
+  right: auto !important;
+  position: relative !important;
+}
+
+/* 如果你輪播 section 仍然同時掛了 artistsHeroImage/homeHeroImage 之類，
+   那些舊 CSS 可能也會動到它。這裡直接把那些「滿版偏移」清掉。 */
+.heroCarousel.homeHeroImage,
+.heroCarousel.aboutHeroImage,
+.heroCarousel.artistsHeroImage,
+.heroCarousel.worksHeroImage{
+  width: min(980px, calc(100% - 48px)) !important;
+  margin: 24px auto 0 !important;
+  margin-left: auto !important;
+  transform: none !important;
+}
+
+/* ✅ 不裁切：圖片完整顯示 */
+.heroCarouselViewport{ height: auto !important; overflow: hidden; }
+.heroCarouselImg{ width: 100% !important; height: auto !important; object-fit: contain !important; }
+
+/* ✅ 直角（不要圓角） */
+.heroCarousel,
+.heroCarouselViewport,
+.heroCarouselSlide,
+.heroCarouselImg{
+  border-radius: 0 !important;
+}
