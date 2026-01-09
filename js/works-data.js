@@ -168,9 +168,9 @@ window.WORKS = [
     year: "1988–1990（系列）",
     medium: "攝影",
     size: "—",
-    thumb: "images/works/cards/Metamorphosis#17.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/Metamorphosis17.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/detail/Metamorphosis#17.png"
+      "images/works/detail/Metamorphosis17.png"
     ],
     cardBio: "人體與自然結合的超現實影像，透過時間與空間掃描扭曲身體形態。",
     detail: {
@@ -185,9 +185,9 @@ window.WORKS = [
     year: "1988–1990（系列）",
     medium: "攝影",
     size: "—",
-    thumb: "images/works/cards/Metamorphosis#31.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/Metamorphosis31.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/detail/Metamorphosis#31.png"
+      "images/works/detail/Metamorphosis31.png"
     ],
     cardBio: "全景攝影扭曲拉伸人體運動痕跡，形成詩意又陌生的自然場景身體語境。",
     detail: {
