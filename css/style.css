@@ -1,9 +1,4 @@
 /* =========================================================
-   專案名稱：藝術作品展示網站
-   最後更新：2025
-   ========================================================= */
-
-/* =========================================================
    1. CSS 變數定義 (Design Tokens)
    ========================================================= */
 :root {
@@ -1546,11 +1541,6 @@ body.home {
 .heroCarouselViewport {
   width: 100%;
 }
-/* ✅ 保險：避免舊 hero image 的 100vw + translateX 影響輪播 */
-.heroCarousel {
-  margin-left: 0 !important;
-  transform: none !important;
-}
 /* === 統一：所有頁的主視覺輪播都跟首頁一樣（滿版全寬）=== */
 .pageHero.heroCarousel {
   width: 100vw;
@@ -1580,4 +1570,65 @@ body.home {
   background-image: none !important;
   min-height: 0 !important;
   height: auto !important;
+}
+
+
+/* =========================
+   HERO CAROUSEL (canonical)
+   放在最底下，確保不被前面覆蓋
+   ========================= */
+.heroCarousel{
+  width:100vw;
+  margin-left:50%;
+  transform:translateX(-50%);
+  overflow:hidden;
+  border-bottom:1px solid rgba(254,254,254,.14);
+  position:relative;
+}
+
+/* 高度：跟螢幕走（不寫死圖片尺寸） */
+.heroCarousel .heroCarouselViewport{
+  height:calc(100vh - 72px);
+  min-height:420px;
+  max-height:760px;
+}
+
+/* Track / Slide */
+.heroCarousel .heroCarouselTrack{
+  height:100%;
+  display:flex;
+  transition:transform .5s ease;
+  will-change:transform;
+}
+.heroCarousel .heroCarouselSlide{
+  flex:0 0 100%;
+  height:100%;
+}
+.heroCarousel .heroCarouselImg{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+/* 左右按鈕（如果你有用） */
+.heroCarousel .heroCarouselBtn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+}
+.heroCarousel .heroCarouselPrev{ left:12px; }
+.heroCarousel .heroCarouselNext{ right:12px; }
+
+/* dots（如果你有用） */
+.heroCarousel .heroCarouselDots{
+  position:absolute;
+  left:50%;
+  bottom:14px;
+  transform:translateX(-50%);
+  z-index:5;
+  display:flex;
+  gap:8px;
 }
