@@ -42,8 +42,22 @@
 <!-- ===== Main ===== -->
 <main class="homeMain">
 
-  <!-- ⭐ 首頁主視覺：單張圖片（非輪播） -->
-  <section class="homeHeroImage"></section>
+  <!-- ⭐ 首頁主視覺：多張圖片（輪播） -->
+  <section
+  class="heroCarousel artistsHeroImage"
+  data-images="images/hero/artists-1.jpg|images/hero/artists-2.jpg|images/hero/artists-3.jpg"
+  data-interval="4500"
+>
+  <button class="heroCarouselBtn heroCarouselPrev" type="button" aria-label="上一張">‹</button>
+
+  <div class="heroCarouselViewport">
+    <div class="heroCarouselTrack"></div>
+  </div>
+
+  <button class="heroCarouselBtn heroCarouselNext" type="button" aria-label="下一張">›</button>
+  <div class="heroCarouselDots" aria-label="輪播頁碼"></div>
+</section>
+
 
   <!-- 四個按鈕 -->
   <section class="homeButtons">
@@ -61,6 +75,8 @@
 </main>
 
 <script src="js/menu.js"></script>
+<script src="js/hero-carousel.js"></script>
+
 </body>
 </html>
 
