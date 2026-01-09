@@ -1427,3 +1427,17 @@ body.home {
   .heroCarouselViewport{ min-height: 44vh; }
   .heroCarouselImg{ min-height: 44vh; }
 }
+.heroCarousel,
+.heroCarouselTrack,
+.heroCarouselSlide,
+.heroCarouselImg {
+  height: 100%;
+}
+
+.heroCarouselImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 🔑 尺寸不同也不會歪 */
+  object-position: center;
+}
+
