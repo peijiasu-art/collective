@@ -18,7 +18,7 @@ window.ARTISTS = [
 
   {
     slug: "b",
-    name: "Anthony Gormley<br>（安東尼・葛姆雷）",
+    name: "Antony Gormley<br>（安東尼・葛姆雷）",
     role: "1950－",
     keywords: ["測量空間", "感知世界"],
     cardBio: "英國當代最具國際影響力的雕塑藝術家之一，其創作長期圍繞「身體、空間與存在」的關係展開。",
