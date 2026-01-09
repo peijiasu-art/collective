@@ -1862,12 +1862,15 @@ body.home {
 }
 .singleImage {
   display: flex;
-  justify-content: center; /* 水平置中 */
-  margin: 40px 0;          /* 上下留空 */
+  justify-content: center;   /* 水平置中 */
+  padding: 40px 24px;        /* ⭐ 左右留空的關鍵 */
+  box-sizing: border-box;
 }
 
 .singleImage img {
-  max-width: 100%;         /* 不超出容器 */
-  height: auto;
+  max-width: 900px;          /* ⭐ 控制圖片最大寬度 */
+  width: 100%;
+  height: auto;              /* 不裁圖 */
   display: block;
 }
+
