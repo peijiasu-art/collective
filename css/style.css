@@ -1462,3 +1462,35 @@ body.home {
   object-fit: cover;
   object-position: center;
 }
+/* ===== Hero Carousel（高度隨圖片） ===== */
+
+.heroCarousel{
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 可視區，不限制高度 */
+.heroCarouselViewport{
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 橫向排列輪播圖 */
+.heroCarouselTrack{
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+/* 每一張 slide */
+.heroCarouselSlide{
+  flex: 0 0 100%;
+}
+
+/* 🔑 關鍵：圖片自己決定高度 */
+.heroCarouselImg{
+  display: block;
+  width: 100%;
+  height: auto;          /* ⭐ 高度跟著圖片 */
+  object-fit: contain;   /* ⭐ 不裁切、不變形 */
+}
