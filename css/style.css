@@ -1538,3 +1538,8 @@ body.home {
 .heroCarouselViewport {
   width: 100%;
 }
+/* ✅ 保險：避免舊 hero image 的 100vw + translateX 影響輪播 */
+.heroCarousel {
+  margin-left: 0 !important;
+  transform: none !important;
+}
