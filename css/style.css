@@ -1732,3 +1732,58 @@ body.home {
 }
 .heroCarouselPrev{ left: 10px; }
 .heroCarouselNext{ right: 10px; }
+/* ===== Hero Carousel 修正：不裁切 + 直角 ===== */
+
+/* 輪播外框（置中留白版：左右會留空是正常的） */
+.heroCarousel{
+  width: min(980px, calc(100% - 48px));
+  margin: 24px auto 0;
+}
+
+/* ✅ 直角：把所有圓角取消 */
+.heroCarousel,
+.heroCarouselViewport,
+.heroCarouselSlide,
+.heroCarouselImg{
+  border-radius: 0 !important;
+}
+
+/* ✅ 不要裁切：高度跟圖片走 */
+.heroCarouselViewport{
+  overflow: hidden;
+  height: auto;         /* 讓內容決定高度 */
+}
+
+/* Track 用 flex，確保每張都是 100% 寬 */
+.heroCarouselTrack{
+  display: flex;
+  transition: transform .45s ease;
+  will-change: transform;
+}
+
+/* 每張 slide 佔滿一個畫面寬 */
+.heroCarouselSlide{
+  flex: 0 0 100%;
+}
+
+/* ✅ 圖片用原始比例顯示，不裁切 */
+.heroCarouselImg{
+  display: block;
+  width: 100%;
+  height: auto;         /* 讓圖片高度自動 */
+  object-fit: contain;  /* 關鍵：不裁切 */
+  object-position: center;
+}
+
+/* 按鈕置中（避免跟著高度變怪） */
+.heroCarouselBtn{
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* dots 不影響版面 */
+.heroCarouselDots{
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+}
