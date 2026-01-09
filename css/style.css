@@ -788,12 +788,20 @@ body.home {
   color: var(--home-ink);
 }
 
+/* === 作品卡片縮圖（不裁切版本） === */
 .workThumb {
-  height: 190px;
-  background-size: cover;
+  width: 100%;
+  aspect-ratio: 3 / 4;              /* 直式作品常見比例，可之後再調 */
+  background-size: contain;         /* ✅ 關鍵：完整顯示作品 */
   background-position: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background-repeat: no-repeat;
+
+  /* 淡淡的底，像畫框，避免留白太突兀 */
+  background-color: rgba(255, 255, 255, 0.06);
+
+  border-radius: 4px;               /* 跟你整體風格一致可留 */
 }
+
 
 .workPad {
   padding: 14px 14px 12px;
