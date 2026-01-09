@@ -1696,3 +1696,39 @@ body.home {
 .worksHero{
   min-height: 0 !important;
 }
+/* =========================
+   Hero Carousel - 做法B（置中卡片 / 左右留空）
+   請放在 style.css 最下方
+   ========================= */
+
+/* 讓整個輪播區塊不要滿版，而是像一張置中的圖 */
+.heroCarousel{
+  width: min(980px, calc(100% - 48px)); /* 左右留空 */
+  margin: 0 auto;                        /* 置中 */
+  border-bottom: 0;                      /* 不要滿版底線 */
+  overflow: hidden;
+  border-radius: 14px;                   /* 可選：像卡片 */
+  box-shadow: 0 18px 40px rgba(0,0,0,.18); /* 可選：更像截圖 */
+}
+
+/* 輪播視窗高度不要寫死 */
+.heroCarouselViewport{
+  height: auto !important;
+}
+
+/* 圖片：不裁切，完整顯示 */
+.heroCarouselImg{
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  object-fit: contain !important;
+  background: transparent;
+}
+
+/* 左右按鈕不要跑到螢幕邊，貼著輪播卡片 */
+.heroCarouselBtn{
+  top: 50%;
+  transform: translateY(-50%);
+}
+.heroCarouselPrev{ left: 10px; }
+.heroCarouselNext{ right: 10px; }
