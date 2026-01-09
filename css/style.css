@@ -1445,10 +1445,11 @@ body.home {
 .aboutHero,
 .artistsHero,
 .worksHero {
+  aspect-ratio: 1724 / 950;
   width: 100%;
-  min-height: calc(100vh - 72px); /* 跟你之前一樣 */
-  overflow: hidden;
+  max-height: calc(100vh - 72px); /* 避免太高 */
 }
+
 .heroCarousel {
   width: 100%;
   height: 100%;
