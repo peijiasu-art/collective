@@ -1522,3 +1522,19 @@ body.home {
   display: block;
   object-fit: cover;
 }
+/* === About：B 版本（置中留邊輪播） === */
+.aboutHero {
+  width: 100%;
+  display: flex;
+  justify-content: center;  /* ✅ 置中 */
+}
+
+.heroCarousel--boxed {
+  width: min(100%, 980px);  /* ✅ 最大寬度可自己調 */
+  margin: 0 auto;           /* ✅ 保底置中 */
+  overflow: hidden;
+}
+
+.heroCarouselViewport {
+  width: 100%;
+}
