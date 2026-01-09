@@ -457,9 +457,6 @@ body.home {
 }
 
 .artistsHeroImage {
-  height: 62vh;              /* ⭐ 重點在這 */
-  min-height: 420px;         /* 手機下限 */
-  max-height: 760px;         /* 大螢幕不爆 */
   width: 100%;
   overflow: hidden;
   border-bottom: 1px solid rgba(254,254,254,.14);
