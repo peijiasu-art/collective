@@ -1860,3 +1860,14 @@ body.home {
 .heroCarousel--boxed .heroCarouselTrack{
   border-radius: 0;
 }
+.singleImage {
+  display: flex;
+  justify-content: center; /* 水平置中 */
+  margin: 40px 0;          /* 上下留空 */
+}
+
+.singleImage img {
+  max-width: 100%;         /* 不超出容器 */
+  height: auto;
+  display: block;
+}
