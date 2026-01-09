@@ -1661,3 +1661,38 @@ body.home {
   min-height: 56vh;  /* 想跟首頁一樣高就調這裡 */
   overflow: hidden;
 }
+/* =========================
+   Hero Carousel - 做法A（不裁切 / 高度吃圖片原始比例）
+   請放在 style.css 最下方
+   ========================= */
+
+/* 取消寫死高度（不再用 100vh / 56vh 這種） */
+.heroCarouselViewport{
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden;
+}
+
+/* track/slide 不要硬撐 100% 高度 */
+.heroCarouselTrack,
+.heroCarouselSlide{
+  height: auto !important;
+}
+
+/* 圖片：寬 100%，高 auto → 不裁切 */
+.heroCarouselImg{
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  display: block;
+  object-fit: contain !important;   /* 保險：不裁切 */
+  object-position: center;
+}
+
+/* 如果你之前有把這四個設成 min-height: calc(100vh - 72px) 也會逼高 */
+.homeHero,
+.aboutHero,
+.artistsHero,
+.worksHero{
+  min-height: 0 !important;
+}
