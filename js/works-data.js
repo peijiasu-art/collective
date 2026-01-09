@@ -41,7 +41,7 @@ window.WORKS = [
   {
     slug: "gormley-standing-matter-2010",
     title: "《Standing Matter V》",
-    artist: "Antony Gormley<br>（安東尼・葛姆雷）",
+    artist: "Antony Gormley（安東尼・葛姆雷）",
     year: "2007",
     medium: "鑄鐵",
     size: "186×50×41 cm",
@@ -58,7 +58,7 @@ window.WORKS = [
   {
     slug: "gormley-quantum-cloud-1999",
     title: "《Quantum Cloud》",
-    artist: "Antony Gormley<br>（安東尼・葛姆雷）",
+    artist: "Antony Gormley（安東尼・葛姆雷）",
     year: "1999",
     medium: "鋼材",
     size: "—",
@@ -129,7 +129,7 @@ window.WORKS = [
   {
     slug: "bourgeois-maman-1999",
     title: "《Maman》",
-    artist: "Louise Bourgeois<br>（露易絲・布爾喬亞）",
+    artist: "Louise Bourgeois（露易絲・布爾喬亞）",
     year: "1999-2007",
     medium: "不鏽鋼、青銅",
     size: "—",
@@ -147,7 +147,7 @@ window.WORKS = [
   {
     slug: "bourgeois-spiral-woman-1983",
     title: "《Spiral Woman》",
-    artist: "Louise Bourgeois<br>（露易絲・布爾喬亞）",
+    artist: "Louise Bourgeois（露易絲・布爾喬亞）",
     year: "1984",
     medium: "青銅",
     size: "—",
@@ -164,7 +164,7 @@ window.WORKS = [
   {
     slug: "fontenoy-metamorphosis-17",
     title: "《Metamorphosis #17》",
-    artist: "Frederic Fontenoy<br>（弗雷德里克・方特努瓦）",
+    artist: "Frederic Fontenoy（弗雷德里克・方特努瓦）",
     year: "1988–1990（系列）",
     medium: "攝影",
     size: "—",
@@ -181,7 +181,7 @@ window.WORKS = [
   {
     slug: "fontenoy-metamorphosis-31",
     title: "《Metamorphosis #31》",
-    artist: "Frederic Fontenoy<br>（弗雷德里克・方特努瓦）",
+    artist: "Frederic Fontenoy（弗雷德里克・方特努瓦）",
     year: "1988–1990（系列）",
     medium: "攝影",
     size: "—",
