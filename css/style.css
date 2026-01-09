@@ -210,9 +210,12 @@ body.home {
 
 /* === 首頁主視覺（輪播版） === */
 .homeHeroImage {
-  min-height: calc(100vh - 72px); /* 跟原本一樣高 */
+  height: 62vh;              /* ⭐ 重點在這 */
+  min-height: 420px;         /* 手機下限 */
+  max-height: 760px;         /* 大螢幕不爆 */
   width: 100%;
-  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(254,254,254,.14);
 }
 
 /* === 首頁按鈕組 === */
@@ -338,9 +341,12 @@ body.home {
 }
 
 .aboutHeroImage {
-  min-height: calc(100vh - 72px); /* 跟原本一樣高 */
+  height: 62vh;              /* ⭐ 重點在這 */
+  min-height: 420px;         /* 手機下限 */
+  max-height: 760px;         /* 大螢幕不爆 */
   width: 100%;
-  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(254,254,254,.14);
 }
 
 /* === 關於頁內容區 === */
@@ -453,9 +459,12 @@ body.home {
 }
 
 .artistsHeroImage {
-  min-height: calc(100vh - 72px); /* 跟原本一樣高 */
+  height: 62vh;              /* ⭐ 重點在這 */
+  min-height: 420px;         /* 手機下限 */
+  max-height: 760px;         /* 大螢幕不爆 */
   width: 100%;
-  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(254,254,254,.14);
 }
 
 /* === 藝術家列表介紹區 === */
@@ -693,9 +702,12 @@ body.home {
 }
 
 .worksHeroImage {
-  min-height: calc(100vh - 72px); /* 跟原本一樣高 */
+  height: 62vh;              /* ⭐ 重點在這 */
+  min-height: 420px;         /* 手機下限 */
+  max-height: 760px;         /* 大螢幕不爆 */
   width: 100%;
-  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(254,254,254,.14);
 }
 
 /* === 作品列表介紹區 === */
