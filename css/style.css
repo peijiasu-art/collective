@@ -208,19 +208,11 @@ body.home {
   margin: 0;
 }
 
-/* === 首頁主視覺 === */
+/* === 首頁主視覺（輪播版） === */
 .homeHeroImage {
-  min-height: calc(100vh - 72px);
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.38)),
-    url("../images/index/ran1.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  min-height: calc(100vh - 72px); /* 跟原本一樣高 */
+  width: 100%;
   border-bottom: 1px solid rgba(254, 254, 254, 0.14);
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
 }
 
 /* === 首頁按鈕組 === */
@@ -346,17 +338,9 @@ body.home {
 }
 
 .aboutHeroImage {
-  min-height: calc(100vh - 72px);
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.38)),
-    url("../images/about/ran1.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-bottom: 1px solid var(--color-border-light);
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  min-height: calc(100vh - 72px); /* 跟原本一樣高 */
+  width: 100%;
+  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
 }
 
 /* === 關於頁內容區 === */
@@ -469,17 +453,9 @@ body.home {
 }
 
 .artistsHeroImage {
-  min-height: calc(100vh - 72px);
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.38)),
-    url("../images/artists/hero.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-bottom: 1px solid var(--color-border-light);
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  min-height: calc(100vh - 72px); /* 跟原本一樣高 */
+  width: 100%;
+  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
 }
 
 /* === 藝術家列表介紹區 === */
@@ -717,17 +693,9 @@ body.home {
 }
 
 .worksHeroImage {
-  min-height: calc(100vh - 72px);
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.38)),
-    url("../images/index/ran1.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-bottom: 1px solid var(--color-border-light);
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  min-height: calc(100vh - 72px); /* 跟原本一樣高 */
+  width: 100%;
+  border-bottom: 1px solid rgba(254, 254, 254, 0.14);
 }
 
 /* === 作品列表介紹區 === */
