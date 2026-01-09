@@ -1519,12 +1519,15 @@ body.home {
 }
 
 /* 圖片比例自適應 */
-.heroCarouselImg {
+/* ✅ 圖片完整顯示：不裁切 */
+.heroCarouselImg{
   width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;        /* 🔑 改這個：cover -> contain */
+  object-position: center;
+  background: #000;           /* 可選：兩側/上下留黑邊，不會露出底色 */
 }
+
 /* === About：B 版本（置中留邊輪播） === */
 .aboutHero {
   width: 100%;
