@@ -11,9 +11,9 @@ window.WORKS = [
     year: "1967",
     medium: "壓克力麻布",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/秋收_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/秋收_1.png"
+      "images/works/detail/秋收_1.png"
     ],
     cardBio: "毛毛人系列代表作之一，以顫抖、重疊線條勾勒模糊人形，呈現疏離與迷茫。",
     detail: {
@@ -28,9 +28,9 @@ window.WORKS = [
     year: "1966",
     medium: "壓克力麻布",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/室內_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/室內_1.png"
+      "images/works/detail/室內_1.png"
     ],
     cardBio: "延續毛毛人系列，描繪封閉室內空間中的互動與冷漠，呈現隔閡與疏離。",
     detail: {
@@ -45,9 +45,9 @@ window.WORKS = [
     year: "2007",
     medium: "鑄鐵",
     size: "186×50×41 cm",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/Standing_Matter_V_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/Standing_Matter_V_1.png"
+      "images/works/detail/Standing_Matter_V_1.png"
     ],
     cardBio: "以人體形態探討存在與意識，堅硬鑄鐵與內在精神形成對比。",
     detail: {
@@ -62,10 +62,10 @@ window.WORKS = [
     year: "1999",
     medium: "鋼材",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/Quantum_Cloud_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/Quantum_Cloud_1.png",
-      "images/works/Quantum_Cloud_2.png"
+      "images/works/detail/Quantum_Cloud_1.png",
+      "images/works/detail/Quantum_Cloud_2.png"
     ],
     cardBio: "由無數細長鋼柱構成人體輪廓，如雲霧般漂浮，呈現實體與虛空張力。",
     detail: {
@@ -81,10 +81,10 @@ window.WORKS = [
     year: "—",
     medium: "攝影刊物與系列影像（合作出版版攝影集）",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/ItsnotmeItsyou_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/ItsnotmeItsyou_1.png",
-      "images/works/ItsnotmeItsyou_2.png"
+      "images/works/detail/ItsnotmeItsyou_1.png",
+      "images/works/detail/ItsnotmeItsyou_2.png"
     ],
     cardBio: "以「創造美好事物不單是我，還有你」為核心，結合詩意構圖探索身份投射與情感矛盾。",
     detail: {
@@ -99,9 +99,9 @@ window.WORKS = [
     year: "2024",
     medium: "銅、花崗岩底座（系列作品）",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/獵物_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/獵物_1.png"
+      "images/works/detail/獵物_1.png"
     ],
     cardBio: "以「視差雕塑」探索動態與感知，跨步伸展的瞬間定格於張力之中。",
     detail: {
@@ -116,9 +116,9 @@ window.WORKS = [
     year: "2020",
     medium: "銅、鐵底座（限量8件）",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/跨越_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/跨越_1.png"
+      "images/works/detail/跨越_1.png"
     ],
     cardBio: "多重視角製造動態感，象徵突破限制與前進的張力。",
     detail: {
@@ -133,10 +133,10 @@ window.WORKS = [
     year: "1999-2007",
     medium: "不鏽鋼、青銅",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/Maman_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/Maman_1.png",
-      "images/works/Maman_2.png"
+      "images/works/detail/Maman_1.png",
+      "images/works/detail/Maman_2.png"
     ],
     cardBio: "巨大蜘蛛象徵母性、守護與創傷記憶，力量與脆弱並存。",
     detail: {
@@ -151,9 +151,9 @@ window.WORKS = [
     year: "1984",
     medium: "青銅",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/Spiral_Woman_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/Spiral_Woman_1.png"
+      "images/works/detail/Spiral_Woman_1.png"
     ],
     cardBio: "女性身體扭曲成螺旋，象徵情感流動與心理張力。",
     detail: {
@@ -168,9 +168,9 @@ window.WORKS = [
     year: "1988–1990（系列）",
     medium: "攝影",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/Metamorphosis#17.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/Metamorphosis#17.png"
+      "images/works/detail/Metamorphosis#17.png"
     ],
     cardBio: "人體與自然結合的超現實影像，透過時間與空間掃描扭曲身體形態。",
     detail: {
@@ -185,9 +185,9 @@ window.WORKS = [
     year: "1988–1990（系列）",
     medium: "攝影",
     size: "—",
-    thumb: "images/works/qiu-shou/thumb.jpg",          // ✅ 卡片用
+    thumb: "images/works/cards/Metamorphosis#31.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/Metamorphosis#31.png"
+      "images/works/detail/Metamorphosis#31.png"
     ],
     cardBio: "全景攝影扭曲拉伸人體運動痕跡，形成詩意又陌生的自然場景身體語境。",
     detail: {
