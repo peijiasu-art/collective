@@ -1635,3 +1635,22 @@ body.home {
   display:flex;
   gap:8px;
 }
+/* ===== Hero 輪播：做法 A（比例固定、不裁切） ===== */
+.heroCarousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 輪播可視區 */
+.heroCarouselViewport {
+  width: 100%;
+  aspect-ratio: 1724 / 950;   /* 🔑 用比例，不用寫死高度 */
+  overflow: hidden;
+}
+
+/* Track & Slide 撐滿 */
+.heroCarouselTrack,
+.heroCarouselSlide {
+  width: 100%;
+  height: 100%;
+}
