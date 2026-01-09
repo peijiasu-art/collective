@@ -36,21 +36,23 @@
 
 <main class="aboutMain">
 
-    <!-- ⭐ 首頁主視覺：多張圖片（輪播） -->
-  <section
-  class="heroCarousel artistsHeroImage"
-  data-images="images/hero/hero_1.jpg|images/hero/測試1.png|images/hero/測試2.png"
-  data-interval="4500"
->
-  <button class="heroCarouselBtn heroCarouselPrev" type="button" aria-label="上一張">‹</button>
+  <section class="aboutHero">
+  <div
+    class="heroCarousel heroCarousel--boxed"
+    data-images="images/hero/hero_1.jpg|images/hero/測試1.png|images/hero/測試2.png"
+    data-interval="4500"
+  >
+    <button class="heroCarouselBtn heroCarouselPrev" type="button" aria-label="上一張">‹</button>
 
-  <div class="heroCarouselViewport">
-    <div class="heroCarouselTrack"></div>
+    <div class="heroCarouselViewport">
+      <div class="heroCarouselTrack"></div>
+    </div>
+
+    <button class="heroCarouselBtn heroCarouselNext" type="button" aria-label="下一張">›</button>
+    <div class="heroCarouselDots" aria-label="輪播頁碼"></div>
   </div>
-
-  <button class="heroCarouselBtn heroCarouselNext" type="button" aria-label="下一張">›</button>
-  <div class="heroCarouselDots" aria-label="輪播頁碼"></div>
 </section>
+
 
 
   <!-- ② 第二頁：主題名稱 + 策展論述 -->
