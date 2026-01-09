@@ -31,7 +31,22 @@
 </header>
 
 <main class="artistsMain">
-  <section class="artistsHeroImage" aria-label="藝術家主視覺"></section>
+    <!-- ⭐ 首頁主視覺：多張圖片（輪播） -->
+  <section
+  class="heroCarousel artistsHeroImage"
+  data-images="images/hero/hero_1.jpg|images/hero/hero_2.jpg|images/hero/hero_3.jpg"
+  data-interval="4500"
+>
+  <button class="heroCarouselBtn heroCarouselPrev" type="button" aria-label="上一張">‹</button>
+
+  <div class="heroCarouselViewport">
+    <div class="heroCarouselTrack"></div>
+  </div>
+
+  <button class="heroCarouselBtn heroCarouselNext" type="button" aria-label="下一張">›</button>
+  <div class="heroCarouselDots" aria-label="輪播頁碼"></div>
+</section>
+
 
   <section class="artistsIntro">
     <h1 class="artistsH1">藝術家</h1>
@@ -58,6 +73,8 @@
 <!-- ✅ 重要：資料一定要先載入，再載入產卡片的 js -->
 <script src="js/artists-data.js"></script>
 <script src="js/artists.js"></script>
+<script src="js/hero-carousel.js"></script>
+
 </body>
 </html>
 
