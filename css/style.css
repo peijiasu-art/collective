@@ -1874,3 +1874,30 @@ body.home {
   display: block;
 }
 
+/* ===============================
+   作品詳細頁：輪播圖尺寸調小
+   =============================== */
+
+/* 整個輪播區高度 */
+.page-work .heroCarousel {
+  height: 52vh;        /* ⭐ 原本太大，這裡調小 */
+  min-height: 360px;   /* 手機下限 */
+  max-height: 620px;   /* 桌機上限 */
+}
+
+/* 輪播內部結構跟著吃高度 */
+.page-work .heroCarouselViewport,
+.page-work .heroCarouselTrack,
+.page-work .heroCarouselSlide,
+.page-work .heroCarouselImg {
+  height: 100%;
+}
+
+/* 圖片呈現方式（不裁怪、不拉扁） */
+.page-work .heroCarouselImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;     /* 🔑 重點：完整顯示作品 */
+  object-position: center;
+  background-color: #17110C; /* 黑棕底，留邊好看 */
+}
