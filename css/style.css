@@ -1880,7 +1880,7 @@ body.home {
 
 /* 整個輪播區高度 */
 .page-work .heroCarousel {
-  height: 52vh;        /* ⭐ 原本太大，這裡調小 */
+  height: 45vh;        /* ⭐ 原本太大，這裡調小 */
   min-height: 360px;   /* 手機下限 */
   max-height: 620px;   /* 桌機上限 */
 }
