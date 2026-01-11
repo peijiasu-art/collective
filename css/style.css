@@ -1966,7 +1966,15 @@ body.home {
 /* =========================
    ARTIST DETAIL — Carousel（補齊版）
    ========================= */
-
+/* ❌ 舊 hero 外框全部拔掉 */
+.artistHero,
+.artistHeroImage,
+.artistHeroMedia {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
 /* ✅ 外框：跟作品同邏輯（16:9），且直角 */
 .artistHero .artistCarousel{
   width: min(920px, 92vw);
