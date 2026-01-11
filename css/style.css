@@ -1914,12 +1914,12 @@ body.home {
   .homeButtons {
     flex-direction: column;  /* ⬅️ 關鍵 */
     gap: 14px;
-    padding: 20px 16px 16px;
+    padding: 30px 16px 30px;
   }
 
   .homeBtn {
     height: 52px;            /* 手機好點 */
-    font-size: 16px;
+    font-size: 24px;
     letter-spacing: 1px;
   }
 }
