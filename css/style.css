@@ -1875,38 +1875,35 @@ body.home {
 }
 
 /* ===============================
-   作品詳細頁：輪播圖尺寸調小
+   作品詳細頁：輪播尺寸（桌機縮小）
+   你現在用的是 #workCarousel / .workCarousel
    =============================== */
 
-/* 整個輪播區高度 */
-.page-work .heroCarousel {
-  height: 45vh;        /* ⭐ 原本太大，這裡調小 */
-  min-height: 360px;   /* 手機下限 */
-  max-height: 620px;   /* 桌機上限 */
-}
-
-/* 輪播內部結構跟著吃高度 */
-.page-work .heroCarouselViewport,
-.page-work .heroCarouselTrack,
-.page-work .heroCarouselSlide,
-.page-work .heroCarouselImg {
-  height: 100%;
-}
-
-/* 圖片呈現方式（不裁怪、不拉扁） */
-.page-work .heroCarouselImg {
+/* 基本：輪播不要撐滿整頁 */
+.page-work .workHero {
   width: 100%;
-  height: 100%;
-  object-fit: contain;     /* 🔑 重點：完整顯示作品 */
-  object-position: center;
-  background-color: #17110C; /* 黑棕底，留邊好看 */
 }
-/* ===============================
-   作品詳細頁：桌機版輪播再小一點
-   =============================== */
+
+/* 輪播容器：置中 + 有左右留白 + 高度可控 */
+.page-work #workCarousel.workCarousel {
+  width: min(980px, 92vw);   /* ✅ 桌機不會滿版，左右留空 */
+  margin: 0 auto;            /* ✅ 置中 */
+  height: 56vh;              /* 預設高度（平板/一般） */
+  max-height: 620px;
+  overflow: hidden;
+  border-radius: 0;          /* ✅ 直角（不要圓角） */
+}
+
+/* 讓內部 viewport/track 撐滿容器高度 */
+.page-work #workCarousel .workCarouselViewport,
+.page-work #workCarousel .workCarouselTrack {
+  height: 100%;
+}
+
+/* ✅ 桌機再縮小（你要的重點） */
 @media (min-width: 992px) {
-  .page-work .heroCarousel {
-    height: 42vh;        /* 桌機高度變小 */
-    max-height: 460px;   /* 桌機上限更小（避免太大） */
+  .page-work #workCarousel.workCarousel {
+    height: 40vh;            /* ✅ 桌機小一點 */
+    max-height: 420px;       /* ✅ 上限更小，避免畫質被放大 */
   }
 }
