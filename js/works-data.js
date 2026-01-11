@@ -83,8 +83,8 @@ window.WORKS = [
     size: "—",
     thumb: "images/works/cards/ItsnotmeItsyou_1.jpg",          // ✅ 卡片用
     images: [                                          // ✅ 詳細頁輪播用
-      "images/works/detail/ItsnotmeItsyou_1.png",
-      "images/works/detail/ItsnotmeItsyou_2.png"
+      "images/works/detail/5.png",
+      "images/works/detail/6.png"
     ],
     cardBio: "以「創造美好事物不單是我，還有你」為核心，結合詩意構圖探索身份投射與情感矛盾。",
     detail: {
