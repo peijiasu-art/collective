@@ -617,7 +617,6 @@ body.home {
   width: 92%;
   max-width: var(--max-width-content);
   margin: 0 auto;
-  padding-top: 6px;
   padding-bottom: 14px;
 }
 
