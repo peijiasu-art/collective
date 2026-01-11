@@ -1875,34 +1875,39 @@ body.home {
 }
 
 /* ===============================
-   作品詳細頁：輪播尺寸（桌機縮小）
-   你現在用的是 #workCarousel / .workCarousel
+   作品詳細頁：輪播等比例縮小、不裁切
    =============================== */
 
-/* 基本：輪播不要撐滿整頁 */
-.page-work .workHero {
-  width: 100%;
-}
-
-/* 輪播容器：置中 + 有左右留白 + 高度可控 */
-.page-work #workCarousel.workCarousel {
-  width: min(980px, 92vw);   /* ✅ 桌機不會滿版，左右留空 */
-  margin: 0 auto;            /* ✅ 置中 */
-  height: 56vh;              /* 預設高度（平板/一般） */
-  max-height: 620px;
+/* 1) 輪播容器縮小 + 置中 + 左右留白 */
+.page-work #workCarousel.workCarousel{
+  width: min(900px, 92vw);
+  margin: 0 auto;
+  height: 40vh;          /* 桌機看起來小一點 */
+  max-height: 420px;     /* 不要放太大避免畫質被放大 */
+  min-height: 260px;     /* 小螢幕不要太扁 */
   overflow: hidden;
-  border-radius: 0;          /* ✅ 直角（不要圓角） */
+  border-radius: 0;      /* 直角 */
 }
 
-/* 讓內部 viewport/track 撐滿容器高度 */
+/* 2) 內部結構撐滿容器高度 */
 .page-work #workCarousel .workCarouselViewport,
-.page-work #workCarousel .workCarouselTrack {
+.page-work #workCarousel .workCarouselTrack{
   height: 100%;
 }
 
-@media (min-width: 992px) {
-  .page-work #workCarousel.workCarousel {
-    height: 320px !important;
-    max-height: 320px !important;
-  }
+/* 3) ✅ 關鍵：圖片用 contain，等比例完整顯示，不裁切 */
+.page-work #workCarousel img,
+.page-work #workCarousel .workCarouselImg,
+.page-work #workCarousel .workCarouselSlide img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;      /* 🔑 不裁切 */
+  object-position: center;
+  display: block;
+}
+
+/* 4) 如果你發現 contain 之後上下或左右會出現空白，這是正常的
+      可以用背景色讓空白更自然（跟你的棕色系一致） */
+.page-work #workCarousel.workCarousel{
+  background: #17110C; /* 或你想要的背景色 */
 }
