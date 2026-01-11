@@ -1887,7 +1887,7 @@ body.home {
 
 .artistBack{
   display: inline-block;
-  font-size: 14px;
+  font-size: 18px;
   color: rgba(254,254,254,.75);
   text-decoration: none;
   transition: color .15s ease, transform .15s ease;
