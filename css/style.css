@@ -915,7 +915,7 @@ body.home {
 }
 
 .workCard {
-  width: 80%;
+  width: 85%;
   max-width: var(--max-width-wide);
   margin: 16px auto 0;
   background: var(--home-white);
