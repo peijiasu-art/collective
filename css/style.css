@@ -616,7 +616,7 @@ body.home {
 .artistBody {
   width: 92%;
   max-width: var(--max-width-content);
-  margin: 18px auto 0;
+  margin: 6px auto 0;
   padding-bottom: 14px;
 }
 
