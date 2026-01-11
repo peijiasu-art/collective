@@ -1879,3 +1879,21 @@ body.home {
   display: block;
 }
 
+/* 回到作品清單（輪播圖與內容之間） */
+.workBackWrap{
+  width: min(920px, 92vw);   /* 跟輪播圖、內容同寬 */
+  margin: 18px auto 0;
+}
+
+.artistBack{
+  display: inline-block;
+  font-size: 14px;
+  color: rgba(254,254,254,.75);
+  text-decoration: none;
+  transition: color .15s ease, transform .15s ease;
+}
+
+.artistBack:hover{
+  color: #fefefe;
+  transform: translateX(-2px);
+}
