@@ -6,7 +6,10 @@ window.ARTISTS = [
     role: "1932－2022",
     keywords: ["節奏", "動勢", "空間感"],
     cardBio: "臺灣現代藝術發展中極具代表性的重要藝術家，亦為「東方畫會」核心成員之一。",
-    image: "images/artists/夏陽.jpg",
+    cardImage: "images/artists/夏陽.jpg",
+    image: ["images/artists/夏陽1.png",
+            "images/artists/夏陽.jpg"],
+            
     detail: {
       intro: `夏陽（1932－2022）是臺灣現代藝術發展中極具代表性的重要藝術家，亦為「東方畫會」核心成員之一。他出生於中國江蘇，1949年後來臺，早年接受學院派訓練，並於1950年代投身臺灣現代藝術運動，積極推動抽象與前衛藝術在地化的發展。
 
@@ -22,7 +25,9 @@ window.ARTISTS = [
     role: "1950－",
     keywords: ["測量空間", "感知世界"],
     cardBio: "英國當代最具國際影響力的雕塑藝術家之一，其創作長期圍繞「身體、空間與存在」的關係展開。",
-    image: "images/artists/Anthony-Gormley.jpg",
+    cardImage: "images/artists/Anthony_Gormley2.WEBP",
+    image: ["images/artists/Anthony_Gormley1.png",
+            "images/artists/Anthony_Gormley2.WEBP"],
     detail: { intro: `Antony Gormley（安東尼・葛姆雷，1950－）是英國當代最具國際影響力的雕塑藝術家之一，其創作長期圍繞「身體、空間與存在」的關係展開。他出生於倫敦，曾就讀於劍橋大學，後於倫敦斯萊德藝術學院完成藝術訓練，並於1980年代逐步確立其獨特的藝術語言。
     
 他以自身身體為創作基準，透過翻模、鑄造與模組化結構，將人體轉化為測量空間與感知世界的工具。他的雕塑往往去除個人特徵，呈現為匿名、靜止而內省的身體形象，使「人」不再是敘事主體，而成為存在於時間與環境中的容器。無論是單一人體雕塑，或大量重複排列的群體作品，皆引導觀者重新思考身體在自然、城市與社會結構中的位置。
@@ -36,6 +41,7 @@ window.ARTISTS = [
     role: "—",
     keywords: ["超現實感", "自我認同"],
     cardBio: "來自臺灣台南的當代攝影藝術家，以獨特、帶有超現實感的身體影像聞名。",
+    cardImage: "images/artists/cards/夏陽_card.jpg",
     image: "images/artists/林永政.jpg",
     detail: { intro: `林永政（3cm）是來自臺灣台南的當代攝影藝術家，以獨特、帶有超現實感的身體影像聞名。他自小對藝術抱有熱忱，從雕塑出發，逐步將對人體形態的觀察融入攝影之中，透過身體形式與視覺語言的再造，呈現出遊走於美感與不安之間的影像世界。其作品常以女性身體為主題，但畫面中的肉體並非為了展示性感，而是揭示社會規範、性別壓力與身份期待之下的張力與矛盾。觀者往往在第一眼看到作品時感受到直接且強烈的視覺衝擊，進而引發更深的情感共鳴與思考。
     
@@ -50,6 +56,7 @@ window.ARTISTS = [
     role: "1962－",
     keywords: ["創新雕塑", "數位創意"],
     cardBio: "美籍臺裔當代雕塑家，以融合傳統雕刻技藝與現代數位科技的跨世代創作著稱。",
+    cardImage: "images/artists/cards/夏陽_card.jpg",
     image: "images/artists/王尋.jpg",
     detail: { intro: `王尋（1962年生）是美籍臺裔當代雕塑家，以融合傳統雕刻技藝與現代數位科技的跨世代創作著稱。幼年於鶯歌習得傳統雕刻基礎，1989年畢業於國立臺灣藝術大學雕塑系，其作品曾榮獲臺北市立美術館美展雕塑類首獎並被國立臺灣美術館等典藏。畢業後赴美深造，進一步習得電腦動畫與三維模型技術，並於1996至2007年間於美國知名視覺特效公司任職，參與包括《哈利波特：神秘的魔法石》、《納尼亞傳奇》等電影的製作，將雕塑與數位創意經驗互相激盪，展現出獨特的跨領域素養。
     
@@ -62,7 +69,8 @@ window.ARTISTS = [
     role: "1911–2010",
     keywords: ["心理創傷"],
     cardBio: "其創作橫跨雕塑、裝置、繪畫與版畫，長期圍繞記憶、情感、性別、身體與心理創傷等主題。",
-    image: "images/artists/Louise-Bourgeois.jpeg",
+    cardImage: "images/artists/藝術家—Louise Bourgeois.JPG",
+    image: "images/artists/Louise_Bourgeois1.png",
     detail: { intro: `Louise Bourgeois（露易絲・布爾喬亞，1911–2010）是20世紀至當代藝術史中極具影響力的藝術家之一，其創作橫跨雕塑、裝置、繪畫與版畫，長期圍繞記憶、情感、性別、身體與心理創傷等主題。她出生於法國巴黎，1938年移居美國，其跨文化經驗深刻影響了她對自我與家庭關係的探索。
     
 她的藝術高度個人化，經常以童年經驗、家庭結構與內在情緒作為創作核心。她擅長運用人體器官、變形身體與象徵性物件，將恐懼、依附、憤怒與脆弱轉化為具體而強烈的視覺語言。其作品在抽象與具象之間游移，展現心理狀態的流動與不安。
@@ -76,7 +84,8 @@ window.ARTISTS = [
     role: "1964－",
     keywords: ["記憶", "感知", "存在"],
     cardBio: "以描繪模糊、殘影般的人體形象聞名，關注記憶、感知與存在狀態之間的曖昧關係。",
-    image: "images/artists/Frederic-Fontenoy.jpg",
+    cardImage: "images/artists/cards/藝術家—Frederic Fontenoy .JPG",
+    image: "images/artists/Frederic_Fontenoy1.png",
     detail: { intro: `Frederic Fontenoy（弗雷德里克・方特努瓦，1964－）是法國當代藝術家，以描繪模糊、殘影般的人體形象聞名，其創作關注記憶、感知與存在狀態之間的曖昧關係。他出生於法國，早年受古典繪畫訓練，後逐步發展出結合具象與抽象的人體繪畫語彙，形成獨特而內省的視覺風格。
     
 他的作品多以人形為核心，但刻意弱化五官與身體邊界，人物彷彿在霧氣或光影中消散，呈現介於出現與消失之間的狀態。這種模糊並非技法上的不確定，而是指向心理與記憶的流動性，暗示個體在時間、情感與自我認同中的不穩定感。其畫面往往帶有靜默與凝滯的氣氛，使觀者進入沉思性的觀看狀態。
