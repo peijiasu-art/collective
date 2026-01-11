@@ -1900,10 +1900,9 @@ body.home {
   height: 100%;
 }
 
-/* ✅ 桌機再縮小（你要的重點） */
 @media (min-width: 992px) {
   .page-work #workCarousel.workCarousel {
-    height: 40vh;            /* ✅ 桌機小一點 */
-    max-height: 420px;       /* ✅ 上限更小，避免畫質被放大 */
+    height: 320px !important;
+    max-height: 320px !important;
   }
 }
