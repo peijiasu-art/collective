@@ -1897,3 +1897,13 @@ body.home {
   color: #fefefe;
   transform: translateX(-2px);
 }
+/* =========================
+   ARTIST DETAIL — Carousel
+   與作品頁共用尺寸與比例
+   ========================= */
+
+.artistHero .workCarousel{
+  width: min(920px, 92vw);   /* 跟作品一樣寬 */
+  margin: 0 auto;            /* 置中 */
+  aspect-ratio: 16 / 9;      /* 跟作品一樣比例 */
+}
