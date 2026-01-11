@@ -1923,3 +1923,43 @@ body.home {
     letter-spacing: 1px;
   }
 }
+/* ===== Artist Carousel arrows: center & consistent ===== */
+.artistCarousel{
+  position: relative; /* 讓按鈕以輪播容器定位 */
+}
+
+.artistCarouselBtn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;      /* 如果你要直角，把這行改成 0 */
+  border: 1px solid rgba(254,254,254,.18);
+  background: rgba(23,17,12,.55);
+  color: #fefefe;
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.artistCarouselPrev{ left: 12px; }
+.artistCarouselNext{ right: 12px; }
+
+/* 手機按鈕稍微小一點 */
+@media (max-width: 768px){
+  .artistCarouselBtn{
+    width: 38px;
+    height: 38px;
+  }
+  .artistCarouselPrev{ left: 10px; }
+  .artistCarouselNext{ right: 10px; }
+}
+.artistCarouselViewport{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
