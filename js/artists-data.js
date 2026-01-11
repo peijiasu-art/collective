@@ -41,7 +41,7 @@ window.ARTISTS = [
     role: "—",
     keywords: ["超現實感", "自我認同"],
     cardBio: "來自臺灣台南的當代攝影藝術家，以獨特、帶有超現實感的身體影像聞名。",
-    cardImage: "images/artists/cards/夏陽_card.jpg",
+    cardImage: "images/artists/林永政.jpg",
     image: "images/artists/林永政.jpg",
     detail: { intro: `林永政（3cm）是來自臺灣台南的當代攝影藝術家，以獨特、帶有超現實感的身體影像聞名。他自小對藝術抱有熱忱，從雕塑出發，逐步將對人體形態的觀察融入攝影之中，透過身體形式與視覺語言的再造，呈現出遊走於美感與不安之間的影像世界。其作品常以女性身體為主題，但畫面中的肉體並非為了展示性感，而是揭示社會規範、性別壓力與身份期待之下的張力與矛盾。觀者往往在第一眼看到作品時感受到直接且強烈的視覺衝擊，進而引發更深的情感共鳴與思考。
     
@@ -56,7 +56,7 @@ window.ARTISTS = [
     role: "1962－",
     keywords: ["創新雕塑", "數位創意"],
     cardBio: "美籍臺裔當代雕塑家，以融合傳統雕刻技藝與現代數位科技的跨世代創作著稱。",
-    cardImage: "images/artists/cards/夏陽_card.jpg",
+    cardImage: "images/artists/王尋.jpg",
     image: "images/artists/王尋.jpg",
     detail: { intro: `王尋（1962年生）是美籍臺裔當代雕塑家，以融合傳統雕刻技藝與現代數位科技的跨世代創作著稱。幼年於鶯歌習得傳統雕刻基礎，1989年畢業於國立臺灣藝術大學雕塑系，其作品曾榮獲臺北市立美術館美展雕塑類首獎並被國立臺灣美術館等典藏。畢業後赴美深造，進一步習得電腦動畫與三維模型技術，並於1996至2007年間於美國知名視覺特效公司任職，參與包括《哈利波特：神秘的魔法石》、《納尼亞傳奇》等電影的製作，將雕塑與數位創意經驗互相激盪，展現出獨特的跨領域素養。
     
@@ -84,7 +84,7 @@ window.ARTISTS = [
     role: "1964－",
     keywords: ["記憶", "感知", "存在"],
     cardBio: "以描繪模糊、殘影般的人體形象聞名，關注記憶、感知與存在狀態之間的曖昧關係。",
-    cardImage: "images/artists/cards/藝術家—Frederic Fontenoy .JPG",
+    cardImage: "images/artists/藝術家—Frederic Fontenoy .JPG",
     image: "images/artists/Frederic_Fontenoy1.png",
     detail: { intro: `Frederic Fontenoy（弗雷德里克・方特努瓦，1964－）是法國當代藝術家，以描繪模糊、殘影般的人體形象聞名，其創作關注記憶、感知與存在狀態之間的曖昧關係。他出生於法國，早年受古典繪畫訓練，後逐步發展出結合具象與抽象的人體繪畫語彙，形成獨特而內省的視覺風格。
     
