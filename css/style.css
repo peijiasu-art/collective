@@ -1914,13 +1914,14 @@ body.home {
   .homeButtons {
     flex-direction: column;  /* ⬅️ 關鍵 */
     gap: 14px;
-    padding: 30px 16px 30px;
+    padding: 20px 16px 16px;
   }
 
   .homeBtn {
-    height: 52px;            /* 手機好點 */
+    height: 64px;            /* 手機好點 */
     font-size: 24px;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+    font-weight: 800;
   }
 }
 /* ===== Artist Carousel arrows: center & consistent ===== */
