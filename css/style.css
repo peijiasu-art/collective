@@ -1901,3 +1901,12 @@ body.home {
   object-position: center;
   background-color: #17110C; /* 黑棕底，留邊好看 */
 }
+/* ===============================
+   作品詳細頁：桌機版輪播再小一點
+   =============================== */
+@media (min-width: 992px) {
+  .page-work .heroCarousel {
+    height: 42vh;        /* 桌機高度變小 */
+    max-height: 460px;   /* 桌機上限更小（避免太大） */
+  }
+}
