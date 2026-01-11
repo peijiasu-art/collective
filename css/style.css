@@ -1907,3 +1907,19 @@ body.home {
   margin: 0 auto;            /* 置中 */
   aspect-ratio: 16 / 9;      /* 跟作品一樣比例 */
 }
+/* =========================
+   首頁按鈕：手機版改為直向排列
+   ========================= */
+@media (max-width: 640px) {
+  .homeButtons {
+    flex-direction: column;  /* ⬅️ 關鍵 */
+    gap: 14px;
+    padding: 20px 16px 16px;
+  }
+
+  .homeBtn {
+    height: 52px;            /* 手機好點 */
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+}
