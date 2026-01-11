@@ -33,7 +33,19 @@
 
 <main class="artistMain">
   <!-- ✅ 16:9 圖（你已經有 CSS .artistHero 的設定） -->
-  <section id="artistHero" class="artistHero" aria-label="藝術家主圖"></section>
+  <section class="artistHero">
+  <div id="artistCarousel" class="workCarousel" aria-label="藝術家圖片輪播">
+    <button class="workCarouselBtn workCarouselPrev" type="button" aria-label="上一張">‹</button>
+
+    <div class="workCarouselViewport">
+      <div id="artistCarouselTrack" class="workCarouselTrack"></div>
+    </div>
+
+    <button class="workCarouselBtn workCarouselNext" type="button" aria-label="下一張">›</button>
+    <div id="artistCarouselDots" class="workCarouselDots" aria-label="輪播頁碼"></div>
+  </div>
+</section>
+
 
   <section class="artistBody">
     <a class="artistBack" href="artists.html">← 回到藝術家清單</a>
